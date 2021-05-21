@@ -9,11 +9,7 @@ ORDER BY A.id DESC
 $articles = [];
 $rs = mysqli_query($dbConn, $sql);
 
-while(true){
-  $article = mysqli_fetch_assoc($rs);
-  if($article == null){
-    break;
-  }
+while( $article = mysqli_fetch_assoc($rs) ){
   $articles[] = $article;
 }
 ?>
