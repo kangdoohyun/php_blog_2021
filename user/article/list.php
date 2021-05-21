@@ -6,19 +6,16 @@ SELECT *
 FROM article AS A
 ORDER BY A.id DESC
 ";
-$rs = mysqli_query($dbConn, $sql);
-$article5 = mysqli_fetch_assoc($rs);
-$article4 = mysqli_fetch_assoc($rs);
-$article3 = mysqli_fetch_assoc($rs);
-$article2 = mysqli_fetch_assoc($rs);
-$article1 = mysqli_fetch_assoc($rs);
-
 $articles = [];
-$articles[0] = $article5;
-$articles[1] = $article4;
-$articles[2] = $article3;
-$articles[3] = $article2;
-$articles[4] = $article1;
+$rs = mysqli_query($dbConn, $sql);
+
+while(true){
+  $article = mysqli_fetch_assoc($rs);
+  if($article == null){
+    break;
+  }
+  $articles[] = $article;
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
