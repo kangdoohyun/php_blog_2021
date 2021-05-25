@@ -14,4 +14,9 @@ $title = $_GET['title'];
 $body = $_GET['body'];
 $sql = "INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = '$title', body = '$body'";
 mysqli_query($dbConnect, $sql);
+$id = mysqli_insert_id($dbConnect);
 ?>
+<script>
+  alert("<?=$id?>번 글이 작성되었습니다.");
+  location.replace('./list.php');
+</script>
