@@ -30,3 +30,7 @@ $body = $_GET['body'];
 $sql = "UPDATE article SET updateDate = NOW(), title = '$title', body = '$body' WHERE id = '$id'" ;
 mysqli_query($dbConnect, $sql);
 ?>
+<script>
+  alert("<?=$id?>번 글이 수정되었습니다.")
+  location.replace('./detail.php?id=<?=$article['id']?>')
+</script>

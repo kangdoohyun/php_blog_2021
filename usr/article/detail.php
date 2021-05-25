@@ -31,7 +31,7 @@ $article = mysqli_fetch_assoc($resultset);
   </div>
   <div>
     <button onclick="location.href='./list.php'">글 리스트</button>
-    <button onclick="location.href='./list.php'">수정</button>
+    <button onclick="location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>'">수정</button>
     <button onclick="location.href='./list.php'">삭제</button>
   </div>
 </body>
