@@ -1,13 +1,14 @@
 <?php
-$dbConn = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DB CONNECTION ERROR");
-$id = $_GET["id"];
-$sql = "SELECT * FROM article WHERE id = '$id'";
-$rs = mysqli_query($dbConn, $sql);
-$article = mysqli_fetch_assoc($rs);
-if( $article == null ){
-  echo "${id}번 게시물은 존재하지 않습니다";
+$dbConnect = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DB CONNECTION ERROR");
+if (isset($_GET['id']) == false){
+  echo "<h2>id를 입력해 주세요.<h2>";
+  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
   exit;
 }
+$id = $_GET['id'];
+$sql = "SELECT * FROM article WHERE id = '$id'";
+$resultset = mysqli_query($dbConnect, $sql);
+$article = mysqli_fetch_assoc($resultset);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,19 +16,23 @@ if( $article == null ){
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title><?=$article["title"]?></title>
+  <title><?=$article['title']?> 상세페이지</title>
 </head>
 <body>
-  <h1><?=$article["title"]?></h1>
+  <h1><?=$article['title']?> 상세페이지</h1>
   <hr>
-  번호 : <?=$article["id"]?><br>
-  작성 날짜 : <?=$article["regDate"]?><br>
-  수정 날짜 : <?=$article["updateDate"]?><br>
-  제목 : <?=$article["title"]?><br>
-  내용 : <?=$article["body"]?><br>
-  <hr>
-  <nav>
-    <div><a href="./list.php">게시물 리스트</a></div>
-  </nav>
+  <div>
+    번호 : <?=$article['id']?><br>
+    작성 날짜 : <?=$article['regDate']?><br>
+    수정 날짜 : <?=$article['updateDate']?><br>
+    제목 : <?=$article['title']?><br>
+    내용 : <?=$article['body']?><br>
+    <hr>
+  </div>
+  <div>
+    <button onclick="location.href='./list.php'">글 리스트</button>
+    <button onclick="location.href='./list.php'">수정</button>
+    <button onclick="location.href='./list.php'">삭제</button>
+  </div>
 </body>
 </html>
