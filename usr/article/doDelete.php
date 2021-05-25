@@ -9,3 +9,7 @@ $id = $_GET['id'];
 $sql = "DELETE FROM article WHERE id = '$id'";
 mysqli_query($dbConnect, $sql);
 ?>
+<script>
+  alert('<?=$id?>번 글이 삭제되었습니다.');
+  location.replace('./list.php');
+</script>
