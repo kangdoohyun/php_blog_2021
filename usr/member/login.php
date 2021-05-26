@@ -19,6 +19,6 @@ $pageTitle = "로그인";
   </form>
 </div>
 <div>
-  <button onclick="location.href='./list.php'">회원 가입</button>
+  <button onclick="location.href='./join.php'">회원 가입</button>
 </div>
 <?php require_once __DIR__ . "/../foot.php"; ?>
