@@ -1,5 +1,5 @@
 <?php
-$dbConnect = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DB CONNECTION ERROR");
+require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if(isset($_GET['relId']) == false){
   echo "<h2>relId를 입력해 주세요.<h2>";
   echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
@@ -12,7 +12,7 @@ if(isset($_GET['body']) == false){
 }
 $relId = $_GET['relId'];
 $body = $_GET['body'];
-$sql = "INSERT INTO reply SET regDate = NOW(), updateDate = NOW(), relTypeCOde = 'article', relId = '$relId', body = '$body'";
+$sql = "INSERT INTO reply SET regDate = NOW(), updateDate = NOW(), relTypeCode = 'article', relId = '$relId', body = '$body'";
 mysqli_query($dbConnect, $sql);
 ?>
 <script>

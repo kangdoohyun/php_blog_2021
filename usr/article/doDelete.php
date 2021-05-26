@@ -1,5 +1,5 @@
 <?php
-$dbConnect = mysqli_connect("127.0.0.1", "sbsst", "sbs123414", "php_blog_2021") or die("DB CONNECTION ERROR");
+require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if(isset($_GET['id']) == false){
   echo "<h2>id를 입력해 주세요.<h2>";
   echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
@@ -7,7 +7,7 @@ if(isset($_GET['id']) == false){
 }
 $id = $_GET['id'];
 $sql = "DELETE FROM article WHERE id = '$id'";
-mysqli_query($dbConnect, $sql);
+db__delete($sql);
 ?>
 <script>
   alert('<?=$id?>번 글이 삭제되었습니다.');
