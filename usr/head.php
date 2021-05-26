@@ -9,7 +9,7 @@
 <body>
   <h1><?=$pageTitle?></h1>
   <?php if ( empty($_SESSION['loginedMemberId']) == false) { ?>
-    <button onclick="location.href='.doLogout.php'">로그아웃</button>
+    <button onclick="location.href='../member/doLogout.php'">로그아웃</button>
   <?php } ?>
   <hr>
   
