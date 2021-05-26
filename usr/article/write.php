@@ -13,11 +13,11 @@
     <form action="./doWrite.php?">
       <div>
         <span>제목 : </span>
-        <input required style="width: 200px;" type="text" name="title">
+        <input required style="width: 200px;" type="text" name="title" placeholder="제목을 입력해 주세요">
       </div>
       <div>
         <span>내용 : </span>
-        <textarea required style="width: 202px;" name="body"></textarea>
+        <textarea required style="width: 202px;" name="body" placeholder="내용을 입력해 주세요"></textarea>
         
       </div>
       <button style="width: 255px;" type="submit">글 작성</button>
