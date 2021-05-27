@@ -1,17 +1,31 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-$sql = "SELECT * FROM article ORDER BY id DESC";
+// 삼항연산자 isset($_GET['boardId'])가 참이면 intval($_GET['boardId']) 거짓이면 0이 할당된다.
+$boardId = isset($_GET['boardId']) ? intval($_GET['boardId']) : 0;
+if ($boardId == 0){
+  $sql = "SELECT * FROM article ORDER BY id DESC";
+}else{
+  $sql = "SELECT A.* FROM article AS A INNER JOIN board AS B ON A.boardId = B.id WHERE A.boardId = '$boardId' ORDER BY a.id DESC";
+}
 $articles = db__getRows($sql);
+$sql = "SELECT * FROM board ORDER BY id ASC";
+$boards = db__getRows($sql);
 ?>
 <?php
 $pageTitle = "게시물 리스트";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-
 <button onclick="location.href = './write.php' ">글 작성</button>
 <button onclick="location.href = '../member/login.php' ">로그인</button>
 <hr>
-<div>
+<nav>
+  <ul>
+    <?php foreach( $boards as $board ) { ?>
+      <li style="display: inline-block;"><a href="./list.php?boardId=<?=$board['id']?>"><?=$board['name']?></a></li>
+    <?php } ?>
+  </ul>
+</nav>
+<div>  
   <?php foreach( $articles as $article ) { ?>
   번호 : <?=$article['id']?><br>
   작성 날짜 : <?=$article['regDate']?><br>

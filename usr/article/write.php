@@ -14,7 +14,7 @@ $pageTitle = "게시물 작성";
         <option value="<?=$board['id']?>"><?=$board['name']?></option>
       <?php } ?>
     </select>
-    </div> 
+    </div>
     <div>
       <span>제목 : </span>
       <input required style="width: 200px;" type="text" name="title" placeholder="제목을 입력해 주세요">
