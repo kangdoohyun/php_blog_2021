@@ -46,7 +46,8 @@ loginPw = '$loginPw',
 `name` = '$name',
 nickname = '$nickname',
 cellphoneNo = '$cellphoneNo',
-email = '$email'
+email = '$email',
+delStatus = '0';
 ";
 $id = db__insert($sql);
 ?>

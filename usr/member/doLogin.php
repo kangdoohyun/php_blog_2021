@@ -15,7 +15,11 @@ $loginPw = $_GET['loginPw'];
 $sql = "SELECT * FROM member WHERE loginId = '$loginId'" ;
 $member = db__getRow($sql);
 if(empty($member)){
-  echo "<script>alert(\"존재하지 않는 회원입니다.\");location.replace('./login.php')</script>";
+  echo "<script>alert(\"존재하지 않는 회원입니다1.\");location.replace('./login.php')</script>";
+  exit;
+}
+if($member['delStatus'] == 1){
+  echo "<script>alert(\"존재하지 않는 회원입니다2.\");location.replace('./login.php')</script>";
   exit;
 }
 if($member['loginPw'] != $loginPw){
