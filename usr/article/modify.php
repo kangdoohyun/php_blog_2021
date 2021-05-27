@@ -15,17 +15,31 @@ if(isset($_GET['body']) == false){
   echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
   exit;
 }
+// if(isset($_GET['memberId']) == false){
+//   echo "<h2>memberId를 입력해 주세요.<h2>";
+//   echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
+//   exit;
+// }
 $id = $_GET['id'];
 $title = $_GET['title'];
 $body = $_GET['body'];
+// $memberId = $_GET['memberId'];
+// if($memberId != $_SESSION['loginedMemberId']){
+//   echo "<script>
+//   alert('본인 게시물만 수정할 수 있습니다');
+//   location.href='./detail.php?id=$id';
+// </script>";
+// exit;
+// }
 ?>
-<?php
+<?php 
 $pageTitle = "게시물 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
   <form action="./doModify.php?">
     <input type="hidden" name="id" value="<?=$id?>">
+    <input type="hidden" name="memberId" value="<?=$memberId?>">
     <div>
       <span>제목 : </span>
       <input required style="width: 200px;" type="text" name="title" value="<?=$title?>">

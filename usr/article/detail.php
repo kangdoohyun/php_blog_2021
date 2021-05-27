@@ -28,6 +28,32 @@ $pageTitle = $article['title'].' 상세페이지';
       btn.style.display = "none";
     }
   }
+  function delete_confirm(){
+    if(confirm('정말 글을 삭제 하시겠습니까?') == false) {
+      return false;
+    }
+  }
+  function delete_authority_check(){
+    if(<?=$article['memberId']?> == <?=$_SESSION['loginedMemberId']?>){
+      var confirm = delete_confirm();
+      if(confirm != false){
+        location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>';
+      }
+    }
+    else{
+      alert('본인 게시물만 삭제할 수 있습니다');
+      location.href='./detail.php?id=<?=$id?>';
+    }
+  }
+  function modify_authority_check(){
+    if(<?=$article['memberId']?> == <?=$_SESSION['loginedMemberId']?>){
+      location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>';
+    }
+    else{
+      alert('본인 게시물만 수정할 수 있습니다');
+      location.href='./detail.php?id=<?=$id?>';
+    }
+  }
 </script>
 <div>
   번호 : <?=$article['id']?><br>
@@ -35,14 +61,15 @@ $pageTitle = $article['title'].' 상세페이지';
   수정 날짜 : <?=$article['updateDate']?><br>
   제목 : <?=$article['title']?><br>
   내용 : <?=$article['body']?><br>
+  작성자 : <?=$article['memberId']?><br>
   <hr>
 </div>
 <div>
   <button onclick="location.href='./list.php'">글 리스트</button>
   <button
-    onclick="location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>'">수정</button>
+    onclick="modify_authority_check()">수정</button>
   <button
-    onclick="if(confirm('정말 글을 삭제 하시겠습니까?') == false) return false; location.href='./doDelete.php?id=<?=$article['id']?>';">삭제</button>
+    onclick="delete_authority_check()">삭제</button>
 </div>
 <hr>
 <div>
