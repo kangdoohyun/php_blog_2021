@@ -10,9 +10,15 @@ if(isset($_GET['body']) == false){
   echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
   exit;
 }
+if(isset($_GET['boardId']) == false){
+  echo "<h2>boardId를 입력해 주세요.<h2>";
+  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
+  exit;
+}
 $title = $_GET['title'];
 $body = $_GET['body'];
-$sql = "INSERT INTO article SET regDate = NOW(), updateDate = NOW(), title = '$title', body = '$body'";
+$boardId = intval($_GET['boardId']);
+$sql = "INSERT INTO article SET regDate = NOW(), updateDate = NOW(), boardId = '$boardId', title = '$title', body = '$body'";
 $id = db__insert($sql);
 ?>
 <script>
