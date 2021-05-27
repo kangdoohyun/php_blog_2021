@@ -14,8 +14,18 @@ $boards = db__getRows($sql);
 <?php
 $pageTitle = "게시물 리스트";
 ?>
+<script>
+  function write_authority_check() {
+    var session = <?=isset($_SESSION['loginedMemberId']) ? 1 : 0?>;
+    if (session == 1) {
+      location.href='./write.php';
+    } else{
+      alert('로그인 후 이용해주세요');
+    }
+  }
+</script>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<button onclick="location.href = './write.php' ">글 작성</button>
+<button onclick="write_authority_check()">글 작성</button>
 <hr>
 <nav>
   <ul>
