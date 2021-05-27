@@ -16,7 +16,6 @@ $pageTitle = "게시물 리스트";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <button onclick="location.href = './write.php' ">글 작성</button>
-<button onclick="location.href = '../member/login.php' ">로그인</button>
 <hr>
 <nav>
   <ul>

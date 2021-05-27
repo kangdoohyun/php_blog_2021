@@ -14,7 +14,5 @@ WHERE id = '$id';
 db__modify($sql);
 ?>
 <script>
-  // if(confirm('정말 삭제 하시겠습니까?') == false) return false
-  alert('탈퇴되었습니다');
-  location.replace('../member/login.php');
+  location.replace('../member/doLogout.php');
 </script>
