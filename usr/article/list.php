@@ -20,6 +20,7 @@ $pageTitle = "게시물 리스트";
 <hr>
 <nav>
   <ul>
+  <li style="display: inline-block;"><a href="./list.php">전체보기</a></li>
     <?php foreach( $boards as $board ) { ?>
       <li style="display: inline-block;"><a href="./list.php?boardId=<?=$board['id']?>"><?=$board['name']?></a></li>
     <?php } ?>
