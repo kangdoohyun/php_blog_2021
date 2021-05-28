@@ -1,16 +1,16 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if (isset($_GET['id']) == false){
-  echo "<h2>id를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
-  exit;
+  jsHistoryBackExit('게시물 번호를 입력해주세요.');
 }
 $id = intval($_GET['id']);
 $sql = "SELECT * FROM article WHERE id = '$id'";
 $article = db__getRow($sql);
-
+// $sql = "SELECT * FROM reply WHERE memberId = '$article['memberId']'";
+$reply = db__getRow($sql);
 $sql = "SELECT * FROM reply WHERE relId = '$id' ORDER BY id DESC";
 $replis = db__getRows($sql);
+$membdrIdInSession = isset($_SESSION['loginedMemberId']) ? $_SESSION['loginedMemberId'] : 0;
 ?>
 <?php
 $pageTitle = $article['title'].' 상세페이지';
@@ -20,7 +20,7 @@ $pageTitle = $article['title'].' 상세페이지';
   function toggleText(i) {
     var text = document.getElementById("modifyReply" + i);
     var btn = document.getElementById("modifyBTN" + i);
-    if (text.style.display === "none") {
+    if (text.style.display == "none") {
       text.style.display = "block";
       btn.style.display = "block";
     } else {
@@ -29,29 +29,58 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function delete_confirm(){
-    if(confirm('정말 글을 삭제 하시겠습니까?') == false) {
+    if(confirm('정말 삭제 하시겠습니까?') == false) {
       return false;
     }
   }
   function delete_authority_check(){
-    if(<?=$article['memberId']?> == <?=$_SESSION['loginedMemberId']?>){
+    if(<?=$article['memberId']?> == <?=$membdrIdInSession?>){
       var confirm = delete_confirm();
       if(confirm != false){
         location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>';
       }
     }
+    else if (<?=$membdrIdInSession?> == 0){
+      alert('로그인 후 이용해주세요.');
+    }
     else{
       alert('본인 게시물만 삭제할 수 있습니다');
-      location.href='./detail.php?id=<?=$id?>';
     }
   }
   function modify_authority_check(){
-    if(<?=$article['memberId']?> == <?=$_SESSION['loginedMemberId']?>){
+    if(<?=$article['memberId']?> == <?=$membdrIdInSession?>){
       location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>';
+    }
+    else if (<?=$membdrIdInSession?> == 0){
+      alert('로그인 후 이용해주세요.');
     }
     else{
       alert('본인 게시물만 수정할 수 있습니다');
-      location.href='./detail.php?id=<?=$id?>';
+    }
+  }
+  function reply_delete_authority_check(id, relId){
+    if(<?=$reply['memberId']?> == <?=$membdrIdInSession?>){
+      var confirm = delete_confirm();
+      if(confirm != false){
+        location.href='../reply/doDelete.php?id=' + id + '&relId=' + relId;
+      }
+    }
+    else if (<?=$membdrIdInSession?> == 0){
+      alert('로그인 후 이용해주세요.');
+    }
+    else{
+      alert('본인 댓글만 삭제할 수 있습니다');
+    }
+  }
+  function reply_modify_authority_check(i){
+    if(<?=$article['memberId']?> == <?=$membdrIdInSession?>){
+      toggleText(i);
+    }
+    else if (<?=$membdrIdInSession?> == 0){
+      alert('로그인 후 이용해주세요.');
+    }
+    else{
+      alert('본인 댓글만 수정할 수 있습니다');
     }
   }
 </script>
@@ -74,8 +103,9 @@ $pageTitle = $article['title'].' 상세페이지';
 <hr>
 <div>
   <h2>댓글</h2>
-  <form action="../reply/doWrite.php">
+  <form name="replyForm"action="../reply/doWrite.php">
     <input type="hidden" name="relId" value="<?=$article['id']?>">
+    <input type="hidden" name="memberId" value="<?=$membdrIdInSession?>">
     <textarea style="width: 202px;" name="body" placeholder="댓글을 작성해 주세요"></textarea>
     <br>
     <button style="width: 208px;" type="submit">작성 완료</button>
@@ -88,11 +118,11 @@ $pageTitle = $article['title'].' 상세페이지';
   <?php $i = $i + 1 ?>
   작성 날짜 : <?=$reply['regDate']?><br>
   수정 날짜 : <?=$reply['updateDate']?><br>
-  제목 : <?=$reply['body']?><br>
+  내용 : <?=$reply['body']?><br>
   <form style="display: inline-block;" action="../reply/doModify.php?">
-    <input type="button" value="수정" onclick="toggleText(<?=$i?>)">
+    <input type="button" value="수정" onclick="reply_modify_authority_check(<?=$i?>)">
   </form>
-  <button style="display: inline-block;" onclick="if(confirm('정말 삭제 하시겠습니까?') == false) return false; location.href='../reply/doDelete.php?id=<?=$reply['id']?>&relId=<?=$reply['relId']?>';">삭제</button>
+  <button style="display: inline-block;" onclick="reply_delete_authority_check(<?=$reply['id']?>, <?=$reply['relId']?>);">삭제</button>
   <form style="display: inlin-block;" action="../reply/doModify.php?">
     <input type="hidden" name="id" value="<?=$reply['id']?>">
     <input type="hidden" name="relId" value="<?=$reply['relId']?>">

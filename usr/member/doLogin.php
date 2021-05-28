@@ -1,14 +1,10 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(isset($_GET['loginId']) == false){
-  echo "<h2>loginId를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
-  exit;
+if(empty($_GET['loginId'])){
+  jsRocationReplaceExit('../member/login.php', '로그인아이디를 입력해주세요.');
 }
-if(isset($_GET['loginPw']) == false){
-  echo "<h2>loginPw를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
-  exit;
+if(empty($_GET['loginPw'])){
+  jsRocationReplaceExit('../member/login.php', '비밀번호를 입력해주세요.');
 }
 $loginId = $_GET['loginId'];
 $loginPw = $_GET['loginPw'];

@@ -1,9 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if (isset($_GET['memberId']) == false){
-  echo "<h2>memberId를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
-  exit;
+  jsHistoryBackExit('회원번호를 입력해주세요.');
 }
 $memberId = intval($_GET['memberId']);
 $sql = "SELECT * FROM member WHERE id = '$memberId'";

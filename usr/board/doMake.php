@@ -1,9 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(isset($_GET['name']) == false){
-  echo "<h2>name을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './make.php' \">게시판 생성</button>";
-  exit;
+if(empty($_GET['name'])){
+  jsHistoryBackExit("게시판 이름을 입력해주세요.");
 }
 $name = $_GET['name'];
 $sql = "INSERT INTO board SET regDate = NOW(), updateDate = NOW(), `name` = '$name'";

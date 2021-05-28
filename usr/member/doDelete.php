@@ -1,9 +1,7 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if(isset($_GET['id']) == false){
-  echo "<h2>id를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = '../article.list.php' \">글 리스트</button>";
-  exit;
+  jsHistoryBackExit('회원번호를 입력해주세요.');
 }
 $id = $_GET['id'];
 $sql = "

@@ -1,18 +1,15 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if (isset($_GET['id']) == false){
-  echo "<h2>id를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
+  jsHistoryBackExit("번호를 입력해주세요.");
   exit;
 }
 if(isset($_GET['title']) == false){
-  echo "<h2>title을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
+  jsHistoryBackExit("제목을 입력해주세요.");
   exit;
 }
 if(isset($_GET['body']) == false){
-  echo "<h2>body를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
+  jsHistoryBackExit("내용을 입력해주세요.");
   exit;
 }
 
@@ -22,7 +19,7 @@ $body = $_GET['body'];
 
 ?>
 <?php 
-$pageTitle = "게시물 수정";
+$pageTitle = "게시물   수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
@@ -31,11 +28,11 @@ $pageTitle = "게시물 수정";
     <input type="hidden" name="memberId" value="<?=$memberId?>">
     <div>
       <span>제목 : </span>
-      <input required style="width: 200px;" type="text" name="title" value="<?=$title?>">
+      <input style="width: 200px;" type="text" name="title" value="<?=$title?>">
     </div>
     <div>
       <span>내용 : </span>
-      <textarea required style="width: 202px;" name="body"><?=$body?></textarea>
+      <textarea style="width: 202px;" name="body"><?=$body?></textarea>
 
     </div>
     <button style="width: 255px;" type="submit">글 수정</button>

@@ -1,5 +1,9 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
+if(isset($_GET['memberId']) == false){
+  jsHistoryBackExit('회원번호를 입력해 주세요.');
+}
+$memberId = $_GET['memberId'];
 $sql = "SELECT * FROM board ORDER BY id ASC";
 $boards = db__getRows($sql);
 $pageTitle = "게시물 작성";
@@ -15,13 +19,14 @@ $pageTitle = "게시물 작성";
       <?php } ?>
     </select>
     </div>
+    <input type="hidden" name="memberId" value="<?=$memberId?>">
     <div>
       <span>제목 : </span>
-      <input required style="width: 200px;" type="text" name="title" placeholder="제목을 입력해 주세요">
+      <input style="width: 200px;" type="text" name="title" placeholder="제목을 입력해 주세요">
     </div>
     <div>
       <span>내용 : </span>
-      <textarea required style="width: 202px;" name="body" placeholder="내용을 입력해 주세요"></textarea>
+      <textarea style="width: 202px;" name="body" placeholder="내용을 입력해 주세요"></textarea>
     </div>
     <button style="width: 255px;" type="submit">글 작성</button>
     <hr>

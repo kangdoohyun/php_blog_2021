@@ -1,39 +1,25 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if(isset($_GET['id']) == false){
-  echo "<h2>id를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('회원번호를 입력해주세요.');
 }
 if(isset($_GET['loginId']) == false){
-  echo "<h2>loginId를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('로그인 아이디를 입력해주세요.');
 }
 if(isset($_GET['loginPw']) == false){
-  echo "<h2>loginPw를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('비밀번호를 입력해주세요.');
 }
 if(isset($_GET['name']) == false){
-  echo "<h2>name을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('이름을 입력해주세요.');
 }
 if(isset($_GET['nickname']) == false){
-  echo "<h2>nickname을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('닉네임을 입력해주세요.');
 }
 if(isset($_GET['cellphoneNo']) == false){
-  echo "<h2>cellphoneNo를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('전화번호를 입력해주세요.');
 }
 if(isset($_GET['email']) == false){
-  echo "<h2>email을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+  jsHistoryBackExit('이메일을 입력해주세요.');
 }
 $id = $_GET['id'];
 $loginId = $_GET['loginId'];

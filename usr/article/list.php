@@ -16,16 +16,29 @@ $pageTitle = "게시물 리스트";
 ?>
 <script>
   function write_authority_check() {
-    var session = <?=isset($_SESSION['loginedMemberId']) ? 1 : 0?>;
-    if (session == 1) {
-      location.href='./write.php';
+    var session = <?=isset($_SESSION['loginedMemberId']) ? $_SESSION['loginedMemberId'] : 0?>;
+    if (session != 0) {
+      location.href='./write.php?memberId='+session;
     } else{
       alert('로그인 후 이용해주세요');
+    }
+  }
+  function make_board_authority_check() {
+    var session = <?=isset($_SESSION['loginedMemberId']) ? $_SESSION['loginedMemberId'] : 0?>;
+    if (session == 1) {
+      location.href='../board/make.php';
+    } 
+    else if(session == 0) {
+      alert('로그인 후 이용해주세요');
+    }
+    else{
+      alert('관리자만 게시판을 생성할 수 있습니다.');
     }
   }
 </script>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <button onclick="write_authority_check()">글 작성</button>
+<button onclick="make_board_authority_check()">게시판 생성</button>
 <hr>
 <nav>
   <ul>

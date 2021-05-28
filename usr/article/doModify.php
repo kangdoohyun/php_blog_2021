@@ -1,28 +1,20 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 if(isset($_GET['id']) == false){
-  echo "<h2>id를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
-  exit;
+  jsHistoryBackExit("번호를 입력해주세요.");
 }
 $id = $_GET['id'];
 $sql = "SELECT * FROM article WHERE id = '$id'";
 $article = db__getRow($sql);
 
-if($article == null){
-  echo "<h2>${id}번 게시물은 존재하지 않습니다.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
-  exit;
+if(empty($article)){
+  jsHistoryBackExit("${id}번 게시물은 존재하지 않습니다.");
 }
 if(isset($_GET['title']) == false){
-  echo "<h2>title을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
-  exit;
+  jsHistoryBackExit("제목을 입력해주세요.");
 }
 if(isset($_GET['body']) == false){
-  echo "<h2>body를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './list.php' \">글 리스트</button>";
-  exit;
+  jsHistoryBackExit("내용을 입력해주세요.");
 }
 $title = $_GET['title'];
 $body = $_GET['body'];

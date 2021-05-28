@@ -1,19 +1,13 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(isset($_GET['relId']) == false){
-    echo "<h2>relId를 입력해 주세요.<h2>";
-    echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
-    exit;
-  }
-if(isset($_GET['id']) == false){
-    echo "<h2>id를 입력해 주세요.<h2>";
-    echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
-    exit;
-  }
-if(isset($_GET['body']) == false){
-  echo "<h2>body를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = '../article/list.php' \">글 리스트</button>";
-  exit;
+if(empty($_GET['relId'])){
+  jsHistoryBackExit('댓글이 작성된 게시물번호를 입력해주세요.');
+}
+if(empty($_GET['id'])){
+  jsHistoryBackExit('댓글번호를 입력해주세요.');
+}
+if(empty($_GET['body'])){
+  jsHistoryBackExit('내용을 입력해주세요.');
 }
 $relId = $_GET['relId'];
 $id = $_GET['id'];
