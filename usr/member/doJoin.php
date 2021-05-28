@@ -1,55 +1,59 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(isset($_GET['loginId']) == false){
-  echo "<h2>loginId를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+if(empty($_GET['loginId'])){
+  echo "<script>alert('아이디를 입력해 주세요.');location.href='./join.php';</script>";
 }
-if(isset($_GET['loginPw']) == false){
-  echo "<h2>loginPw를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+else if(empty($_GET['loginPw'])){
+  echo "<script>alert('비밀번호를 입력해 주세요.');location.href='./join.php';</script>";
 }
-if(isset($_GET['name']) == false){
-  echo "<h2>name을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+else if(empty($_GET['name'])){
+  echo "<script>alert('이름을 입력해 주세요.');location.href='./join.php';</script>";
 }
-if(isset($_GET['nickname']) == false){
-  echo "<h2>nickname을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+else if(empty($_GET['nickname'])){
+  echo "<script>alert('닉네임을 입력해 주세요.');location.href='./join.php';</script>";
 }
-if(isset($_GET['cellphoneNo']) == false){
-  echo "<h2>cellphoneNo를 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+else if(empty($_GET['cellphoneNo'])){
+  echo "<script>alert('전화번호를 입력해 주세요.');location.href='./join.php';</script>";
 }
-if(isset($_GET['email']) == false){
-  echo "<h2>email을 입력해 주세요.<h2>";
-  echo "<button onclick = \"location.href = './join.php' \">회원가입으로 돌아가기</button>";
-  exit;
+else if(empty($_GET['email'])){
+  echo "<script>alert('이메일을 입력해 주세요.');location.href='./join.php';</script>";
 }
-
-$loginId = $_GET['loginId'];
-$loginPw = $_GET['loginPw'];
-$name = $_GET['name'];
-$nickname = $_GET['nickname'];
-$cellphoneNo = $_GET['cellphoneNo'];
-$email = $_GET['email'];
-$sql = "
-INSERT INTO `member`
-SET regDate = NOW(),
-updateDate = NOW(),
-loginId = '$loginId',
-loginPw = '$loginPw',
-`name` = '$name',
-nickname = '$nickname',
-cellphoneNo = '$cellphoneNo',
-email = '$email',
-delStatus = '0';
-";
-$id = db__insert($sql);
+else{
+  $loginId = $_GET['loginId'];
+  $loginPw = $_GET['loginPw'];
+  $name = $_GET['name'];
+  $nickname = $_GET['nickname'];
+  $cellphoneNo = $_GET['cellphoneNo'];
+  $email = $_GET['email'];
+  $sql = "SELECT * FROM `member` WHERE loginId = '$loginId'";
+  $loginIdCheck = db__getRow($sql);
+  if(isset($loginIdCheck)){
+    echo "<script>alert('이미 사용중인 아이디입니다.');location.href='./join.php';</script>";
+  }
+  $sql = "SELECT * FROM `member` WHERE nickname = '$nickname'";
+  $loginIdCheck = db__getRow($sql);
+  if(isset($loginIdCheck)){
+    echo "<script>alert('이미 사용중인 닉네임입니다.');location.href='./join.php';</script>";
+  }
+  $sql = "SELECT * FROM `member` WHERE email = '$email'";
+  $loginIdCheck = db__getRow($sql);
+  if(isset($loginIdCheck)){
+    echo "<script>alert('이미 사용중인 이메일입니다.');location.href='./join.php';</script>";
+  }
+  $sql = "
+  INSERT INTO `member`
+  SET regDate = NOW(),
+  updateDate = NOW(),
+  loginId = '$loginId',
+  loginPw = '$loginPw',
+  `name` = '$name',
+  nickname = '$nickname',
+  cellphoneNo = '$cellphoneNo',
+  email = '$email',
+  delStatus = '0';
+  ";
+  $id = db__insert($sql);
+}
 ?>
 <script>
   alert("회원가입이 완료되었습니다.");
