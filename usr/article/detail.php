@@ -6,8 +6,6 @@ if (isset($_GET['id']) == false){
 $id = intval($_GET['id']);
 $sql = "SELECT * FROM article WHERE id = '$id'";
 $article = db__getRow($sql);
-// $sql = "SELECT * FROM reply WHERE memberId = '$article['memberId']'";
-$reply = db__getRow($sql);
 $sql = "SELECT * FROM reply WHERE relId = '$id' ORDER BY id DESC";
 $replis = db__getRows($sql);
 $membdrIdInSession = isset($_SESSION['loginedMemberId']) ? $_SESSION['loginedMemberId'] : 0;
@@ -58,8 +56,8 @@ $pageTitle = $article['title'].' 상세페이지';
       alert('본인 게시물만 수정할 수 있습니다');
     }
   }
-  function reply_delete_authority_check(id, relId){
-    if(<?=$reply['memberId']?> == <?=$membdrIdInSession?>){
+  function reply_delete_authority_check(id, relId, memberId){
+    if(memberId == <?=$membdrIdInSession?>){
       var confirm = delete_confirm();
       if(confirm != false){
         location.href='../reply/doDelete.php?id=' + id + '&relId=' + relId;
@@ -72,8 +70,8 @@ $pageTitle = $article['title'].' 상세페이지';
       alert('본인 댓글만 삭제할 수 있습니다');
     }
   }
-  function reply_modify_authority_check(i){
-    if(<?=$article['memberId']?> == <?=$membdrIdInSession?>){
+  function reply_modify_authority_check(i, memberid){
+    if(memberid == <?=$membdrIdInSession?>){
       toggleText(i);
     }
     else if (<?=$membdrIdInSession?> == 0){
@@ -120,9 +118,9 @@ $pageTitle = $article['title'].' 상세페이지';
   수정 날짜 : <?=$reply['updateDate']?><br>
   내용 : <?=$reply['body']?><br>
   <form style="display: inline-block;" action="../reply/doModify.php?">
-    <input type="button" value="수정" onclick="reply_modify_authority_check(<?=$i?>)">
+    <input type="button" value="수정" onclick="reply_modify_authority_check(<?=$i?>, <?=$reply['memberId']?>)">
   </form>
-  <button style="display: inline-block;" onclick="reply_delete_authority_check(<?=$reply['id']?>, <?=$reply['relId']?>);">삭제</button>
+  <button style="display: inline-block;" onclick="reply_delete_authority_check(<?=$reply['id']?>, <?=$reply['relId']?>, <?=$reply['memberId']?>);">삭제</button>
   <form style="display: inlin-block;" action="../reply/doModify.php?">
     <input type="hidden" name="id" value="<?=$reply['id']?>">
     <input type="hidden" name="relId" value="<?=$reply['relId']?>">
