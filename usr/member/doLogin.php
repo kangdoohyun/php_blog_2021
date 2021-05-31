@@ -11,8 +11,10 @@ if(!$loginPw){
   jsLocationReplaceExit('../member/login.php', '비밀번호를 입력해주세요.');
 }
 
-$sql = "SELECT * FROM member WHERE loginId = '$loginId'" ;
-$member = db__getRow($sql);
+$sql = DB__SeqSql();
+$sql -> add("SELECT * FROM member");
+$sql -> add("WHERE loginId = ?", $loginId);
+$member = DB__getRow($sql);
 
 if(!$member){
   jsHistoryBackExit("존재하지 않는 회원입니다.");

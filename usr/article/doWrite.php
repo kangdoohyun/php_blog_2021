@@ -23,8 +23,15 @@ if(!is_numeric($boardId)){
   jsHistoryBackExit('게시판을 선택해주세요.');
 }
 
-$sql = "INSERT INTO article SET regDate = NOW(), updateDate = NOW(), boardId = '$boardId', memberId = '$memberId', title = '$title', body = '$body'";
-$id = db__insert($sql);
+$sql = DB__SeqSql();
+$sql -> add("INSERT INTO article");
+$sql -> add("SET regDate = NOW(),");
+$sql -> add("updateDate = NOW(),");
+$sql -> add("boardId = ?,", $boardId);
+$sql -> add("memberId = ?,", $memberId);
+$sql -> add("title = ?,", $title);
+$sql -> add("body = ?", $body);
+$id = DB__insert($sql);
 
 jsAlert("${id}번 글이 작성되었습니다.");
 jsLocationReplaceExit("./list.php");

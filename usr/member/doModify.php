@@ -31,17 +31,13 @@ if(!$email){
   jsHistoryBackExit('이메일을 입력해주세요.');
 }
 
-$sql = "
-UPDATE `member` SET 
-updateDate = NOW(),
-loginId = '$loginId',
-loginPw = '$loginPw',
-`name` = '$name',
-nickname = '$nickname',
-email = '$email',
-cellphoneNo = '$cellphoneNo'
-WHERE id = '$id'";
-$id = db__modify($sql);
+$sql = DB__SeqSql();
+$sql -> add("UPDATE `member` SET ");
+$sql -> add("updateDate = NOW(),");
+$sql -> add("loginId = ?, loginPw = ?, `name` = ?, nickname = ?, email = ?, cellphoneNo = ?", $loginId, $loginPw, $name, $nickname, $email, $cellphoneNo);
+$sql -> add("WHERE id = ?", $id);
+DB__modify($sql);
+
 
 jsAlert("회원정보 수정이 완료되었습니다.");
 jsLocationReplaceExit("./login.php");

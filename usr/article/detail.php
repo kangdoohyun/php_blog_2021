@@ -4,10 +4,17 @@ if (isset($_GET['id']) == false){
   jsHistoryBackExit('게시물 번호를 입력해주세요.');
 }
 $id = intval($_GET['id']);
-$sql = "SELECT * FROM article WHERE id = '$id'";
-$article = db__getRow($sql);
-$sql = "SELECT * FROM reply WHERE relId = '$id' ORDER BY id DESC";
-$replis = db__getRows($sql);
+
+$sql = DB__SeqSql();
+$sql -> add("SELECT * FROM article");
+$sql -> add("WHERE id = ?", $id);
+$article = DB__getRow($sql);
+
+$sql = DB__seqSql();
+$sql -> add("SELECT * FROM reply");
+$sql -> add("WHERE relId = ?", $id);
+$sql -> add("ORDER BY id DESC");
+$replis = DB__getRows($sql);
 
 ?>
 <?php

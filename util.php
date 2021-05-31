@@ -1,38 +1,107 @@
 <?php
-function db__getRow($sql){
-  global $dbConnect;
-  $rs = mysqli_query($dbConnect, $sql);
-  $row = mysqli_fetch_assoc($rs);
 
-  return $row;
+class DB__SeqSql {
+  private string $templateStr = "";
+  private array $params = [];
+
+  public function __toString(): string
+  {
+    $str = '[';
+    $str .= 'SQL=(' . $this->getTemplate() . ')';
+    $str .= ', PARAMS=(' . implode(',', $this->getParams()) . ')';
+    $str .= ']';
+    
+    return $str;
+  }
+
+  public function add(string $sqlBit, string $param = null) {
+    $this->templateStr .= " " . $sqlBit;
+
+    if ( $param ) {
+      $this->params[] = $param;
+    }
+  }
+
+  public function getTemplate(): string {
+    return trim($this->templateStr);
+  }
+
+  public function getForBindParam1stArg(): string {
+    $paramTypesStr = "";
+
+    $count = count($this->params);
+
+    for ( $i = 0; $i < $count; $i++ ) {
+      $paramTypesStr .= "s";
+    }
+
+    return $paramTypesStr;
+  }
+
+  public function getParams(): array {
+    return $this->params;
+  }
+
+  public function getParamsCount(): int {
+    return count($this->params);
+  }
 }
 
-function db__getRows($sql){
+function DB__seqSql() {
+  return new DB__SeqSql();
+}
+
+function DB__getStmtFromSeqSql(DB__SeqSql $sql): mysqli_stmt {
   global $dbConnect;
-  $rs = mysqli_query($dbConnect, $sql);
+  $stmt = $dbConnect->prepare($sql->getTemplate());
+  if ( $sql->getParamsCount() ) {
+    $stmt->bind_param($sql->getForBindParam1stArg(), ...$sql->getParams());
+  }
+  
+  return $stmt;
+}
+
+function DB__getRow(DB__SeqSql $sql) {
+  $rows = DB__getRows($sql);
+
+  if ( isset($rows[0]) ) {
+    return $rows[0];
+  }
+
+  return null;
+}
+
+function DB__getRows(DB__SeqSql $sql) {
+  $stmt = DB__getStmtFromSeqSql($sql);
+  $stmt->execute();
+  $result = $stmt->get_result();
   $rows = [];
-  while($row = mysqli_fetch_assoc($rs)){
+
+  while ( $row = $result->fetch_assoc() ) {
     $rows[] = $row;
   }
   
   return $rows;
 }
 
-function db__insert($sql){
+function DB__execute(DB__SeqSql $sql) {
+  $stmt = DB__getStmtFromSeqSql($sql);
+  $stmt->execute();
+}
+
+function DB__insert(DB__SeqSql $sql){
   global $dbConnect;
-  mysqli_query($dbConnect, $sql);
+  DB__execute($sql);
 
   return mysqli_insert_id($dbConnect);
 }
 
-function db__modify($sql){
-  global $dbConnect;
-  mysqli_query($dbConnect, $sql);
+function DB__modify(DB__SeqSql $sql){
+  DB__execute($sql);
 }
 
-function db__delete($sql){
-  global $dbConnect;
-  mysqli_query($dbConnect, $sql);
+function DB__delete(DB__SeqSql $sql){
+  DB__execute($sql);
 }
 
 function getIntValueOr(&$value, $defaultValue) {

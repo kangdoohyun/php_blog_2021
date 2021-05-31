@@ -15,7 +15,11 @@ if(!$memberId){
   jsHistoryBackExit('로그인 후 이용해주세요');
 }
 
-$sql = "INSERT INTO reply SET regDate = NOW(), updateDate = NOW(), memberId = '$memberId', relTypeCode = 'article', relId = '$relId', body = '$body'";
-mysqli_query($dbConnect, $sql);
+$sql = DB__seqSql();
+$sql -> add("INSERT INTO reply");
+$sql -> add("SET regDate = NOW(), updateDate = NOW(),");
+$sql -> add("memberId = ?, relTypeCode = 'article',", $memberId);
+$sql -> add("relId = ?, body = ?", $relId, $body);
+DB__insert($sql);
 
 jsLocationReplaceExit("../article/detail.php?id=$relId");

@@ -15,7 +15,10 @@ if(!$body){
   jsHistoryBackExit('내용을 입력해주세요.');
 }
 
-$sql = "UPDATE reply SET updateDate = NOW(), body = '$body' WHERE id = '$id';";
-mysqli_query($dbConnect, $sql);
+$sql = DB__seqSql();
+$sql -> add("UPDATE reply SET");
+$sql -> add("updateDate = NOW(),");
+$sql -> add("body = ? WHERE id = ?", $body, $id);
+DB__modify($sql);
 
 jsLocationReplaceExit("../article/detail.php?id=${relId}");

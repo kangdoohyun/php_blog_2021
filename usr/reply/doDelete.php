@@ -11,6 +11,8 @@ if(!$relId){
   jsHistoryBackExit('댓글이 작성된 게시물번호를 입력해주세요.');
 }
 $sql = "DELETE FROM reply WHERE id = '$id'";
-mysqli_query($dbConnect, $sql);
+$sql = DB__seqSql();
+$sql -> add("DELETE FROM reply WHERE id = ?", $id);
+DB__delete($sql);
 
 jsLocationReplaceExit("../article/detail.php?id=${relId}");

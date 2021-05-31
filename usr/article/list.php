@@ -2,14 +2,22 @@
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
 // 삼항연산자 isset($_GET['boardId'])가 참이면 intval($_GET['boardId']) 거짓이면 0이 할당된다.
 $boardId = isset($_GET['boardId']) ? intval($_GET['boardId']) : 0;
+$sql = DB__seqSql();
 if ($boardId == 0){
-  $sql = "SELECT * FROM article ORDER BY id DESC";
+  $sql -> add("SELECT * FROM article");
+  $sql -> add("ORDER BY id DESC");
 }else{
-  $sql = "SELECT A.* FROM article AS A INNER JOIN board AS B ON A.boardId = B.id WHERE A.boardId = '$boardId' ORDER BY a.id DESC";
+  $sql -> add("SELECT A.* FROM article AS A");
+  $sql -> add("INNER JOIN board AS B ON A.boardId = B.id");
+  $sql -> add("WHERE A.boardId = ?", $boardId);
+  $sql -> add("ORDER BY a.id DESC");
 }
-$articles = db__getRows($sql);
-$sql = "SELECT * FROM board ORDER BY id ASC";
-$boards = db__getRows($sql);
+$articles = DB__getRows($sql);
+
+$sql = DB__seqSql();
+$sql -> add("SELECT * FROM board");
+$sql -> add("ORDER BY id ASC");
+$boards = DB__getRows($sql);
 ?>
 <?php
 $pageTitle = "게시물 리스트";

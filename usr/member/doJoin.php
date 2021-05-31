@@ -27,34 +27,35 @@ else if(!$email){
   jsHistoryBackExit("이메일을 입력해 주세요.");
 }
 
-$sql = "SELECT * FROM `member` WHERE loginId = '$loginId'";
-$loginIdCheck = db__getRow($sql);
+$sql = DB__seqSql();
+$sql -> add("SELECT * FROM `member`");
+$sql -> add("WHERE loginId = ?", $loginId);
+
+$loginIdCheck = DB__getRow($sql);
 if(isset($loginIdCheck)){
   jsHistoryBackExit("이미 사용중인 아이디입니다.");
 }
-$sql = "SELECT * FROM `member` WHERE nickname = '$nickname'";
-$loginIdCheck = db__getRow($sql);
+$sql = DB__seqSql();
+$sql -> add("SELECT * FROM `member`");
+$sql -> add("WHERE nickname = ?", $nickname);
+$loginIdCheck = DB__getRow($sql);
 if(isset($loginIdCheck)){
   jsHistoryBackExit("이미 사용중인 닉네임입니다.");
 }
-$sql = "SELECT * FROM `member` WHERE email = '$email'";
-$loginIdCheck = db__getRow($sql);
+$sql = DB__seqSql();
+$sql -> add("SELECT * FROM `member`");
+$sql -> add("WHERE email = ?", $email);
+$loginIdCheck = DB__getRow($sql);
 if(isset($loginIdCheck)){
   jsHistoryBackExit("이미 사용중인 이메일입니다.");
 }
-$sql = "
-INSERT INTO `member`
-SET regDate = NOW(),
-updateDate = NOW(),
-loginId = '$loginId',
-loginPw = '$loginPw',
-`name` = '$name',
-nickname = '$nickname',
-cellphoneNo = '$cellphoneNo',
-email = '$email',
-delStatus = '0';
-";
-$id = db__insert($sql);
+
+$sql = DB__seqSql();
+$sql -> add("INSERT INTO `member`");
+$sql -> add("SET regDate = NOW(), updateDate = NOW(),");
+$sql -> add("loginId = ?, loginPw = ?, `name` = ?,", $loginId, $loginPw, $name);
+$sql -> add("nickname = ?, cellphoneNo = ?, email = ?, delStatus = '0'", $nickname, $cellphoneNo, $email);
+$id = DB__insert($sql);
 
 jsAlert("회원가입이 완료되었습니다.");
 jsLocationReplaceExit("./login.php");
