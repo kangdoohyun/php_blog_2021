@@ -1,20 +1,21 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(empty($_GET['relId'])){
+
+$relId = getIntValueOr($_GET['relId'], 0);
+$body = getStrValueOr($_GET['body'], "");
+$memberId = getIntValueOr($_GET['memberId'], 0);
+
+if(!$relId){
   jsHistoryBackExit('댓글이작성된 게시물 번호를 입력해주세요.');
 }
-if(empty($_GET['body'])){
+if(!$body){
   jsHistoryBackExit('내용을 입력해주세요.');
 }
-if(empty($_GET['memberId'])){
-  jsHistoryBackExit('회원번호를 입력해주세요.');
+if(!$memberId){
+  jsHistoryBackExit('로그인 후 이용해주세요');
 }
-$relId = intval($_GET['relId']);
-$body = $_GET['body'];
-$memberId = intval($_GET['memberId']);
+
 $sql = "INSERT INTO reply SET regDate = NOW(), updateDate = NOW(), memberId = '$memberId', relTypeCode = 'article', relId = '$relId', body = '$body'";
 mysqli_query($dbConnect, $sql);
-?>
-<script>
-  location.replace('../article/detail.php?id=<?=$relId?>');
-</script>
+
+jsLocationReplaceExit("../article/detail.php?id=$relId");

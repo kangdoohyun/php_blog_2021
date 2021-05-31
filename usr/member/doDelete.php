@@ -10,7 +10,5 @@ delStatus = 1
 WHERE id = '$id';
 ";
 db__modify($sql);
-?>
-<script>
-  location.replace('../member/doLogout.php');
-</script>
+jsAlert("회원 탈퇴가 완료되었습니다.");
+jsLocationReplaceExit("../member/doLogout.php");

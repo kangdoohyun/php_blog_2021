@@ -35,13 +35,29 @@ function db__delete($sql){
   mysqli_query($dbConnect, $sql);
 }
 
+function getIntValueOr(&$value, $defaultValue) {
+  if ( isset($value) ) {
+    return intval($value);
+  }
+
+  return $defaultValue;
+}
+
+function getStrValueOr(&$value, $defaultValue) {
+  if ( isset($value) ) {
+    return strval($value);
+  }
+
+  return $defaultValue;
+}
+
 function jsAlert($msg){
   echo "<script>";
   echo "alert('$msg');";
   echo "</script>";
 } 
 
-function jsRocationReplaceExit($url, $msg = null){
+function jsLocationReplaceExit($url, $msg = null){
   if($msg){
     jsAlert($msg);
   }

@@ -1,20 +1,21 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(empty($_GET['relId'])){
+
+$id = getIntValueOr($_GET['id'], 0);
+$relId = getIntValueOr($_GET['relId'], 0);
+$body = getStrValueOr($_GET['body'], "");
+
+if(!$relId){
   jsHistoryBackExit('댓글이 작성된 게시물번호를 입력해주세요.');
 }
-if(empty($_GET['id'])){
+if(!$id){
   jsHistoryBackExit('댓글번호를 입력해주세요.');
 }
-if(empty($_GET['body'])){
+if(!$body){
   jsHistoryBackExit('내용을 입력해주세요.');
 }
-$relId = $_GET['relId'];
-$id = $_GET['id'];
-$body = $_GET['body'];
+
 $sql = "UPDATE reply SET updateDate = NOW(), body = '$body' WHERE id = '$id';";
 mysqli_query($dbConnect, $sql);
-?>
-<script>
-  location.replace('../article/detail.php?id=<?=$relId?>');
-</script>
+
+jsLocationReplaceExit("../article/detail.php?id=${relId}");

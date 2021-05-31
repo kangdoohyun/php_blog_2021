@@ -9,7 +9,7 @@
 </head>
 <body>
   <h1><?=$pageTitle?></h1>
-  <?php if ( empty($_SESSION['loginedMemberId']) == false) { ?>
+  <?php if ( $memberIdInSession ) { ?>
     <button onclick="location.href='../member/modify.php?memberId=<?=$_SESSION['loginedMemberId']?>'">회원정보 수정</button>
     <button onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false; location.href='../member/doDelete.php?id=<?=$_SESSION['loginedMemberId']?>';">회훤 탈퇴</button>
     <button onclick="location.href='../member/doLogout.php'">로그아웃</button>

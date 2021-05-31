@@ -1,28 +1,30 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
-if(empty($_GET['title'])){
+
+
+$title = getStrValueOr($_GET['title'], "");
+$body = getStrValueOr($_GET['body'], "");
+$boardId = getIntValueOr($_GET['boardId'], 0);
+$memberId = getIntValueOr($_GET['memberId'], 0);
+
+if(!$title){
   jsHistoryBackExit('제목을 입력해주세요.');
 }
-if(empty($_GET['body'])){
+if(!$body){
   jsHistoryBackExit('내용을 입력해주세요.');
 }
-if(empty($_GET['boardId'])){
+if(!$boardId){
   jsHistoryBackExit('게시판번호를 입력해주세요.');
 }
-if(empty($_GET['memberId'])){
+if(!$memberId){
   jsHistoryBackExit('회원번호를 입력해주세요.');
 }
-if(is_numeric($_GET['boardId']) == false){
+if(!is_numeric($boardId)){
   jsHistoryBackExit('게시판을 선택해주세요.');
 }
-$title = $_GET['title'];
-$body = $_GET['body'];
-$boardId = intval($_GET['boardId']);
-$memberId = intval($_GET['memberId']);
+
 $sql = "INSERT INTO article SET regDate = NOW(), updateDate = NOW(), boardId = '$boardId', memberId = '$memberId', title = '$title', body = '$body'";
 $id = db__insert($sql);
-?>
-<script>
-  alert("<?=$id?>번 글이 작성되었습니다.");
-  location.replace("./list.php");
-</script>
+
+jsAlert("${id}번 글이 작성되었습니다.");
+jsLocationReplaceExit("./list.php");

@@ -8,7 +8,7 @@ $sql = "SELECT * FROM article WHERE id = '$id'";
 $article = db__getRow($sql);
 $sql = "SELECT * FROM reply WHERE relId = '$id' ORDER BY id DESC";
 $replis = db__getRows($sql);
-$membdrIdInSession = isset($_SESSION['loginedMemberId']) ? $_SESSION['loginedMemberId'] : 0;
+
 ?>
 <?php
 $pageTitle = $article['title'].' 상세페이지';
@@ -32,13 +32,13 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function delete_authority_check(){
-    if(<?=$article['memberId']?> == <?=$membdrIdInSession?>){
+    if(<?=$article['memberId']?> == <?=$memberIdInSession?>){
       var confirm = delete_confirm();
       if(confirm != false){
         location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>';
       }
     }
-    else if (<?=$membdrIdInSession?> == 0){
+    else if (<?=$memberIdInSession?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -46,10 +46,10 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function modify_authority_check(){
-    if(<?=$article['memberId']?> == <?=$membdrIdInSession?>){
+    if(<?=$article['memberId']?> == <?=$memberIdInSession?>){
       location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>';
     }
-    else if (<?=$membdrIdInSession?> == 0){
+    else if (<?=$memberIdInSession?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -57,13 +57,13 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function reply_delete_authority_check(id, relId, memberId){
-    if(memberId == <?=$membdrIdInSession?>){
+    if(memberId == <?=$memberIdInSession?>){
       var confirm = delete_confirm();
       if(confirm != false){
         location.href='../reply/doDelete.php?id=' + id + '&relId=' + relId;
       }
     }
-    else if (<?=$membdrIdInSession?> == 0){
+    else if (<?=$memberIdInSession?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -71,10 +71,10 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function reply_modify_authority_check(i, memberid){
-    if(memberid == <?=$membdrIdInSession?>){
+    if(memberid == <?=$memberIdInSession?>){
       toggleText(i);
     }
-    else if (<?=$membdrIdInSession?> == 0){
+    else if (<?=$memberIdInSession?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -103,7 +103,7 @@ $pageTitle = $article['title'].' 상세페이지';
   <h2>댓글</h2>
   <form name="replyForm"action="../reply/doWrite.php">
     <input type="hidden" name="relId" value="<?=$article['id']?>">
-    <input type="hidden" name="memberId" value="<?=$membdrIdInSession?>">
+    <input type="hidden" name="memberId" value="<?=$memberIdInSession?>">
     <textarea style="width: 202px;" name="body" placeholder="댓글을 작성해 주세요"></textarea>
     <br>
     <button style="width: 208px;" type="submit">작성 완료</button>

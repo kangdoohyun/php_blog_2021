@@ -13,7 +13,7 @@ $pageTitle = "게시물 작성";
   <form action="./doWrite.php?">
     <div>
     <select name="boardId" required>
-      <option>게시판 선택</option>
+      <option value="0">게시판 선택</option>
       <?php foreach( $boards as $board ) { ?>
         <option value="<?=$board['id']?>"><?=$board['name']?></option>
       <?php } ?>
