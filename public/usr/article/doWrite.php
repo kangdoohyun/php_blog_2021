@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/../webinit.php';
 
 
 $title = getStrValueOr($_GET['title'], "");

@@ -1,5 +1,6 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/../webinit.php';
+
 $memberId = getIntValueOr($_GET['memberId'], 0);
 if(!$memberId){
   jsHistoryBackExit('회원번호를 입력해 주세요.');

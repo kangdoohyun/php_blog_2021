@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/../webinit.php';
 
 $relId = getIntValueOr($_GET['relId'], 0);
 $body = getStrValueOr($_GET['body'], "");

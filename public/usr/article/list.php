@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/../webinit.php';
 // 삼항연산자 isset($_GET['boardId'])가 참이면 intval($_GET['boardId']) 거짓이면 0이 할당된다.
 $boardId = isset($_GET['boardId']) ? intval($_GET['boardId']) : 0;
 $sql = DB__seqSql();

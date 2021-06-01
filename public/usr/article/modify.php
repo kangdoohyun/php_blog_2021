@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/webinit.php';
+require_once $_SERVER['DOCUMENT_ROOT'].'/../webinit.php';
 if (isset($_GET['id']) == false){
   jsHistoryBackExit("번호를 입력해주세요.");
   exit;
