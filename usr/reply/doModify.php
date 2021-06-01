@@ -18,7 +18,10 @@ if(!$body){
 $sql = DB__seqSql();
 $sql -> add("UPDATE reply SET");
 $sql -> add("updateDate = NOW(),");
-$sql -> add("body = ? WHERE id = ?", $body, $id);
+$sql -> add("body = ?", $body);
+$sql -> add("WHERE id = ?", $id);
+
 DB__modify($sql);
 
 jsLocationReplaceExit("../article/detail.php?id=${relId}");
+

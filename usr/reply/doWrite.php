@@ -18,8 +18,10 @@ if(!$memberId){
 $sql = DB__seqSql();
 $sql -> add("INSERT INTO reply");
 $sql -> add("SET regDate = NOW(), updateDate = NOW(),");
-$sql -> add("memberId = ?, relTypeCode = 'article',", $memberId);
-$sql -> add("relId = ?, body = ?", $relId, $body);
+$sql -> add("memberId = ?,", $memberId);
+$sql -> add("relTypeCode = 'article',");
+$sql -> add("relId = ?,", $relId);
+$sql -> add("`body` = ?", $body);
 DB__insert($sql);
 
 jsLocationReplaceExit("../article/detail.php?id=$relId");

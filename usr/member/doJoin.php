@@ -52,9 +52,21 @@ if(isset($loginIdCheck)){
 
 $sql = DB__seqSql();
 $sql -> add("INSERT INTO `member`");
-$sql -> add("SET regDate = NOW(), updateDate = NOW(),");
-$sql -> add("loginId = ?, loginPw = ?, `name` = ?,", $loginId, $loginPw, $name);
-$sql -> add("nickname = ?, cellphoneNo = ?, email = ?, delStatus = '0'", $nickname, $cellphoneNo, $email);
+$sql -> add("SET regDate = NOW(),");
+$sql -> add("updateDate = NOW(),");
+$sql -> add("loginId = ?,,", $loginId);
+$sql -> add("loginPw = ?,", $loginPw);
+$sql -> add("`name` = ?,", $name);
+$sql -> add("nickname = ?,", $nickname);
+$sql -> add("cellphoneNo = ?,", $cellphoneNo);
+$sql -> add("email = ?,", $email);
+$sql -> add("delStatus = 0");
+$sql -> add("INSERT INTO `member`");
+$sql -> add("SET regDate = NOW(),");
+$sql -> add("updateDate = NOW(),");
+$sql -> add("loginId = ?,", $loginId);
+$sql -> add("loginPw = ?,", $loginPw);
+$sql -> add("name = ?,", $name);
 $id = DB__insert($sql);
 
 jsAlert("회원가입이 완료되었습니다.");
