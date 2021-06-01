@@ -4,8 +4,12 @@ if (isset($_GET['memberId']) == false){
   jsHistoryBackExit('회원번호를 입력해주세요.');
 }
 $memberId = intval($_GET['memberId']);
-$sql = "SELECT * FROM member WHERE id = '$memberId'";
-$member = db__getRow($sql);
+
+$sql = DB__seqSql();
+$sql -> add("SELECT * FROM member");
+$sql -> add("WHERE id = ?", $memberId);
+$member = DB__getRow($sql);
+
 $pageTitle = "회원정보 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
