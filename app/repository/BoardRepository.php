@@ -15,4 +15,12 @@ class APP__BoardRepository {
 
     return $boards;
   }
+
+  public function makeBoard(string $name){
+    $sql = DB__seqSql();
+    $sql -> add("INSERT INTO board");
+    $sql -> add("SET regDate = NOW(), updateDate = NOW(),");
+    $sql -> add("`name` = ?", $name);
+    DB__insert($sql);
+  }
 }

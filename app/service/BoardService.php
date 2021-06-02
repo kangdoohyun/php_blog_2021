@@ -13,4 +13,8 @@ class APP__BoardService {
   public function getBoardsByASC(): array{
     return $this->boardRepository->getBoardsByASC();
   }
+
+  public function makeBoard(string $name){
+    return $this->boardRepository->makeBoard($name);
+  }
 }
