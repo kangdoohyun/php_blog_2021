@@ -113,6 +113,8 @@ class APP__UsrMemberController {
     $cellphoneNo = getStrValueOr($_GET['cellphoneNo'], "");
     $email = getStrValueOr($_GET['email'], "");
 
+    $loginedMemberId = getIntValueOr($_SESSION['loginedMemberId'], 0); 
+
     if(!$id){
       jsHistoryBackExit('회원번호를 입력해주세요.');
     }
@@ -133,6 +135,21 @@ class APP__UsrMemberController {
     }
     if(!$email){
       jsHistoryBackExit('이메일을 입력해주세요.');
+    }
+
+    $loginedMember = $this->memberService->getMemberById($loginedMemberId);
+
+    $member = $this->memberService->getMemberByLoginId($loginId);
+    if($member['loginId'] != $loginedMember['loginId'] and $member['loginId'] != null){
+      jsHistoryBackExit("중복된 아이디입니다.");
+    }
+    $member = $this->memberService->getMemberByNickname($nickname);
+    if($member['nickname'] != $loginedMember['nickname'] and $member['nickname'] != null){
+      jsHistoryBackExit("중복된 닉네임입니다.");
+    }
+    $member = $this->memberService->getMemberByEmail($email);
+    if($member['email'] != $loginedMember['email'] and $member['email'] != null){
+      jsHistoryBackExit("중복된 이메일입니다.");
     }
 
     $this->memberService->modifyMember($loginId, $loginPw, $name, $nickname, $cellphoneNo, $email, $id);

@@ -65,7 +65,7 @@ class APP__UsrArticleController {
       jsHistoryBackExit('내용을 입력해주세요.');
     }
     if(!$boardId){
-      jsHistoryBackExit('게시판번호를 입력해주세요.');
+      jsHistoryBackExit('게시판을 선택해주세요.');
     }
     if(!$memberId){
       jsHistoryBackExit('회원번호를 입력해주세요.');
