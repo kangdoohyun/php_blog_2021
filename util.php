@@ -4,8 +4,7 @@ class DB__SeqSql {
   private string $templateStr = "";
   private array $params = [];
 
-  public function __toString(): string
-  {
+  public function __toString(): string {
     $str = '[';
     $str .= 'SQL=(' . $this->getTemplate() . ')';
     $str .= ', PARAMS=(' . implode(',', $this->getParams()) . ')';
@@ -61,7 +60,7 @@ function DB__getStmtFromSeqSql(DB__SeqSql $sql): mysqli_stmt {
   return $stmt;
 }
 
-function DB__getRow(DB__SeqSql $sql) {
+function DB__getRow(DB__SeqSql $sql): array {
   $rows = DB__getRows($sql);
 
   if ( isset($rows[0]) ) {
@@ -71,7 +70,7 @@ function DB__getRow(DB__SeqSql $sql) {
   return null;
 }
 
-function DB__getRows(DB__SeqSql $sql) {
+function DB__getRows(DB__SeqSql $sql): array {
   $stmt = DB__getStmtFromSeqSql($sql);
   $stmt->execute();
   $result = $stmt->get_result();
@@ -89,7 +88,7 @@ function DB__execute(DB__SeqSql $sql) {
   $stmt->execute();
 }
 
-function DB__insert(DB__SeqSql $sql){
+function DB__insert(DB__SeqSql $sql): int{
   global $dbConnect;
   DB__execute($sql);
 
@@ -104,7 +103,7 @@ function DB__delete(DB__SeqSql $sql){
   DB__execute($sql);
 }
 
-function getIntValueOr(&$value, $defaultValue) {
+function getIntValueOr(&$value, $defaultValue): int {
   if ( isset($value) ) {
     return intval($value);
   }
@@ -112,7 +111,7 @@ function getIntValueOr(&$value, $defaultValue) {
   return $defaultValue;
 }
 
-function getStrValueOr(&$value, $defaultValue) {
+function getStrValueOr(&$value, $defaultValue): string {
   if ( isset($value) ) {
     return strval($value);
   }
