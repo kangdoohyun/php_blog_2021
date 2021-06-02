@@ -60,9 +60,9 @@ function DB__getStmtFromSeqSql(DB__SeqSql $sql): mysqli_stmt {
   return $stmt;
 }
 
-function DB__getRow(DB__SeqSql $sql): array {
+function DB__getRow(DB__SeqSql $sql): ?array {
   $rows = DB__getRows($sql);
-
+  
   if ( isset($rows[0]) ) {
     return $rows[0];
   }
