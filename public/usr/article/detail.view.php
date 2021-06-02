@@ -20,13 +20,13 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function delete_authority_check(){
-    if(<?=$article['memberId']?> == <?=$memberIdInSession?>){
+    if(<?=$article['memberId']?> == <?=$loginedMemberId?>){
       var confirm = delete_confirm();
       if(confirm != false){
         location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>';
       }
     }
-    else if (<?=$memberIdInSession?> == 0){
+    else if (<?=$loginedMemberId?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -34,10 +34,10 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function modify_authority_check(){
-    if(<?=$article['memberId']?> == <?=$memberIdInSession?>){
+    if(<?=$article['memberId']?> == <?=$loginedMemberId?>){
       location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>';
     }
-    else if (<?=$memberIdInSession?> == 0){
+    else if (<?=$loginedMemberId?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -45,13 +45,13 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function reply_delete_authority_check(id, relId, memberId){
-    if(memberId == <?=$memberIdInSession?>){
+    if(memberId == <?=$loginedMemberId?>){
       var confirm = delete_confirm();
       if(confirm != false){
         location.href='../reply/doDelete.php?id=' + id + '&relId=' + relId;
       }
     }
-    else if (<?=$memberIdInSession?> == 0){
+    else if (<?=$loginedMemberId?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -59,10 +59,10 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
   function reply_modify_authority_check(i, memberid){
-    if(memberid == <?=$memberIdInSession?>){
+    if(memberid == <?=$loginedMemberId?>){
       toggleText(i);
     }
-    else if (<?=$memberIdInSession?> == 0){
+    else if (<?=$loginedMemberId?> == 0){
       alert('로그인 후 이용해주세요.');
     }
     else{
@@ -91,7 +91,7 @@ $pageTitle = $article['title'].' 상세페이지';
   <h2>댓글</h2>
   <form name="replyForm"action="../reply/doWrite.php">
     <input type="hidden" name="relId" value="<?=$article['id']?>">
-    <input type="hidden" name="memberId" value="<?=$memberIdInSession?>">
+    <input type="hidden" name="memberId" value="<?=$loginedMemberId?>">
     <textarea style="width: 202px;" name="body" placeholder="댓글을 작성해 주세요"></textarea>
     <br>
     <button style="width: 208px;" type="submit">작성 완료</button>

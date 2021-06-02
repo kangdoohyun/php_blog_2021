@@ -124,7 +124,6 @@ class APP__UsrArticleController {
     if (!$id){
       jsHistoryBackExit('게시물 번호를 입력해주세요.');
     }
-    $memberIdInSession = isset($_SESSION['loginedMemberId']) ? $_SESSION['loginedMemberId'] : 0;
 
     $article = $this->articleService->getArticleById($id);
     $replis = $this->replyService->getReplisByRelIdDESC($id);
