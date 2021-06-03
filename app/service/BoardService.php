@@ -3,7 +3,8 @@ class APP__BoardService {
   private APP__BoardRepository $boardRepository;
 
   public function __construct() {
-    $this->boardRepository = new APP__BoardRepository();
+    global $APP__boardRepository;
+    $this->boardRepository = $APP__boardRepository;
   }
 
   public function getBoardsByDESC(): array{

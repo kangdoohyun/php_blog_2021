@@ -3,7 +3,8 @@ class APP__MemberService {
   private APP__MemberRepository $memberRepository;
 
   public function __construct() {
-    $this->memberRepository = new APP__MemberRepository();
+    global $APP__memberRepository;
+    $this->memberRepository = $APP__memberRepository;
   }
 
   public function getMemberByLoginId(string $loginId): ?array {

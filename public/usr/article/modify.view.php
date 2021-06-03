@@ -3,7 +3,7 @@ $pageTitle = "게시물 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
-  <form action="./doModify.php?">
+  <form action="./doModify.php?" method="POST">
     <input type="hidden" name="id" value="<?=$id?>">
     <input type="hidden" name="memberId" value="<?=$memberId?>">
     <div>

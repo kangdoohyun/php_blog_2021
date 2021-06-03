@@ -1,3 +1,3 @@
 <?php
 require_once $_SERVER['DOCUMENT_ROOT'].'/../webinit.php';
-runApp("usr/member/doDelete");
+APP__run("usr/member/doDelete");

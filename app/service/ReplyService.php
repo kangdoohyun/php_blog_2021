@@ -3,7 +3,8 @@ class APP__ReplyService {
   private APP__ReplyRepository $replyRepository;
 
   public function __construct() {
-    $this->replyRepository = new APP__ReplyRepository();
+    global $APP__replyRepository;
+    $this->replyRepository = $APP__replyRepository;
   }
 
   public function getReplisByRelIdDESC(int $relId): array{

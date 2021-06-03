@@ -3,7 +3,7 @@ $pageTitle = "게시물 작성";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
-  <form action="./doWrite.php?">
+  <form action="./doWrite.php?" method="POST">
     <div>
     <select name="boardId" required>
       <option value="0">게시판 선택</option>

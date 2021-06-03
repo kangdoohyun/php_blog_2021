@@ -3,13 +3,14 @@ class APP__UsrReplyController {
   private APP__ReplyService $replyService;
 
   public function __construct() {
-    $this->replyService = new APP__ReplyService();
+    global $APP__replyService;
+    $this->replyService = $APP__replyService;
   }
 
   public function actionDoWrite(){
-    $relId = getIntValueOr($_GET['relId'], 0);
-    $body = getStrValueOr($_GET['body'], "");
-    $memberId = getIntValueOr($_GET['memberId'], 0);
+    $relId = getIntValueOr($_REQUEST['relId'], 0);
+    $body = getStrValueOr($_REQUEST['body'], "");
+    $memberId = getIntValueOr($_REQUEST['memberId'], 0);
 
     if(!$relId){
       jsHistoryBackExit('댓글이작성된 게시물 번호를 입력해주세요.');
@@ -28,9 +29,9 @@ class APP__UsrReplyController {
   }
 
   public function actionDoModify(){
-    $id = getIntValueOr($_GET['id'], 0);
-    $relId = getIntValueOr($_GET['relId'], 0);
-    $body = getStrValueOr($_GET['body'], "");
+    $id = getIntValueOr($_REQUEST['id'], 0);
+    $relId = getIntValueOr($_REQUEST['relId'], 0);
+    $body = getStrValueOr($_REQUEST['body'], "");
 
     if(!$relId){
       jsHistoryBackExit('댓글이 작성된 게시물번호를 입력해주세요.');
@@ -49,8 +50,8 @@ class APP__UsrReplyController {
   }
 
   public function actionDoDelete(){    
-    $id = getIntValueOr($_GET['id'], 0);
-    $relId = getIntValueOr($_GET['relId'], 0);
+    $id = getIntValueOr($_REQUEST['id'], 0);
+    $relId = getIntValueOr($_REQUEST['relId'], 0);
 
     if(!$id){
       jsHistoryBackExit('댓글번호를 입력해주세요.');

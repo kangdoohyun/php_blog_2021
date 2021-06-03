@@ -3,7 +3,7 @@ $pageTitle = "로그인";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
-  <form action="./doLogin.php?">
+  <form action="./doLogin.php?" method="POST">
     <div>
       <span>아이디 : </span>
       <input style="width: 200px; margin-left: 16px;" type="text" name="loginId" placeholder="로그인 아이디를 입력해 주세요">

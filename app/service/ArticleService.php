@@ -3,7 +3,8 @@ class APP__ArticleService {
   private APP__ArticleRepository $articleRepository;
 
   public function __construct() {
-    $this->articleRepository = new APP__ArticleRepository();
+    global $APP__articleRepository;
+    $this->articleRepository = $APP__articleRepository;
   }
 
   public function getForPrintArticles(int $boardId): array {

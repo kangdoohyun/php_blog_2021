@@ -3,7 +3,7 @@ $pageTitle = "회원가입";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
-  <form action="./doJoin.php?">
+  <form action="./doJoin.php?" method="POST">
     <div>
       <span>아이디 : </span>
       <input style="width: 200px;" type="text" name="loginId" placeholder="아이디를 입력해 주세요">

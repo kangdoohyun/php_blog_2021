@@ -1,14 +1,7 @@
 <?php
-$isLogined = false;
-$loginedMemberId = 0;
-$loginedMember = null;
-
-if(isset($_SESSION['loginedMemberId'])){
-  $isLogined = true;
-  $loginedMemberId = intval($_SESSION['loginedMemberId']);
-  $memberService = new APP__MemberService();
-  $loginedMember = $memberService->getMemberById($loginedMemberId);
-}
+$isLogined = $_REQUEST['APP__isLogined'];
+$loginedMemberId = $_REQUEST['APP__loginedMemberId'];
+$loginedMember = $_REQUEST['APP__loginedMember'];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +15,12 @@ if(isset($_SESSION['loginedMemberId'])){
 <body>
   <h1><?=$pageTitle?></h1>
   <?php if ($isLogined) { ?>
-    <button onclick="location.href='../member/modify.php?memberId=<?=$_SESSION['loginedMemberId']?>'">회원정보 수정</button>
+    <button onclick="location.href='../member/modify.php?memberId=<?=$loginedMemberId?>'">회원정보 수정</button>
     <button onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false; location.href='../member/doDelete.php?id=<?=$_SESSION['loginedMemberId']?>';">회훤 탈퇴</button>
     <button onclick="location.href='../member/doLogout.php'">로그아웃</button>
   <?php } else{ ?>
     <button onclick="location.href='../member/login.php'">로그인</button>
+    <button onclick="location.href='../member/join.php'">회원가입</button>
   <?php } ?>
   <hr>
   

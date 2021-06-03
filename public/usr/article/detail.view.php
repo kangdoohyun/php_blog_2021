@@ -89,7 +89,7 @@ $pageTitle = $article['title'].' 상세페이지';
 <hr>
 <div>
   <h2>댓글</h2>
-  <form name="replyForm"action="../reply/doWrite.php">
+  <form name="replyForm"action="../reply/doWrite.php" method="POST">
     <input type="hidden" name="relId" value="<?=$article['id']?>">
     <input type="hidden" name="memberId" value="<?=$loginedMemberId?>">
     <textarea style="width: 202px;" name="body" placeholder="댓글을 작성해 주세요"></textarea>
@@ -105,11 +105,11 @@ $pageTitle = $article['title'].' 상세페이지';
   작성 날짜 : <?=$reply['regDate']?><br>
   수정 날짜 : <?=$reply['updateDate']?><br>
   내용 : <?=$reply['body']?><br>
-  <form style="display: inline-block;" action="../reply/doModify.php?">
+  <form style="display: inline-block;" action="../reply/doModify.php?" method="POST">
     <input type="button" value="수정" onclick="reply_modify_authority_check(<?=$i?>, <?=$reply['memberId']?>)">
   </form>
   <button style="display: inline-block;" onclick="reply_delete_authority_check(<?=$reply['id']?>, <?=$reply['relId']?>, <?=$reply['memberId']?>);">삭제</button>
-  <form style="display: inlin-block;" action="../reply/doModify.php?">
+  <form style="display: inlin-block;" action="../reply/doModify.php?" method="POST">
     <input type="hidden" name="id" value="<?=$reply['id']?>">
     <input type="hidden" name="relId" value="<?=$reply['relId']?>">
     <textarea style="width: 202px; display:none;" id="modifyReply<?=$i?>" name="body"><?=$reply['body']?></textarea>

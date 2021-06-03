@@ -3,7 +3,8 @@ class APP__UsrMemberController {
   private APP__MemberService $memberService;
 
   public function __construct() {
-    $this->memberService = new APP__MemberService();
+    global $APP__memberService;
+    $this->memberService = $APP__memberService;
   }
 
   public function actionShowJoin(){
@@ -15,7 +16,7 @@ class APP__UsrMemberController {
   }
   
   public function actionShowModify(){
-    $memberId = getIntValueOr($_GET['memberId'], 0);
+    $memberId = getIntValueOr($_REQUEST['memberId'], 0);
     if (!$memberId){
       jsHistoryBackExit('회원번호를 입력해주세요.');
     }
@@ -24,12 +25,12 @@ class APP__UsrMemberController {
   }
 
   public function actionDoJoin(){
-    $loginId = getStrValueOr($_GET['loginId'], "");
-    $loginPw = getStrValueOr($_GET['loginPw'], "");
-    $name = getStrValueOr($_GET['name'], "");
-    $nickname = getStrValueOr($_GET['nickname'], "");
-    $cellphoneNo = getStrValueOr($_GET['cellphoneNo'], "");
-    $email = getStrValueOr($_GET['email'], "");
+    $loginId = getStrValueOr($_REQUEST['loginId'], "");
+    $loginPw = getStrValueOr($_REQUEST['loginPw'], "");
+    $name = getStrValueOr($_REQUEST['name'], "");
+    $nickname = getStrValueOr($_REQUEST['nickname'], "");
+    $cellphoneNo = getStrValueOr($_REQUEST['cellphoneNo'], "");
+    $email = getStrValueOr($_REQUEST['email'], "");
 
     if(!$loginId){
       jsHistoryBackExit("아이디를 입력해 주세요.");
@@ -71,8 +72,8 @@ class APP__UsrMemberController {
   }
 
   public function actionDoLogin(){
-    $loginId = getStrValueOr($_GET['loginId'], "");
-    $loginPw = getStrValueOr($_GET['loginPw'], "");
+    $loginId = getStrValueOr($_REQUEST['loginId'], "");
+    $loginPw = getStrValueOr($_REQUEST['loginPw'], "");
 
     if(!$loginId){
       jsLocationReplaceExit('../member/login.php', '로그인아이디를 입력해주세요.');
@@ -100,13 +101,13 @@ class APP__UsrMemberController {
   }
 
   public function actionDoModify(){
-    $id = getIntValueOr($_GET['id'], 0);
-    $loginId = getStrValueOr($_GET['loginId'], "");
-    $loginPw = getStrValueOr($_GET['loginPw'], "");
-    $name = getStrValueOr($_GET['name'], "");
-    $nickname = getStrValueOr($_GET['nickname'], "");
-    $cellphoneNo = getStrValueOr($_GET['cellphoneNo'], "");
-    $email = getStrValueOr($_GET['email'], "");
+    $id = getIntValueOr($_REQUEST['id'], 0);
+    $loginId = getStrValueOr($_REQUEST['loginId'], "");
+    $loginPw = getStrValueOr($_REQUEST['loginPw'], "");
+    $name = getStrValueOr($_REQUEST['name'], "");
+    $nickname = getStrValueOr($_REQUEST['nickname'], "");
+    $cellphoneNo = getStrValueOr($_REQUEST['cellphoneNo'], "");
+    $email = getStrValueOr($_REQUEST['email'], "");
 
     $loginedMemberId = getIntValueOr($_SESSION['loginedMemberId'], 0); 
 
@@ -155,7 +156,7 @@ class APP__UsrMemberController {
   }
 
   public function actionDoDelete(){
-    $id = getIntValueOr($_GET['id'], 0);
+    $id = getIntValueOr($_REQUEST['id'], 0);
     if(!$id){
       jsHistoryBackExit('회원번호를 입력해주세요.');
     }

@@ -5,13 +5,16 @@ class APP__UsrArticleController {
   private APP__ReplyService $replyService;
 
   public function __construct() {
-    $this->articleService = new APP__ArticleService();
-    $this->boardService = new APP__BoardService();
-    $this->replyService = new APP__ReplyService();
+    global $APP__articleService;
+    global $APP__boardService;
+    global $APP__replyService;
+    $this->articleService = $APP__articleService;
+    $this->boardService = $APP__boardService;
+    $this->replyService = $APP__replyService;
   }
 
   public function actionShowWrite() {
-    $memberId = getIntValueOr($_GET['memberId'], 0);
+    $memberId = getIntValueOr($_REQUEST['memberId'], 0);
     if(!$memberId){
       jsHistoryBackExit('회원번호를 입력해 주세요.');
     }
@@ -21,7 +24,7 @@ class APP__UsrArticleController {
   }
 
   public function actionShowList(): array {
-    $boardId = isset($_GET['boardId']) ? intval($_GET['boardId']) : 0;
+    $boardId = isset($_REQUEST['boardId']) ? intval($_REQUEST['boardId']) : 0;
 
     $articles = $this->articleService->getForPrintArticles($boardId);
     $boards = $this->boardService->getBoardsByASC();
@@ -32,9 +35,9 @@ class APP__UsrArticleController {
   }
 
   public function actionShowModify(){
-    $id = getIntValueOr($_GET['id'], 0);
-    $title = getStrValueOr($_GET['title'], "");
-    $body = getStrValueOr($_GET['body'], "");
+    $id = getIntValueOr($_REQUEST['id'], 0);
+    $title = getStrValueOr($_REQUEST['title'], "");
+    $body = getStrValueOr($_REQUEST['body'], "");
 
     if (!$id){
       jsHistoryBackExit("번호를 입력해주세요.");
@@ -50,7 +53,7 @@ class APP__UsrArticleController {
   }
   
   public function actionShowDetail(){    
-    $id = getIntValueOr($_GET['id'], 0);
+    $id = getIntValueOr($_REQUEST['id'], 0);
     if (!$id){
       jsHistoryBackExit('게시물 번호를 입력해주세요.');
     }
@@ -62,10 +65,10 @@ class APP__UsrArticleController {
   }
 
   public function actionDoWrite(){
-    $title = getStrValueOr($_GET['title'], "");
-    $body = getStrValueOr($_GET['body'], "");
-    $boardId = getIntValueOr($_GET['boardId'], 0);
-    $memberId = getIntValueOr($_GET['memberId'], 0);
+    $title = getStrValueOr($_REQUEST['title'], "");
+    $body = getStrValueOr($_REQUEST['body'], "");
+    $boardId = getIntValueOr($_REQUEST['boardId'], 0);
+    $memberId = getIntValueOr($_REQUEST['memberId'], 0);
 
     if(!$title){
       jsHistoryBackExit('제목을 입력해주세요.');
@@ -90,9 +93,9 @@ class APP__UsrArticleController {
   }
 
   public function actionDoModify(){
-    $id = getIntValueOr($_GET['id'], 0);
-    $title = getStrValueOr($_GET['title'], "");
-    $body = getStrValueOr($_GET['body'], "");
+    $id = getIntValueOr($_REQUEST['id'], 0);
+    $title = getStrValueOr($_REQUEST['title'], "");
+    $body = getStrValueOr($_REQUEST['body'], "");
 
     if(!$id){
       jsHistoryBackExit("번호를 입력해주세요.");
@@ -117,7 +120,7 @@ class APP__UsrArticleController {
   }
 
   public function actionDoDelete(){
-    $id = getIntValueOr($_GET['id'], 0);
+    $id = getIntValueOr($_REQUEST['id'], 0);
     if(!$id){
       jsHistoryBackExit('번호를 입력해주세요.');
     }

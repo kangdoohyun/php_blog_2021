@@ -3,7 +3,7 @@ $pageTitle = "게시판 생성";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
-  <form action="./doMake.php?">
+  <form action="./doMake.php?" method="POST">
     <div>
       <span>이름 : </span>
       <input style="width: 200px;" type="text" name="name" placeholder="게시판 이름을 입력해주세요.">

@@ -3,7 +3,7 @@ $pageTitle = "회원정보 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <div>
-  <form action="./doModify.php?">
+  <form action="./doModify.php?" method="POST">
     <input type="hidden" name="id" value="<?=$member['id']?>">
     <div>
       <span>아이디 : </span>

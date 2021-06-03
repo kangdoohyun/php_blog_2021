@@ -3,16 +3,17 @@ class APP__UsrBoardController {
   private APP__BoardService $boardService;
 
   public function __construct() {
-    $this->boardService = new APP__BoardService();
+    global $APP__boardService;
+    $this->boardService = $APP__boardService;
   }
 
   public function actionShowMake(){
     require_once APP__getViewPath("usr/board/make");
   }
   public function actionDoMake(){
-    $name = getStrValueOr($_GET['name'], "");
+    $name = getStrValueOr($_REQUEST['name'], "");
 
-    if(empty($_GET['name'])){
+    if(empty($_REQUEST['name'])){
       jsHistoryBackExit("게시판 이름을 입력해주세요.");
     }
 
