@@ -2,16 +2,12 @@
 class APP__UsrBoardController {
   private APP__BoardService $boardService;
 
-  public static function getViewPath($viewName) {
-    return $_SERVER['DOCUMENT_ROOT'] . '/' . $viewName . '.view.php';
-  }
-
   public function __construct() {
     $this->boardService = new APP__BoardService();
   }
 
   public function actionShowMake(){
-    require_once static::getViewPath("usr/board/make");
+    require_once APP__getViewPath("usr/board/make");
   }
   public function actionDoMake(){
     $name = getStrValueOr($_GET['name'], "");

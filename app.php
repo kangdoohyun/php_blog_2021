@@ -14,6 +14,10 @@ require_once __DIR__ . "/app/controller/BoardController.php";
 require_once __DIR__ . "/app/controller/ArticleController.php";
 require_once __DIR__ . "/app/controller/ReplyController.php";
 
+function APP__getViewPath($viewName) {
+  return __DIR__ . '/public/' . $viewName . '.view.php';
+}
+
 function runApp($action) {
   list($controllerTypeCode, $controllerName, $actionFuncName) = explode('/', $action);
 
@@ -30,3 +34,4 @@ function runApp($action) {
   $usrArticleController = new $controllerClassName();
   $usrArticleController->$actionMethodName();
 }
+

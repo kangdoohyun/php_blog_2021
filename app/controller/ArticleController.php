@@ -4,10 +4,6 @@ class APP__UsrArticleController {
   private APP__BoardService $boardService;
   private APP__ReplyService $replyService;
 
-  public static function getViewPath($viewName) {
-    return $_SERVER['DOCUMENT_ROOT'] . '/' . $viewName . '.view.php';
-  }
-
   public function __construct() {
     $this->articleService = new APP__ArticleService();
     $this->boardService = new APP__BoardService();
@@ -20,8 +16,8 @@ class APP__UsrArticleController {
       jsHistoryBackExit('회원번호를 입력해 주세요.');
     }
     $boards = $this->boardService->getBoardsByASC();
-
-    require_once static::getViewPath("usr/article/write");
+    
+    require_once APP__getViewPath("usr/article/write");
   }
 
   public function actionShowList(): array {
@@ -30,7 +26,7 @@ class APP__UsrArticleController {
     $articles = $this->articleService->getForPrintArticles($boardId);
     $boards = $this->boardService->getBoardsByASC();
 
-    require_once static::getViewPath("usr/article/list");
+    require_once APP__getViewPath("usr/article/list");
 
     return $articles;
   }
@@ -50,8 +46,21 @@ class APP__UsrArticleController {
       jsHistoryBackExit("내용을 입력해주세요.");
     }
 
-    require_once static::getViewPath("usr/article/modify");
+    require_once APP__getViewPath("usr/article/modify");
   }
+  
+  public function actionShowDetail(){    
+    $id = getIntValueOr($_GET['id'], 0);
+    if (!$id){
+      jsHistoryBackExit('게시물 번호를 입력해주세요.');
+    }
+
+    $article = $this->articleService->getArticleById($id);
+    $replis = $this->replyService->getReplisByRelIdDESC($id);
+
+    require_once APP__getViewPath("usr/article/detail");
+  }
+
   public function actionDoWrite(){
     $title = getStrValueOr($_GET['title'], "");
     $body = getStrValueOr($_GET['body'], "");
@@ -117,17 +126,5 @@ class APP__UsrArticleController {
 
     jsAlert("${id}번 글이 삭제되었습니다.");
     jsLocationReplaceExit("./list.php");
-  }
-
-  public function actionShowDetail(){    
-    $id = getIntValueOr($_GET['id'], 0);
-    if (!$id){
-      jsHistoryBackExit('게시물 번호를 입력해주세요.');
-    }
-
-    $article = $this->articleService->getArticleById($id);
-    $replis = $this->replyService->getReplisByRelIdDESC($id);
-
-    require_once static::getViewPath("usr/article/detail");
   }
 }

@@ -2,20 +2,16 @@
 class APP__UsrMemberController {
   private APP__MemberService $memberService;
 
-  public static function getViewPath($viewName) {
-    return $_SERVER['DOCUMENT_ROOT'] . '/' . $viewName . '.view.php';
-  }
-
   public function __construct() {
     $this->memberService = new APP__MemberService();
   }
 
   public function actionShowJoin(){
-    require_once static::getViewPath("usr/member/join");
+    require_once APP__getViewPath("usr/member/join");
   }
 
   public function actionShowlogin(){
-    require_once static::getViewPath("usr/member/login");
+    require_once APP__getViewPath("usr/member/login");
   }
   
   public function actionShowModify(){
@@ -24,8 +20,7 @@ class APP__UsrMemberController {
       jsHistoryBackExit('회원번호를 입력해주세요.');
     }
     $member = $this->memberService->getMemberById($memberId);
-
-    require_once static::getViewPath("usr/member/modify");
+    require_once APP__getViewPath("usr/member/modify");
   }
 
   public function actionDoJoin(){
