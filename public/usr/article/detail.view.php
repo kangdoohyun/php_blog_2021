@@ -19,31 +19,31 @@ $pageTitle = $article['title'].' 상세페이지';
       return false;
     }
   }
-  function delete_authority_check(){
-    if(<?=$article['memberId']?> == <?=$loginedMemberId?>){
-      var confirm = delete_confirm();
-      if(confirm != false){
-        location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>';
-      }
-    }
-    else if (<?=$loginedMemberId?> == 0){
-      alert('로그인 후 이용해주세요.');
-    }
-    else{
-      alert('본인 게시물만 삭제할 수 있습니다');
-    }
-  }
-  function modify_authority_check(){
-    if(<?=$article['memberId']?> == <?=$loginedMemberId?>){
-      location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>';
-    }
-    else if (<?=$loginedMemberId?> == 0){
-      alert('로그인 후 이용해주세요.');
-    }
-    else{
-      alert('본인 게시물만 수정할 수 있습니다');
-    }
-  }
+  // function delete_authority_check(){
+  //   if(<?=$article['memberId']?> == <?=$loginedMemberId?>){
+  //     var confirm = delete_confirm();
+  //     if(confirm != false){
+  //       location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>';
+  //     }
+  //   }
+  //   else if (<?=$loginedMemberId?> == 0){
+  //     alert('로그인 후 이용해주세요.');
+  //   }
+  //   else{
+  //     alert('본인 게시물만 삭제할 수 있습니다');
+  //   }
+  // }
+  // function modify_authority_check(){
+  //   if(<?=$article['memberId']?> == <?=$loginedMemberId?>){
+  //     location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>';
+  //   }
+  //   else if (<?=$loginedMemberId?> == 0){
+  //     alert('로그인 후 이용해주세요.');
+  //   }
+  //   else{
+  //     alert('본인 게시물만 수정할 수 있습니다');
+  //   }
+  // }
   function reply_delete_authority_check(id, relId, memberId){
     if(memberId == <?=$loginedMemberId?>){
       var confirm = delete_confirm();
@@ -82,9 +82,9 @@ $pageTitle = $article['title'].' 상세페이지';
 <div>
   <button onclick="location.href='./list.php'">글 리스트</button>
   <button
-    onclick="modify_authority_check()">수정</button>
+    onclick="location.href='./modify.php?id=<?=$article['id']?>&title=<?=$article['title']?>&body=<?=$article['body']?>'">수정</button>
   <button
-    onclick="delete_authority_check()">삭제</button>
+    onclick="location.href='./doDelete.php?id=<?=$article['id']?>&memberId=<?=$article['memberId']?>'">삭제</button>
 </div>
 <hr>
 <div>
@@ -105,11 +105,11 @@ $pageTitle = $article['title'].' 상세페이지';
   작성 날짜 : <?=$reply['regDate']?><br>
   수정 날짜 : <?=$reply['updateDate']?><br>
   내용 : <?=$reply['body']?><br>
-  <form style="display: inline-block;" action="../reply/doModify.php?" method="POST">
+  <form action="../reply/doModify.php?" method="POST">
     <input type="button" value="수정" onclick="reply_modify_authority_check(<?=$i?>, <?=$reply['memberId']?>)">
   </form>
-  <button style="display: inline-block;" onclick="reply_delete_authority_check(<?=$reply['id']?>, <?=$reply['relId']?>, <?=$reply['memberId']?>);">삭제</button>
-  <form style="display: inlin-block;" action="../reply/doModify.php?" method="POST">
+  <button onclick="reply_delete_authority_check(<?=$reply['id']?>, <?=$reply['relId']?>, <?=$reply['memberId']?>);">삭제</button>
+  <form action="../reply/doModify.php?" method="POST">
     <input type="hidden" name="id" value="<?=$reply['id']?>">
     <input type="hidden" name="relId" value="<?=$reply['relId']?>">
     <textarea style="width: 202px; display:none;" id="modifyReply<?=$i?>" name="body"><?=$reply['body']?></textarea>

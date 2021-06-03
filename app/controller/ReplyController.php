@@ -18,9 +18,6 @@ class APP__UsrReplyController {
     if(!$body){
       jsHistoryBackExit('내용을 입력해주세요.');
     }
-    if(!$memberId){
-      jsHistoryBackExit('로그인 후 이용해주세요');
-    }
 
     $this->replyService->writeReply($relId, $body, $memberId);
 

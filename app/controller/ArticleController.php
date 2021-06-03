@@ -49,6 +49,11 @@ class APP__UsrArticleController {
       jsHistoryBackExit("내용을 입력해주세요.");
     }
 
+    $article = $this->articleService->getArticleById($id);
+    if($article['memberId'] != $_REQUEST['APP__loginedMemberId']){
+      jsHistoryBackExit("본인의 글만 수정할수있습니다");
+    }
+
     require_once APP__getViewPath("usr/article/modify");
   }
   
@@ -124,7 +129,11 @@ class APP__UsrArticleController {
     if(!$id){
       jsHistoryBackExit('번호를 입력해주세요.');
     }
-        
+
+    $article = $this->articleService->getArticleById($id);
+    if($article['memberId'] != $_REQUEST['APP__loginedMemberId']){
+      jsHistoryBackExit("본인의 글만 삭제할수있습니다");
+    }
     $this->articleService->deleteArticle($id);
 
     jsAlert("${id}번 글이 삭제되었습니다.");

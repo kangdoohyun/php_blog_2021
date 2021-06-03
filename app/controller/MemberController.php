@@ -168,11 +168,6 @@ class APP__UsrMemberController {
   }
 
   public function actionDoLogout(){
-    $loginedMemberId = getIntValueOr($_SESSION['loginedMemberId'], 0); 
-    if(!$loginedMemberId){
-      jsHistoryBackExit('로그인 상태가 아닙니다.');
-    }
-    
     unset($_SESSION['loginedMemberId']);
     
     jsAlert("로그아웃 되었습니다.");

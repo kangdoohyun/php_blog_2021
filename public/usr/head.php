@@ -10,7 +10,7 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=$pageTitle?></title>
-  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/common.css?ver=1">
 </head>
 <body>
   <h1><?=$pageTitle?></h1>
