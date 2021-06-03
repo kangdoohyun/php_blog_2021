@@ -48,9 +48,25 @@ function APP__runNeedLoginInterCeptor(string $action) {
   }
 }
 
+function APP__runNeedLogoutInterCeptor(string $action) {
+  switch ($action){
+    case 'usr/member/login':
+    case 'usr/member/doLogin':
+    case 'usr/member/join':
+    case 'usr/member/doJoin':
+      break;
+    default:
+      return;
+  }
+  if($_REQUEST['APP__isLogined']){
+    jsHistoryBackExit("로그아웃 후 이용해주세요.");
+  }
+}
+
 function APP__runInterceptors(string $action) {
   APP__runBeforActionInterCeptor($action);
   APP__runNeedLoginInterCeptor($action);
+  APP__runNeedLogoutInterCeptor($action);
 }
 
 function APP__runAction(string $action) {
