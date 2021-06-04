@@ -124,7 +124,7 @@ class APP__UsrArticleController {
     }
 
     $article = $this->articleService->getArticleById($id);
-    $memberCanDeleteRs = $this->articleService->getMemberCanDelete($_REQUEST['APP__memberId'], $article);
+    $memberCanDeleteRs = $this->articleService->getMemberCanDelete($_REQUEST['APP__loginedMemberId'], $article);
     if($memberCanDeleteRs->isFail()){
       jsHistoryBackExit($memberCanDeleteRs->getMsg());
     }
