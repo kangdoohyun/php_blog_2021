@@ -23,7 +23,11 @@ class APP__UsrMemberController {
     $member = $this->memberService->getMemberById($memberId);
     require_once APP__getViewPath("usr/member/modify");
   }
-
+  
+  public function actionShowMypage(){
+    $member = $this->memberService->getMemberById($_REQUEST['APP__memberLoginId']);
+    require_once APP__getViewPath("usr/member/mypage");
+  }
   public function actionDoJoin(){
     $loginId = getStrValueOr($_REQUEST['loginId'], "");
     $loginPw = getStrValueOr($_REQUEST['loginPw'], "");

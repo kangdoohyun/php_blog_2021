@@ -1,6 +1,6 @@
 <?php
 class APP__ReplyRepository {
-  public function getReplisByRelIdDESC(int $relId): array{
+  public function getReplisByRelIdDESC(int $relId): ?array{
     $sql = DB__seqSql();
     $sql -> add("SELECT * FROM reply");
     $sql -> add("WHERE relId = ?", $relId);
@@ -8,6 +8,15 @@ class APP__ReplyRepository {
     $replis = DB__getRows($sql);
 
     return $replis;
+  }
+
+  public function getReplyById(int $id): ?array {
+    $sql = DB__SeqSql();
+    $sql -> add("SELECT * FROM reply WHERE");
+    $sql -> add("id = ?", $id);
+    $reply = DB__getRow($sql);
+
+    return $reply;
   }
 
   public function writeReply(int $relId, string $body, int $memberId){

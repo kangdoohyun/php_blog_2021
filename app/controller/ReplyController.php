@@ -39,6 +39,12 @@ class APP__UsrReplyController {
     if(!$body){
       jsHistoryBackExit('내용을 입력해주세요.');
     }
+    $reply = $this->replyService->getReplyById($id);
+    $memberCanDeleteRs = $this->replyService->getMemberCanModify($_REQUEST['APP__loginedMemberId'], $reply);
+
+    if($memberCanDeleteRs->isFail()){
+      jsHistoryBackExit($memberCanDeleteRs->getMsg());
+    }
 
     $this->replyService->modifyReply($id, $body);
 
@@ -55,6 +61,12 @@ class APP__UsrReplyController {
     }
     if(!$relId){  
       jsHistoryBackExit('댓글이 작성된 게시물번호를 입력해주세요.');
+    }
+    $reply = $this->replyService->getReplyById($id);
+    $memberCanDeleteRs = $this->replyService->getMemberCanDelete($_REQUEST['APP__loginedMemberId'], $reply);
+
+    if($memberCanDeleteRs->isFail()){
+      jsHistoryBackExit($memberCanDeleteRs->getMsg());
     }
     
     $this->replyService->deleteReply($id);

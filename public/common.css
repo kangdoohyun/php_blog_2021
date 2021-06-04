@@ -6,7 +6,9 @@ ul, ol, li{
 }
 html > body form{
   display: inline-block;
+  vertical-align: top;
 }
 button{
   display: inline-block;
+  vertical-align: top;
 }
