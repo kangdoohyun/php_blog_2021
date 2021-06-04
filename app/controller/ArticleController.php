@@ -36,22 +36,15 @@ class APP__UsrArticleController {
 
   public function actionShowModify(){
     $id = getIntValueOr($_REQUEST['id'], 0);
-    $title = getStrValueOr($_REQUEST['title'], "");
-    $body = getStrValueOr($_REQUEST['body'], "");
-
     if (!$id){
       jsHistoryBackExit("번호를 입력해주세요.");
     }
-    if(!$title){
-      jsHistoryBackExit("제목을 입력해주세요.");
-    }
-    if(!$body){
-      jsHistoryBackExit("내용을 입력해주세요.");
-    }
 
     $article = $this->articleService->getArticleById($id);
-    if($article['memberId'] != $_REQUEST['APP__loginedMemberId']){
-      jsHistoryBackExit("본인의 글만 수정할수있습니다");
+    $memberCanModifyRs = $this->articleService->getMemberCanModify($_REQUEST['APP__loginedMemberId'], $article);
+    
+    if($memberCanModifyRs->isFail()){
+      jsHistoryBackExit($memberCanModifyRs->getMsg());
     }
 
     require_once APP__getViewPath("usr/article/modify");
@@ -131,9 +124,11 @@ class APP__UsrArticleController {
     }
 
     $article = $this->articleService->getArticleById($id);
-    if($article['memberId'] != $_REQUEST['APP__loginedMemberId']){
-      jsHistoryBackExit("본인의 글만 삭제할수있습니다");
+    $memberCanDeleteRs = $this->articleService->getMemberCanDelete($_REQUEST['APP__memberId'], $article);
+    if($memberCanDeleteRs->isFail()){
+      jsHistoryBackExit($memberCanDeleteRs->getMsg());
     }
+
     $this->articleService->deleteArticle($id);
 
     jsAlert("${id}번 글이 삭제되었습니다.");

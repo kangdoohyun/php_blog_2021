@@ -26,4 +26,20 @@ class APP__ArticleService {
   public function deleteArticle(int $id) {
     return $this->articleRepository->deleteArticle($id);
   }
+
+  public function getMemberCanModify(int $loginedMemberId, $article){
+    if($loginedMemberId === $article['memberId']){
+      return new ResultData("S-1", "작성자 입니다.");
+    }
+    
+    return new ResultData("F-1", "작성자만 글을 수정할 수 있습니다.");
+  }
+
+  public function getMemberCanDelete(int $loginedMemberId, $article){
+    if($loginedMemberId === $article['memberId']){
+      return new ResultData("S-1", "작성자 입니다.");
+    }
+    
+    return new ResultData("F-1", "작성자만 글을 삭제할 수 있습니다.");
+  }
 }
