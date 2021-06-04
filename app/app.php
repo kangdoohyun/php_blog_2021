@@ -15,77 +15,11 @@ require_once __DIR__ . "/controller/ArticleController.php";
 require_once __DIR__ . "/controller/ReplyController.php";
 
 require_once __DIR__ . '/global.php';
-
-class ResultData {
-  public function __construct(
-    private string $resultCode, 
-    private string $msg
-  ) { }
-
-  public function isSuccess():bool {
-    return str_starts_with($this->resultCode, "S-");
-  }
-
-  public function isFail():bool {
-    return !$this->isSuccess();
-  }
-
-  public function getMsg():string {
-    return $this->msg;
-  }
-}
+require_once __DIR__ . '/interceptor.php';
+require_once __DIR__ . '/vo.php';
 
 function APP__getViewPath($viewName) {
   return __DIR__ . '/../public/' . $viewName . '.view.php';
-}
-function APP__runBeforActionInterCeptor(string $action) {
-  global $APP__memberService;
-
-  $_REQUEST['APP__isLogined'] = false;
-  $_REQUEST['APP__loginedMemberId'] = 0;
-  $_REQUEST['APP__loginedMember'] = null;
-
-  if ( isset($_SESSION['loginedMemberId']) ) {
-    $_REQUEST['APP__isLogined'] = true;
-    $_REQUEST['APP__loginedMemberId'] = intval($_SESSION['loginedMemberId']);
-    $_REQUEST['APP__loginedMember'] = $APP__memberService->getMemberById($_REQUEST['APP__loginedMemberId']);
-  }
-}
-
-function APP__runNeedLoginInterCeptor(string $action) {
-  switch ($action){
-    case 'usr/member/login':
-    case 'usr/member/doLogin':
-    case 'usr/member/join':
-    case 'usr/member/doJoin':
-    case 'usr/article/list':
-    case 'usr/article/detail':
-      return;
-  }
-  if($_REQUEST['APP__isLogined'] == false){
-    jsHistoryBackExit("로그인 후 이용해주세요.");
-  }
-}
-
-function APP__runNeedLogoutInterCeptor(string $action) {
-  switch ($action){
-    case 'usr/member/login':
-    case 'usr/member/doLogin':
-    case 'usr/member/join':
-    case 'usr/member/doJoin':
-      break;
-    default:
-      return;
-  }
-  if($_REQUEST['APP__isLogined']){
-    jsHistoryBackExit("로그아웃 후 이용해주세요.");
-  }
-}
-
-function APP__runInterceptors(string $action) {
-  APP__runBeforActionInterCeptor($action);
-  APP__runNeedLoginInterCeptor($action);
-  APP__runNeedLogoutInterCeptor($action);
 }
 
 function APP__runAction(string $action) {
