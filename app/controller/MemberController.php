@@ -16,18 +16,19 @@ class APP__UsrMemberController {
   }
   
   public function actionShowModify(){
-    $memberId = getIntValueOr($_REQUEST['memberId'], 0);
-    if (!$memberId){
+    $id = getIntValueOr($_REQUEST['id'], 0);
+    if (!$id){
       jsHistoryBackExit('회원번호를 입력해주세요.');
     }
-    $member = $this->memberService->getMemberById($memberId);
+    $member = $this->memberService->getMemberById($id);
     require_once APP__getViewPath("usr/member/modify");
   }
   
   public function actionShowMypage(){
-    $member = $this->memberService->getMemberById($_REQUEST['APP__memberLoginId']);
+    $member = $this->memberService->getMemberById($_REQUEST['APP__loginedMemberId']);
     require_once APP__getViewPath("usr/member/mypage");
   }
+
   public function actionDoJoin(){
     $loginId = getStrValueOr($_REQUEST['loginId'], "");
     $loginPw = getStrValueOr($_REQUEST['loginPw'], "");

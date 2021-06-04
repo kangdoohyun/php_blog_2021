@@ -17,7 +17,6 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
   <?php if ($isLogined) { ?>
     <!-- <button onclick="location.href='../member/modify.php?memberId=<?=$loginedMemberId?>'">마이페이지</button> -->
     <button onclick="location.href='../member/mypage.php'">마이페이지</button>
-    <button onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false; location.href='../member/doDelete.php?id=<?=$_SESSION['loginedMemberId']?>';">회훤 탈퇴</button>
     <button onclick="location.href='../member/doLogout.php'">로그아웃</button>
   <?php } else{ ?>
     <button onclick="location.href='../member/login.php'">로그인</button>
