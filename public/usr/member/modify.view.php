@@ -2,7 +2,7 @@
 $pageTitle = "회원정보 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<div>
+<section class="con">
   <form action="./doModify.php?" method="POST">
     <input type="hidden" name="id" value="<?=$member['id']?>">
     <div>
@@ -29,12 +29,11 @@ $pageTitle = "회원정보 수정";
       <span>이메일 : </span>
       <input required style="width: 200px;" type="text" name="email" value="<?=$member['email']?>">
     </div>
-    <button style="width: 255px;" type="submit">수정 완료</button>
-    <hr>
+    <button class="input-btn" style="width: 255px;" type="submit">수정 완료</button>
   </form>
 </div>
-<div>
-  <button onclick="location.href='./login.php'">로그인 화면으로</button>
-  <button onclick="location.href='../article/list.php'">게시물 리스트</button>
+<section>
+  <button class="input-btn" onclick="location.href='./login.php'">로그인 화면으로</button>
+  <button class="input-btn" onclick="location.href='../article/list.php'">게시물 리스트</button>
 </div>
 <?php require_once __DIR__ . "/../foot.php"; ?>

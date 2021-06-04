@@ -1,9 +1,153 @@
+/* 로보토 Condensed 폰트 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto+Condensed:wght@400;700&display=swap");
+
+/* 롯데마트드림 폰트 */
+@font-face {
+  font-family: "LotteMartDream";
+  font-style: normal;
+  font-weight: 400;
+  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff2")
+      format("woff2"),
+    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamMedium.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "LotteMartDream";
+  font-style: normal;
+  font-weight: 700;
+  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff2")
+      format("woff2"),
+    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamBold.woff")
+      format("woff");
+}
+
+@font-face {
+  font-family: "LotteMartDream";
+  font-style: normal;
+  font-weight: 300;
+  src: url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2")
+      format("woff2"),
+    url("//cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff")
+      format("woff");
+}
+
+html {
+  font-family: "Roboto Condensed", "LotteMartDream", sans-serif;
+}
+/* 노멀라이징 */
+*{
+  padding: 0;
+  margin: 0;
+}
 ul, ol, li{
   list-style: nene;
   padding: 0;
   margin: 0;
   display: inline-block;
 }
+a{
+  text-decoration: none;
+  color: inherit;
+}
+/* 라이브러리 */
+
+
+.inline-grid {
+  font-size: 0;
+}
+
+.inline-grid > * {
+  font-size: 1rem;
+  display: inline-block;
+  box-sizing: border-box;
+  vertical-align: top;
+}
+
+.overflow-x-auto {
+  overflow-x:auto;
+}
+
+.whitespace-nowrap {
+  white-space:nowrap;
+}
+
+.block {
+  display:block;
+}
+
+.inline-block {
+  display:inline-block;
+}
+
+.text-center {
+  text-align:center;
+}
+
+.con {
+  width:auto;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.img-box > img {
+  /* 이미지 주변에 쓸떼없이 생기는 여백이 사라진다. 즉 글자로서의 특징이 사라진다. */
+  display:block;
+  /* 이걸 해줘야 이미지 너비가 유연해집니다. */
+  width:100%;
+}
+
+/* .row가 float 요소들의 부모이기 때문에 아래와 같이 처리해 주지 않으면 높이가 0이 될 수 있습니다. */
+.float-grid::after {
+  /* 막내를 추가하고, 참고로 막내는 float 요소가 아닙니다. */
+  content:"";
+  /* 아래 2개의 속석은 추가된 막내를 형들(float 요소들) 밑에 깔리게 합니다. */
+  display:block;
+  clear:both;
+}
+
+.float-grid > * {
+  float:left;
+  box-sizing:border-box;
+}
+
+.width-full {
+  width:100%;
+}
+
+.height-full {
+  height:100%;
+}
+
+.flex {
+  display:flex;
+}
+
+.flex-wrap {
+  flex-wrap:wrap;
+}
+
+.flex-grid {
+  display:flex;
+  flex-wrap:wrap;
+}
+
+.flex-grid > * {
+  box-sizing:border-box;
+}
+
+.items-center {
+  align-items:center;
+}
+
+.self-center {
+  align-self:center;
+}
+
+.flex-grow {
+  flex-grow:1;
+}
+/* 라이브러리 끝 */
 html > body form{
   display: inline-block;
   vertical-align: top;
@@ -11,4 +155,104 @@ html > body form{
 button{
   display: inline-block;
   vertical-align: top;
+}
+/* 커스텀 */
+.con{
+  width: 1100px;
+  background-color: white;
+  padding: 20px;
+  margin-top: 20px;
+  border-radius: 15px;
+  box-sizing: border-box;
+  border: 5px solid rgba(240, 128, 128, 0.5);
+}
+.text-border {
+  text-shadow: 0 3px 3px lightcoral;
+  color:lavenderblush;
+}
+.input-btn {
+  background-color: lavenderblush;
+  border: 2px solid rgba(240, 128, 128, 0.5);;
+  padding: 10px;
+  margin-bottom: 10px;
+  border-radius: 20px 10px;
+  font-size: 15px;
+  color:lightcoral;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.input-btn:hover {
+  background-color: white;
+}
+a:hover{
+  text-decoration: underline;
+}
+/* TOP-BAR */
+body{
+  background-color: lavenderblush;
+}
+
+header {
+  background-image: url(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdDx9Er%2Fbtq6AQqvB9L%2Fi172SjXra6gi7fiK4EDS7k%2Fimg.png);
+  background-size: cover;
+  text-align: center;
+  height: 400px;
+}
+header > div{
+  height: calc(100% - 40px);
+  position: relative;
+} 
+header > div > h1{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+header > .top-bar-menu-box {
+  text-align: right;
+}
+header > .top-bar-menu-box > ul > li{ 
+  text-align: center;
+}
+header > .top-bar-menu-box > ul > li > a{
+  display: inline-block;
+  padding: 10px;
+  font-size: 20px;
+  transition: 0.3s;
+}
+header > .top-bar-menu-box > ul > li:hover > a{
+  color: white;
+}
+/* 리스트 */
+section > .list-content-box > span:first-child {
+  display: inline-block ;
+  width: 15%;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+section > .list-content-box > span:nth-child(2) {
+  display: inline-block ;
+  width: 50%;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+section > .list-content-box > span:nth-child(3) {
+  display: inline-block ;
+  width: 20%;
+  text-align: center;
+  border-right: 1px solid #ddd;
+  border-bottom: 1px solid #ddd;
+  padding: 5px 0;
+}
+section > .list-content-box > span:last-child {
+  display: inline-block ;
+  width: 15%;
+  text-align: center;
+  padding: 5px 0;
+  border-bottom: 1px solid #ddd;
 }

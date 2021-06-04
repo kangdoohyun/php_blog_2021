@@ -11,16 +11,40 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=$pageTitle?></title>
   <link rel="stylesheet" href="/common.css?ver=1">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-  <h1><?=$pageTitle?></h1>
-  <?php if ($isLogined) { ?>
-    <!-- <button onclick="location.href='../member/modify.php?memberId=<?=$loginedMemberId?>'">마이페이지</button> -->
-    <button onclick="location.href='../member/mypage.php'">마이페이지</button>
-    <button onclick="location.href='../member/doLogout.php'">로그아웃</button>
-  <?php } else{ ?>
-    <button onclick="location.href='../member/login.php'">로그인</button>
-    <button onclick="location.href='../member/join.php'">회원가입</button>
-  <?php } ?>
-  <hr>
+  <header>
+    <nav class="top-bar-menu-box">
+      <ul class="inline-grid">
+        <?php if ($isLogined) { ?>
+          <li>
+            <a class="text-border" href="../member/mypage.php">
+              <span><i class="fas fa-user-cog"></i></span>
+            </a>
+          </li>
+          <li>
+            <a class="text-border" href="../member/doLogout.php">
+              <span><i class="fas fa-sign-out-alt"></i></span>
+            </a>
+          </li>
+        <?php } else{ ?>
+          <li>
+            <a class="text-border" href="../member/join.php">
+              <span><i class="fas fa-user-plus"></i></span>
+            </a>
+          </li>
+          <li>
+            <a class="text-border" href="../member/login.php">
+              <span><i class="fas fa-sign-in-alt"></i></span>
+            </a>
+          </li>
+        <?php } ?>
+      </ul>
+    </nav>
+    <div>
+      <h1 class="text-border page-name"><?=$pageTitle?></h1>
+    </div>
+  </header>
+  
   

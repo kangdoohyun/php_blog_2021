@@ -2,7 +2,7 @@
 $pageTitle = "게시물 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<div>
+<section class="con">
   <form action="./doModify.php?" method="POST">
     <input type="hidden" name="id" value="<?=$id?>">
     <input type="hidden" name="memberId" value="<?=$memberId?>">
@@ -15,12 +15,12 @@ $pageTitle = "게시물 수정";
       <textarea style="width: 202px;" name="body"><?=$article['body']?></textarea>
 
     </div>
-    <button style="width: 255px;" type="submit">글 수정</button>
+    <button class="input-btn" style="width: 255px;" type="submit">글 수정</button>
     <hr>
   </form>
-</div>
-<div>
-  <button onclick="location.href='./list.php'">글 리스트</button>
-  <button onclick="location.href='./detail.php?id=<?=$id?>'">원문</button>
-</div>
+  <div>
+    <button class="input-btn" onclick="location.href='./list.php'">글 리스트</button>
+    <button class="input-btn" onclick="location.href='./detail.php?id=<?=$id?>'">원문</button>
+  </div>
+</section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

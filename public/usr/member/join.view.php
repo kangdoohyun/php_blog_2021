@@ -2,7 +2,7 @@
 $pageTitle = "회원가입";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<div>
+<section class="con">
   <form action="./doJoin.php?" method="POST">
     <div>
       <span>아이디 : </span>
@@ -28,11 +28,10 @@ $pageTitle = "회원가입";
       <span>이메일 : </span>
       <input style="width: 200px;" type="text" name="email" placeholder="이메일을 입력해 주세요">
     </div>
-    <button style="width: 255px;" type="submit">가입하기</button>
-    <hr>
+    <button class="input-btn" style="width: 255px;" type="submit">가입하기</button>
   </form>
 </div>
 <div>
-  <button onclick="location.href='./login.php'">로그인 화면으로</button>
-</div>
+  <button class="input-btn" onclick="location.href='./login.php'">로그인 화면으로</button>
+</section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

@@ -2,7 +2,7 @@
 $pageTitle = "로그인";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<div>
+<section class="con">
   <form action="./doLogin.php?" method="POST">
     <div>
       <span>아이디 : </span>
@@ -12,11 +12,8 @@ $pageTitle = "로그인";
       <span>비밀번호 : </span>
       <input  style="width: 200px;" type="password" name="loginPw" placeholder="********">
     </div>
-    <button style="width: 288px;" type="submit">로그인</button>
-    <hr>
+    <button class="input-btn" style="width: 288px;" type="submit">로그인</button>
   </form>
-</div>
-<div>
-  <button onclick="location.href='./join.php'">회원 가입</button>
-</div>
+  </div>
+</section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

@@ -23,38 +23,45 @@ $pageTitle = "게시물 리스트";
   //   }
   // }
 </script>
-
-<style>
-/* html > body > form{
-  display: inline-block;
-} */
-</style>
-
 <?php require_once __DIR__ . "/../head.php"; ?>
-<form action="./write.php?" method="POST">
-  <input type="hidden" name="memberId" value="<?=$_REQUEST['APP__loginedMemberId']?>">
-  <input type="submit" value="글 작성">
-</form>
-<form action="../board/make.php?" method="POST">
-  <input type="submit" value="게시판 생성">
-</form>
-<hr>
-<nav>
-  <ul>
-  <li><a href="./list.php">전체보기</a></li>
-    <?php foreach( $boards as $board ) { ?>
-      <li><a href="./list.php?boardId=<?=$board['id']?>"><?=$board['name']?></a></li>
-    <?php } ?>
-  </ul>
-</nav>
-<div>  
-  <?php foreach( $articles as $article ) { ?>
-  번호 : <?=$article['id']?><br>
-  작성 날짜 : <?=$article['regDate']?><br>
-  수정 날짜 : <?=$article['updateDate']?><br>
-  제목 : <a href="./detail.php?id=<?=$article['id']?>"><?=$article['title']?></a><br>
+<section class="con">
+  <form action="./write.php?" method="POST">
+    <input type="hidden" name="memberId" value="<?=$_REQUEST['APP__loginedMemberId']?>">
+    <input class="input-btn" type="submit" value="글 작성">
+  </form>
+  <form action="../board/make.php?" method="POST">
+    <input class="input-btn" type="submit" value="게시판 생성">
+  </form>
   <hr>
+  <nav>
+    <ul>
+    <li><a href="./list.php">전체보기</a></li>
+      <?php foreach( $boards as $board ) { ?>
+        <li><a href="./list.php?boardId=<?=$board['id']?>"><?=$board['name']?></a></li>
+      <?php } ?>
+    </ul>
+  </nav>
+  <div class="inline-grid list-content-box">
+    <span>번호</span>
+    <span>제목</span>
+    <span>작성자</span>
+    <span>작성 날짜</span>
+  </div>
+  <hr>
+  <?php foreach( $articles as $article ) { ?>
+    <?php $member =$this->memberService->getMemberById($article['memberId'])?>
+    <div class="inline-grid list-content-box">
+      <!-- 번호 -->
+      <span><?=$article['id']?></span>
+      <!-- 제목 -->
+      <span><a href="./detail.php?id=<?=$article['id']?>"><?=$article['title']?></a></span>
+      <!-- 작성자 -->
+      <span><?=$member['nickname']?></span>
+      <!-- 작성 날짜 -->
+      <span><?=$article['regDate']?></span>
+    </div>
   <?php } ?>
-</div>
+</section>
+
 <?php require_once __DIR__ . "/../foot.php"; ?>
  

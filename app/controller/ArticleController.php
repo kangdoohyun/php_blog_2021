@@ -1,14 +1,17 @@
 <?php
 class APP__UsrArticleController {
   private APP__ArticleService $articleService;
+  private APP__MemberService $memberService;
   private APP__BoardService $boardService;
   private APP__ReplyService $replyService;
 
   public function __construct() {
     global $APP__articleService;
+    global $APP__memberService;
     global $APP__boardService;
     global $APP__replyService;
     $this->articleService = $APP__articleService;
+    $this->memberService = $APP__memberService;
     $this->boardService = $APP__boardService;
     $this->replyService = $APP__replyService;
   }
@@ -26,6 +29,7 @@ class APP__UsrArticleController {
   public function actionShowList(): array {
     $boardId = isset($_REQUEST['boardId']) ? intval($_REQUEST['boardId']) : 0;
 
+    $member = $this->memberService->getMemberById($_REQUEST['APP__loginedMemberId']);
     $articles = $this->articleService->getForPrintArticles($boardId);
     $boards = $this->boardService->getBoardsByASC();
 
