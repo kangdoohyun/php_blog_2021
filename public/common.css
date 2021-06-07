@@ -35,224 +35,90 @@
 html {
   font-family: "Roboto Condensed", "LotteMartDream", sans-serif;
 }
-/* 노멀라이징 */
+
+/* 노말라이징 */
 *{
   padding: 0;
   margin: 0;
 }
-ul, ol, li{
-  list-style: nene;
-  padding: 0;
-  margin: 0;
-  display: inline-block;
+ul, ol, li {
+  list-style: none;
 }
 a{
   text-decoration: none;
   color: inherit;
 }
 /* 라이브러리 */
-
-
-.inline-grid {
-  font-size: 0;
-}
-
-.inline-grid > * {
-  font-size: 1rem;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: top;
-}
-
-.overflow-x-auto {
-  overflow-x:auto;
-}
-
-.whitespace-nowrap {
-  white-space:nowrap;
-}
-
-.block {
-  display:block;
-}
-
-.inline-block {
-  display:inline-block;
-}
-
-.text-center {
-  text-align:center;
-}
-
 .con {
-  width:auto;
   margin-left: auto;
   margin-right: auto;
 }
-
-.img-box > img {
-  /* 이미지 주변에 쓸떼없이 생기는 여백이 사라진다. 즉 글자로서의 특징이 사라진다. */
-  display:block;
-  /* 이걸 해줘야 이미지 너비가 유연해집니다. */
-  width:100%;
+.inline-grid {
+  font-size: 0;
 }
-
-/* .row가 float 요소들의 부모이기 때문에 아래와 같이 처리해 주지 않으면 높이가 0이 될 수 있습니다. */
-.float-grid::after {
-  /* 막내를 추가하고, 참고로 막내는 float 요소가 아닙니다. */
-  content:"";
-  /* 아래 2개의 속석은 추가된 막내를 형들(float 요소들) 밑에 깔리게 합니다. */
-  display:block;
-  clear:both;
-}
-
-.float-grid > * {
-  float:left;
-  box-sizing:border-box;
-}
-
-.width-full {
-  width:100%;
-}
-
-.height-full {
-  height:100%;
-}
-
-.flex {
-  display:flex;
-}
-
-.flex-wrap {
-  flex-wrap:wrap;
-}
-
-.flex-grid {
-  display:flex;
-  flex-wrap:wrap;
-}
-
-.flex-grid > * {
-  box-sizing:border-box;
-}
-
-.items-center {
-  align-items:center;
-}
-
-.self-center {
-  align-self:center;
-}
-
-.flex-grow {
-  flex-grow:1;
-}
-/* 라이브러리 끝 */
-html > body form{
+.inline-grid > * {
   display: inline-block;
+  font-size: 1rem;
   vertical-align: top;
-}
-button{
-  display: inline-block;
-  vertical-align: top;
-}
-/* 커스텀 */
-.con{
-  width: 1100px;
-  background-color: white;
-  padding: 20px;
-  margin-top: 20px;
-  border-radius: 15px;
   box-sizing: border-box;
-  border: 5px solid rgba(240, 128, 128, 0.5);
 }
-.text-border {
-  text-shadow: 0 3px 3px lightcoral;
-  color:lavenderblush;
-}
-.input-btn {
-  background-color: lavenderblush;
-  border: 2px solid rgba(240, 128, 128, 0.5);;
-  padding: 10px;
-  margin-bottom: 10px;
-  border-radius: 20px 10px;
-  font-size: 15px;
-  color:lightcoral;
-  font-weight: bold;
-  transition: 0.3s;
-  cursor: pointer;
-}
-.input-btn:hover {
-  background-color: white;
-}
-a:hover{
-  text-decoration: underline;
-}
-/* TOP-BAR */
-body{
-  background-color: lavenderblush;
-}
-
-header {
-  background-image: url(https://img1.daumcdn.net/thumb/R1280x0/?scode=mtistory2&fname=https%3A%2F%2Fblog.kakaocdn.net%2Fdn%2FdDx9Er%2Fbtq6AQqvB9L%2Fi172SjXra6gi7fiK4EDS7k%2Fimg.png);
-  background-size: cover;
-  text-align: center;
-  height: 400px;
-}
-header > div{
-  height: calc(100% - 40px);
-  position: relative;
-} 
-header > div > h1{
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-}
-header > .top-bar-menu-box {
+.text-right{
   text-align: right;
 }
-header > .top-bar-menu-box > ul > li{ 
+.img-box > img{
+  width: 100%;
+  display: block;
+}
+/* 커스텀 */
+.con {
+  width: 1100px;
+}
+body{
+  background-color: #1e1f21;
+  color: white;
+}
+/* 탑바 */
+header{
+  background-color: #292a2d;
+}
+header > div > .page-name{
   text-align: center;
 }
 header > .top-bar-menu-box > ul > li > a{
-  display: inline-block;
-  padding: 10px;
+  color: #555;
+  font-size: 1.5rem;
+  padding: 15px;
+  display: block;
+  transition: color 1s;
+  text-shadow: 0 3px 3px #fff;
+}
+header > .top-bar-menu-box > ul > li:hover > a {
+  color: #fff;
+  text-shadow: 0 3px 3px 555;
+}
+/* list.php */
+.list-content-box > ul {
+  margin: 0 -10px;
+}
+.list-content-box > ul > li{
+  width: calc(100% / 3);
+  padding: 20px 10px 0 10px;
+  cursor: pointer;
+}
+.list-content-box > ul > li > div > p {
+  text-align: center;
+  padding-top: 5px;
   font-size: 20px;
-  transition: 0.3s;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-header > .top-bar-menu-box > ul > li:hover > a{
-  color: white;
+.border-list-box > ul > li > a{
+  padding: 15px 0;
+  display: block;
+  transition: 1s;
 }
-/* 리스트 */
-section > .list-content-box > span:first-child {
-  display: inline-block ;
-  width: 15%;
-  text-align: center;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 5px 0;
-}
-section > .list-content-box > span:nth-child(2) {
-  display: inline-block ;
-  width: 50%;
-  text-align: center;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 5px 0;
-}
-section > .list-content-box > span:nth-child(3) {
-  display: inline-block ;
-  width: 20%;
-  text-align: center;
-  border-right: 1px solid #ddd;
-  border-bottom: 1px solid #ddd;
-  padding: 5px 0;
-}
-section > .list-content-box > span:last-child {
-  display: inline-block ;
-  width: 15%;
-  text-align: center;
-  padding: 5px 0;
-  border-bottom: 1px solid #ddd;
+.border-list-box > ul > li:hover > a{
+  background-color: #fff;
+  color: #292a2d;
 }
