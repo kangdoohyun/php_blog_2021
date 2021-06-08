@@ -21,7 +21,7 @@ require_once __DIR__ . '/interceptor.php';
 require_once __DIR__ . '/vo.php';
 
 function APP__getViewPath($viewName) {
-  return __DIR__ . '/../public/' . $viewName . '.view.php';
+  return __DIR__ . '/view/' . $viewName . '.php';
 }
 
 function APP__runAction(string $action) {

@@ -37,7 +37,7 @@ $pageTitle = "게시물 리스트";
       <?php $member =$this->memberService->getMemberById($article['memberId'])?>
       <li>
         <div class="img-box">
-          <!-- 이미지 -->
+          <!-- 이미지 --> 
           <img src="programming-3170991.png" alt="">
           <!-- 번호 -->
           <!-- <p><?=$article['id']?></p> -->

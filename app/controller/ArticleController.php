@@ -29,7 +29,6 @@ class APP__UsrArticleController {
   public function actionShowList(): array {
     $boardId = isset($_REQUEST['boardId']) ? intval($_REQUEST['boardId']) : 0;
 
-    $member = $this->memberService->getMemberById($_REQUEST['APP__loginedMemberId']);
     $articles = $this->articleService->getForPrintArticles($boardId);
     $boards = $this->boardService->getBoardsByASC();
     $totalCount = $this->articleService->getTotalArticlesCount();
