@@ -10,12 +10,21 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title><?=$pageTitle?></title>
-  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/common.css?ver=1">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
 </head>
 <body>
-  <header>
-    <nav class="top-bar-menu-box con">
+  <header class="inline-grid">
+    <div class="top-bar-logo-box">
+      <a href="#">
+        <span><i class="fas fa-laptop-code"></i></span>
+        <span>NCD</span>
+      </a>
+    </div>
+    <div>
+      <h1 class="page-name"><?=$pageTitle?></h1>
+    </div>
+    <nav class="top-bar-menu-box">
       <ul class="inline-grid text-right">
         <?php if ($isLogined) { ?>
           <li>
@@ -42,9 +51,6 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
         <?php } ?>
       </ul>
     </nav>
-    <div>
-      <h1 class="page-name"><?=$pageTitle?></h1>
-    </div>
   </header>
   
   

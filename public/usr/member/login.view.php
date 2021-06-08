@@ -2,18 +2,19 @@
 $pageTitle = "로그인";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class="con">
-  <form action="./doLogin.php?" method="POST">
-    <div>
-      <span>아이디 : </span>
-      <input style="width: 200px; margin-left: 16px;" type="text" name="loginId" placeholder="로그인 아이디를 입력해 주세요">
-    </div>
-    <div>
-      <span>비밀번호 : </span>
-      <input  style="width: 200px;" type="password" name="loginPw" placeholder="********">
-    </div>
-    <button class="input-btn" style="width: 288px;" type="submit">로그인</button>
-  </form>
+<section class="text-center con">
+  <div class="login-box">
+    <form action="./doLogin.php?" method="POST">
+      <div class="input-text" >
+        <input type="text" name="loginId" placeholder="아이디를 입력해주세요.">
+      </div>
+      <div class="input-text" >
+        <input type="password" name="loginPw" placeholder="비밀번호를 입력해주세요.">
+      </div>
+      <div class="input-btn">
+        <input type="submit" value="LOGIN">
+      </div>
+    </form>
   </div>
 </section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

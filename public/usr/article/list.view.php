@@ -3,15 +3,15 @@ $pageTitle = "게시물 리스트";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <style>
-  .border-list-box > ul > li{
+  .border-list-box>ul>li {
     width: calc(100% / <?=count($boards) + 1?>);
     cursor: pointer;
     text-align: center;
     background: #292a2d;
-    box-shadow: 0 3px 10px #fff;
+    border: 3px solid #ddd;
   }
 </style>
-<section class="section-1 con">
+<nav class="list-menu-box inline-grid">
   <form action="../board/make.php?" method="POST">
     <input class="input-btn" type="submit" value="게시판 생성">
   </form>
@@ -19,7 +19,9 @@ $pageTitle = "게시물 리스트";
     <input type="hidden" name="memberId" value="<?=$_REQUEST['APP__loginedMemberId']?>">
     <input class="input-btn" type="submit" value="글 작성">
   </form>
-  
+</nav>
+
+<section class="section-1 con">
   <nav class="border-list-box">
     <ul class="inline-grid">
       <li><a href="./list.php">전체보기</a></li>
@@ -28,7 +30,7 @@ $pageTitle = "게시물 리스트";
       <?php } ?>
     </ul>
   </nav>
-  
+
   <div class="list-content-box img-box">
     <ul class="inline-grid">
       <?php foreach( $articles as $article ) { ?>

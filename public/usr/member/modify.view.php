@@ -31,9 +31,9 @@ $pageTitle = "회원정보 수정";
     </div>
     <button class="input-btn" style="width: 255px;" type="submit">수정 완료</button>
   </form>
-</div>
-<section>
-  <button class="input-btn" onclick="location.href='./login.php'">로그인 화면으로</button>
-  <button class="input-btn" onclick="location.href='../article/list.php'">게시물 리스트</button>
-</div>
+  </div>
+    <button class="input-btn" onclick="location.href='./login.php'">로그인 화면으로</button>
+    <button class="input-btn" onclick="location.href='../article/list.php'">게시물 리스트</button>
+  </div>
+</section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

@@ -69,6 +69,9 @@ a{
   width: 100%;
   display: block;
 }
+.text-center{
+  text-align: center;
+}
 /* 커스텀 */
 .con {
   width: 1100px;
@@ -77,6 +80,34 @@ body{
   background-color: #1e1f21;
   color: white;
 }
+section{
+  min-height: calc(100vh - 237.78px);
+}
+.input-text{
+  padding-bottom: 10px;
+}
+.input-text > input{
+  width: 500px;
+  height: 40px;
+  border: 5px solid #292a2d;
+  padding: 5px;
+}
+.input-btn > input{
+  width: 520px;
+  height: 40px;
+  background-color: #fff;
+  border: 5px solid #292a2d;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.input-btn > button{
+  width: 520px;
+  height: 40px;
+  background-color: #fff;
+  border: 5px solid #292a2d;
+  font-size: 1.5rem;
+  font-weight: bold;
+}
 /* 탑바 */
 header{
   background-color: #292a2d;
@@ -84,10 +115,29 @@ header{
 header > div > .page-name{
   text-align: center;
 }
+header > div:first-child{
+  width: 250px;
+  padding: 30px;
+  font-size: 3rem;
+  font-weight: bold;
+}
+header > div:nth-child(2){
+  width: calc(100% - 250px - 500px);
+}
+header > div:nth-child(2) > h1{
+  position: absolute;
+  left: 50%;
+  top: 40px;
+  transform: translateX(-50%);
+  z-index: 3;
+}
+header > .top-bar-menu-box {
+  width: 500px;
+}
 header > .top-bar-menu-box > ul > li > a{
   color: #555;
+  padding: 44.225px 20px;
   font-size: 1.5rem;
-  padding: 15px;
   display: block;
   transition: color 1s;
   text-shadow: 0 3px 3px #fff;
@@ -95,6 +145,12 @@ header > .top-bar-menu-box > ul > li > a{
 header > .top-bar-menu-box > ul > li:hover > a {
   color: #fff;
   text-shadow: 0 3px 3px 555;
+}
+/* footer */
+footer {
+  background-color: #292a2d;
+  height: 100px;
+  margin-top: 20px;
 }
 /* list.php */
 .list-content-box > ul {
@@ -105,6 +161,9 @@ header > .top-bar-menu-box > ul > li:hover > a {
   padding: 20px 10px 0 10px;
   cursor: pointer;
 }
+.list-content-box > ul > li:hover a{
+  text-decoration: underline;
+}
 .list-content-box > ul > li > div > p {
   text-align: center;
   padding-top: 5px;
@@ -114,11 +173,46 @@ header > .top-bar-menu-box > ul > li:hover > a {
   text-overflow: ellipsis;
 }
 .border-list-box > ul > li > a{
-  padding: 15px 0;
+  padding: 10px 0;
   display: block;
   transition: 1s;
 }
-.border-list-box > ul > li:hover > a{
-  background-color: #fff;
+.border-list-box > ul:hover{
   color: #292a2d;
+}
+.border-list-box > ul > li:hover > a{
+  color: #ddd;
+}
+.list-menu-box{
+  text-align: right;
+  background: #292a2d;
+}
+.list-menu-box > form > input{
+  display: inline-block;
+  background: #292a2d;
+  border: none;
+  padding: 20px;
+  color: #fff;
+  font-weight: bold;
+  box-sizing: border-box;
+  width: 100px;
+  height: 50px;
+}
+.list-menu-box > form > input:hover{
+  border-bottom: 2px solid #fff;
+}
+/* login.php */
+section{
+  position: relative;
+}
+section > .login-box{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+section > .login-box > form > div > span {
+  display: inline-block;
+  width: 100px;
+  text-align: left;
 }
