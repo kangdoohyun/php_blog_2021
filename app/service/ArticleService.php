@@ -27,6 +27,10 @@ class APP__ArticleService {
     return $this->articleRepository->deleteArticle($id);
   }
 
+  public function getTotalArticlesCount(): int{
+    return $this->articleRepository->getTotalArticlesCount();
+  }
+
   public function getMemberCanModify(int $loginedMemberId, $article){
     if($loginedMemberId === $article['memberId']){
       return new ResultData("S-1", "작성자 입니다.");

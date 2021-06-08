@@ -32,6 +32,7 @@ class APP__UsrArticleController {
     $member = $this->memberService->getMemberById($_REQUEST['APP__loginedMemberId']);
     $articles = $this->articleService->getForPrintArticles($boardId);
     $boards = $this->boardService->getBoardsByASC();
+    $totalCount = $this->articleService->getTotalArticlesCount();
 
     require_once APP__getViewPath("usr/article/list");
 

@@ -103,6 +103,39 @@ function DB__delete(DB__SeqSql $sql){
   DB__execute($sql);
 }
 
+function DB__getRowIntValue(DB__SeqSql $sql, int $defaultValue): int {
+  $row = DB__getRow($sql);
+
+  if ( $row == null or empty($row) ) {
+    return $defaultValue;
+  }
+
+  $key = array_key_first($row);
+  return intval($row[$key]);
+}
+
+function DB__getRowFloatValue(DB__SeqSql $sql, float $defaultValue): float {
+  $row = DB__getRow($sql);
+
+  if ( $row == null or empty($row) ) {
+    return $defaultValue;
+  }
+
+  $key = array_key_first($row);
+  return floatval($row[$key]);
+}
+
+function DB__getRowStrValue(DB__SeqSql $sql, string $defaultValue): string {
+  $row = DB__getRow($sql);
+
+  if ( $row == null or empty($row) ) {
+    return $defaultValue;
+  }
+
+  $key = array_key_first($row);
+  return $row[$key];
+}
+
 function getIntValueOr(&$value, $defaultValue): int {
   if ( isset($value) ) {
     return intval($value);

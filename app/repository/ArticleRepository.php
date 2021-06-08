@@ -55,4 +55,10 @@ class APP__ArticleRepository {
     $sql -> add("WHERE id = ?", $id);
     DB__delete($sql);
   }
+
+  public function getTotalArticlesCount(): int{
+    $sql = DB__seqSql();
+    $sql -> add("SELECT COUNT(*) FROM article");
+    return DB__getRowIntValue($sql, 0);
+  }
 }
