@@ -9,3 +9,5 @@ $APP__memberService = new APP__MemberService();
 $APP__articleService = new APP__ArticleService();
 $APP__boardService = new APP__BoardService();
 $APP__replyService = new APP__ReplyService();
+// 어플리케이션
+$application = new APP__Application();

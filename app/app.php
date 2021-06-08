@@ -14,6 +14,8 @@ require_once __DIR__ . "/controller/BoardController.php";
 require_once __DIR__ . "/controller/ArticleController.php";
 require_once __DIR__ . "/controller/ReplyController.php";
 
+require_once __DIR__ . '/Application.php';  
+
 require_once __DIR__ . '/global.php';
 require_once __DIR__ . '/interceptor.php';
 require_once __DIR__ . '/vo.php';
