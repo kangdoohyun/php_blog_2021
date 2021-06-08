@@ -73,7 +73,7 @@ class APP__UsrMemberController {
     $this->memberService->joinMember($loginId, $loginPw, $name, $nickname, $cellphoneNo, $email);
 
     jsAlert("${nickname}님 회원가입을 환영합니다.");
-    jsLocationReplaceExit("./login.php");
+    jsLocationReplaceExit("./login");
   }
 
   public function actionDoLogin(){
@@ -81,10 +81,10 @@ class APP__UsrMemberController {
     $loginPw = getStrValueOr($_REQUEST['loginPw'], "");
 
     if(!$loginId){
-      jsLocationReplaceExit('../member/login.php', '로그인아이디를 입력해주세요.');
+      jsLocationReplaceExit('../member/login', '로그인아이디를 입력해주세요.');
     }
     if(!$loginPw){
-      jsLocationReplaceExit('../member/login.php', '비밀번호를 입력해주세요.');
+      jsLocationReplaceExit('../member/login', '비밀번호를 입력해주세요.');
     }
 
     $member = $this->memberService->loginMember($loginId);
@@ -102,7 +102,7 @@ class APP__UsrMemberController {
     $_SESSION['loginedMemberId'] = $member['id'];
 
     jsAlert("${member['nickname']}님 환영합니다.");
-    jsLocationReplaceExit("../article/list.php");
+    jsLocationReplaceExit("../article/list");
   }
 
   public function actionDoModify(){
@@ -156,8 +156,8 @@ class APP__UsrMemberController {
     $this->memberService->modifyMember($loginId, $loginPw, $name, $nickname, $cellphoneNo, $email, $id);
 
     jsAlert("회원정보 수정이 완료되었습니다.");
-    jsLocationReplaceExit("./doLogout.php", "다시 로그인해 주세요.");
-    jsLocationReplaceExit("./login.php");
+    jsLocationReplaceExit("./doLogout", "다시 로그인해 주세요.");
+    jsLocationReplaceExit("./login");
   }
 
   public function actionDoDelete(){
@@ -169,13 +169,13 @@ class APP__UsrMemberController {
     $this->memberService->deleteMember($id);
 
     jsAlert("회원 탈퇴가 완료되었습니다.");
-    jsLocationReplaceExit("../member/doLogout.php");
+    jsLocationReplaceExit("../member/doLogout");
   }
 
   public function actionDoLogout(){
     unset($_SESSION['loginedMemberId']);
     
     jsAlert("로그아웃 되었습니다.");
-    jsLocationReplaceExit("./login.php");
+    jsLocationReplaceExit("./login");
   }
 }

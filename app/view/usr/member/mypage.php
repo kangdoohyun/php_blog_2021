@@ -12,7 +12,7 @@ $pageTitle = "마이페이지";
     <hr>
   </div>
   <div>
-    <form action="../member/modify.php?" method="POST">
+    <form action="../member/modify" method="POST">
       <input type="hidden" name="id" value="<?=$member['id']?>">
       <input type="hidden" name="loginId" value="<?=$member['loginId']?>">
       <input type="hidden" name="loginPw" value="<?=$member['loginPw']?>">
@@ -22,11 +22,11 @@ $pageTitle = "마이페이지";
       <input type="hidden" name="email" value="<?=$member['email']?>">
       <input class="input-btn" type="submit" value="회원정보 수정">
     </form>
-    <form action="../member/doDelete.php">
+    <form action="../member/doDelete">
       <input type="hidden" name="id" value="<?=$member['id']?>">
       <input class="input-btn" onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false" type="submit" value="회원 탈퇴">
     </form>
-    <form action="../article/list.php">
+    <form action="../article/list">
       <input class="input-btn" type="submit" value="게시물 리스트">
     </form>
   </div>

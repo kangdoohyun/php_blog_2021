@@ -20,6 +20,6 @@ class APP__UsrBoardController {
     $this->boardService->makeBoard($name);
 
     jsAlert("${name}게시판이 생성되었습니다.");
-    jsLocationReplaceExit("../article/list.php");
+    jsLocationReplaceExit("../article/list");
   }
 }

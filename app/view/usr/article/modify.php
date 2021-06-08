@@ -3,7 +3,7 @@ $pageTitle = "게시물 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <section class="con">
-  <form action="./doModify.php?" method="POST">
+  <form action="./doModify" method="POST">
     <input type="hidden" name="id" value="<?=$id?>">
     <input type="hidden" name="memberId" value="<?=$memberId?>">
     <div>
@@ -19,8 +19,8 @@ $pageTitle = "게시물 수정";
     <hr>
   </form>
   <div>
-    <button class="input-btn" onclick="location.href='./list.php'">글 리스트</button>
-    <button class="input-btn" onclick="location.href='./detail.php?id=<?=$id?>'">원문</button>
+    <button class="input-btn" onclick="location.href='./list'">글 리스트</button>
+    <button class="input-btn" onclick="location.href='./detail?id=<?=$id?>'">원문</button>
   </div>
 </section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

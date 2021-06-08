@@ -21,7 +21,7 @@ class APP__UsrReplyController {
 
     $this->replyService->writeReply($relId, $body, $memberId);
 
-    jsLocationReplaceExit("../article/detail.php?id=$relId");
+    jsLocationReplaceExit("../article/detail?id=$relId");
 
   }
 
@@ -48,7 +48,7 @@ class APP__UsrReplyController {
 
     $this->replyService->modifyReply($id, $body);
 
-    jsLocationReplaceExit("../article/detail.php?id=${relId}");
+    jsLocationReplaceExit("../article/detail?id=${relId}");
 
   }
 
@@ -71,6 +71,6 @@ class APP__UsrReplyController {
     
     $this->replyService->deleteReply($id);
 
-    jsLocationReplaceExit("../article/detail.php?id=${relId}");
+    jsLocationReplaceExit("../article/detail?id=${relId}");
   }
 }
