@@ -33,7 +33,7 @@ $pageTitle = $article['title'].' 상세페이지';
   </div>
   <div>
     <button class="input-btn" onclick="location.href='./list'">글 리스트</button>
-    <form action="/../usr/article/modify" method="POST">
+    <form action="./modify" method="POST">
       <input type="hidden" name="id" value="<?=$article['id']?>">
       <input type="hidden" name="title" value="<?=$article['title']?>">
       <input type="hidden" name="body" value="<?=$article['body']?>">
