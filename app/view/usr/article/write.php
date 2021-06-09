@@ -3,7 +3,7 @@ $pageTitle = "게시물 작성";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <section class="con">
-  <form action="./doWrite" method="POST">
+  <form action="/../usr/article/doWrite" method="POST">
     <div>
     <select name="boardId" required>
       <option value="0">게시판 선택</option>
@@ -24,7 +24,7 @@ $pageTitle = "게시물 작성";
     <button class="input-btn" style="width: 255px;" type="submit">글 작성</button>
   </form>
   <div>
-    <button class="input-btn" onclick="location.href='./list'">글 리스트</button>
+    <button class="input-btn" onclick="location.href='/../usr/article/list'">글 리스트</button>
   </div>
 </section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

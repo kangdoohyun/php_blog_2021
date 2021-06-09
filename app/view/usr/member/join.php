@@ -3,7 +3,7 @@ $pageTitle = "회원가입";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <section class="text-center   con">
-  <form action="./doJoin" method="POST">
+  <form action="/../usr/member/doJoin" method="POST">
     <div class="input-text">
       <input type="text" name="loginId" placeholder="아이디를 입력해 주세요">
     </div>
@@ -27,7 +27,7 @@ $pageTitle = "회원가입";
     </div>
   </form>
   <div class="input-btn">
-    <button onclick="location.href='./login'">로그인 화면으로</button>
+    <button onclick="location.href='/../usr/member/login'">로그인 화면으로</button>
   </div>
 </div>
   

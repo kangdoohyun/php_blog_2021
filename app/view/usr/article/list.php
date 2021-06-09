@@ -12,10 +12,10 @@ $pageTitle = "게시물 리스트";
   }
 </style>
 <nav class="list-menu-box inline-grid">
-  <form action="../board/make" method="POST">
+  <form action="/../usr/board/make" method="POST">
     <input class="input-btn" type="submit" value="게시판 생성">
   </form>
-  <form action="./write" method="POST">
+  <form action="/../usr/article/write" method="POST">
     <input type="hidden" name="memberId" value="<?=$_REQUEST['APP__loginedMemberId']?>">
     <input class="input-btn" type="submit" value="글 작성">
   </form>
@@ -24,9 +24,9 @@ $pageTitle = "게시물 리스트";
 <section class="section-1 con">
   <nav class="border-list-box">
     <ul class="inline-grid">
-      <li><a href="./list">전체보기</a></li>
+      <li><a href="/../usr/article/list">전체보기</a></li>
       <?php foreach( $boards as $board ) { ?>
-      <li><a href="./list?boardId=<?=$board['id']?>"><?=$board['name']?></a></li>
+      <li><a href="/../usr/article/list?boardId=<?=$board['id']?>"><?=$board['name']?></a></li>
       <?php } ?>
     </ul>
   </nav>
@@ -42,7 +42,7 @@ $pageTitle = "게시물 리스트";
           <!-- 번호 -->
           <!-- <p><?=$article['id']?></p> -->
           <!-- 제목 -->
-          <p><a href="./detail?id=<?=$article['id']?>"><?=$article['title']?></a></p>
+          <p><a href="/../usr/article/detail?id=<?=$article['id']?>"><?=$article['title']?></a></p>
           <!-- 작성자 -->
           <!-- <p><?=$member['nickname']?></p> -->
           <!-- 작성 날짜 -->

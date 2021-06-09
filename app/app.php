@@ -25,20 +25,15 @@ function APP__getViewPath($viewName) {
 }
 
 function APP__runAction(string $action) {
-  if(empty($action)){
-    $controllerClassName = "APP__UsrArticleController";
-    $actionMethodName = "actionShowList";
-  }else{
-    list($controllerTypeCode, $controllerName, $actionFuncName) = explode('/', $action);
-    $controllerClassName = "APP__" . ucfirst($controllerTypeCode) . ucfirst($controllerName) . "Controller";
-    $actionMethodName = "action";
+  list($controllerTypeCode, $controllerName, $actionFuncName) = explode('/', $action);
+  $controllerClassName = "APP__" . ucfirst($controllerTypeCode) . ucfirst($controllerName) . "Controller";
+  $actionMethodName = "action";
 
-    if ( str_starts_with($actionFuncName, "do") ) {
-      $actionMethodName .= ucfirst($actionFuncName);
-    }
-    else {
-      $actionMethodName .= "Show" . ucfirst($actionFuncName);
-    }
+  if ( str_starts_with($actionFuncName, "do") ) {
+    $actionMethodName .= ucfirst($actionFuncName);
+  }
+  else {
+    $actionMethodName .= "Show" . ucfirst($actionFuncName);
   }
   
   $usrArticleController = new $controllerClassName();

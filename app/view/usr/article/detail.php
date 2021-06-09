@@ -32,14 +32,14 @@ $pageTitle = $article['title'].' 상세페이지';
     <hr>
   </div>
   <div>
-    <button class="input-btn" onclick="location.href='./list='">글 리스트</button>
-    <form action="./modify" method="POST">
+    <button class="input-btn" onclick="location.href='/../usr/article/list'">글 리스트</button>
+    <form action="/../usr/article/modify" method="POST">
       <input type="hidden" name="id" value="<?=$article['id']?>">
       <input type="hidden" name="title" value="<?=$article['title']?>">
       <input type="hidden" name="body" value="<?=$article['body']?>">
       <input class="input-btn" type="submit" value="수정">
     </form>
-    <form action="./doDelete" method="POST">
+    <form action="/../usr/article/doDelete" method="POST">
       <input type="hidden" name="id" value="<?=$article['id']?>">
       <input type="hidden" name="memberId" id="<?=$article['memberId']?>">
       <input class="input-btn" type="submit" value="삭제">
@@ -48,7 +48,7 @@ $pageTitle = $article['title'].' 상세페이지';
   <hr>
   <div>
     <h2>댓글</h2>
-    <form name="replyForm"action="../reply/doWrite" method="POST">
+    <form name="replyForm"action="/../usr/reply/doWrite" method="POST">
       <input type="hidden" name="relId" value="<?=$article['id']?>">
       <input type="hidden" name="memberId" value="<?=$loginedMemberId?>">
       <textarea style="width: 202px;" name="body" placeholder="댓글을 작성해 주세요"></textarea>
@@ -64,17 +64,17 @@ $pageTitle = $article['title'].' 상세페이지';
     작성 날짜 : <?=$reply['regDate']?><br>
     수정 날짜 : <?=$reply['updateDate']?><br>
     내용 : <?=$reply['body']?><br>
-    <form action="../reply/doModify" method="POST">
+    <form action="/../usr/reply/doModify" method="POST">
       <input class="input-btn" type="button" value="수정" onclick="toggleText(<?=$i?>, <?=$reply['memberId']?>)">
     </form>
-    <form action="../reply/doDelete">
+    <form action="/../usr/reply/doDelete">
       <input type="hidden" name="id" value="<?=$reply['id']?>">
       <input type="hidden" name="relId" value="<?=$reply['relId']?>">
       <input type="hidden" name="memberId" value="<?=$reply['memberId']?>">
       <input class="input-btn" type="submit" value="삭제" onclick="if(confirm('정말 삭제 하시겠습니까?') == false) return false;">
     </form>
     <br>
-    <form action="../reply/doModify" method="POST">
+    <form action="/../usr/reply/doModify" method="POST">
       <input type="hidden" name="id" value="<?=$reply['id']?>">
       <input type="hidden" name="memberId" value="<?=$reply['memberId']?>">
       <input type="hidden" name="relId" value="<?=$reply['relId']?>">

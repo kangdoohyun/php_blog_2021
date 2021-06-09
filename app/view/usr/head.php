@@ -28,23 +28,23 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
       <ul class="inline-grid text-right">
         <?php if ($isLogined) { ?>
           <li>
-            <a href="../member/mypage">
+            <a href="/../usr/member/mypage">
               <span><i class="fas fa-user-cog"></i></span>
             </a>
           </li>
           <li>
-            <a href="../member/doLogout">
+            <a href="/../usr/member/doLogout">
               <span><i class="fas fa-sign-out-alt"></i></span>
             </a>
           </li>
         <?php } else{ ?>
           <li>
-            <a href="../member/join">
+            <a href="/../usr/member/join">
               <span><i class="fas fa-user-plus"></i></span>
             </a>
           </li>
           <li>
-            <a href="../member/login">
+            <a href="/../usr/member/login">
               <span><i class="fas fa-sign-in-alt"></i></span>
             </a>
           </li>
