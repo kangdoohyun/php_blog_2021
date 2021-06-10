@@ -61,4 +61,12 @@ class APP__ArticleRepository {
     $sql -> add("SELECT COUNT(*) FROM article");
     return DB__getRowIntValue($sql, 0);
   }
+
+  public function updateViews(int $views, int $id){
+    $sql = DB__seqSql();
+    $sql -> add("UPDATE article SET");
+    $sql -> add("views = ?", $views);
+    $sql -> add("WHERE id = ?", $id);
+    DB__modify($sql);
+  }
 }

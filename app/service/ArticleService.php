@@ -31,6 +31,10 @@ class APP__ArticleService {
     return $this->articleRepository->getTotalArticlesCount();
   }
 
+  public function updateViews(int $views, int $id){
+    return $this->articleRepository->updateViews($views, $id);
+  }
+
   public function getMemberCanModify(int $loginedMemberId, $article){
     if($loginedMemberId === $article['memberId']){
       return new ResultData("S-1", "작성자 입니다.");

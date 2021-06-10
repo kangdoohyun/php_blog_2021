@@ -29,6 +29,7 @@ $pageTitle = $article['title'].' 상세페이지';
     제목 : <?=$article['title']?><br>
     내용 : <?=$article['body']?><br>
     작성자 : <?=$article['memberId']?><br>
+    조회수 : <?=$article['views']?><br>
     <hr>
   </div>
   <div>
