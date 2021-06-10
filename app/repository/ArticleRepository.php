@@ -69,4 +69,31 @@ class APP__ArticleRepository {
     $sql -> add("WHERE id = ?", $id);
     DB__modify($sql);
   }
+
+  public function insertLike(int $memberId, int $articleId){
+    $sql = DB__seqSql();
+    $sql -> add("INSERT INTO `like` SET");
+    $sql -> add("regDate = NOW(),");
+    $sql -> add("memberId = ?,", $memberId);
+    $sql -> add("articleId = ?", $articleId);
+    DB__insert($sql);
+  }
+
+  public function deleteLike(int $memberId, int $articleId){
+    $sql = DB__seqSql();
+    $sql -> add("DELETE FROM `like`");
+    $sql -> add("WHERE memberId = ? AND", $memberId);
+    $sql -> add("articleId = ?", $articleId);
+    DB__delete($sql);
+  }
+
+  public function getLikeByMemberIdAndArticleId(int $memberId, int $articleId): ?array{
+    $sql = DB__SeqSql();
+    $sql -> add("SELECT * FROM `like`");
+    $sql -> add("WHERE memberId = ? AND", $memberId);
+    $sql -> add("articleId = ?", $articleId);
+    $like = DB__getRow($sql);
+
+    return $like;
+  }
 }

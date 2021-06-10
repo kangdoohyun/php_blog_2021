@@ -62,6 +62,8 @@ class APP__UsrArticleController {
 
     $article = $this->articleService->getArticleById($id);
     $replis = $this->replyService->getReplisByRelIdDESC($id);
+    $like = $this->articleService->getLikeByMemberIdAndArticleId($_REQUEST['APP__loginedMemberId'], $article["id"]);
+
     $this->articleService->updateViews($article["views"] + 1, $article["id"]);
     
 
@@ -139,5 +141,19 @@ class APP__UsrArticleController {
 
     jsAlert("${id}번 글이 삭제되었습니다.");
     jsLocationReplaceExit("./list");
+  }
+
+  public function actionDoLike(){
+    $articleId = getIntValueOr($_REQUEST['articleId'], 0);
+    
+    $this->articleService->insertLike($_REQUEST['APP__loginedMemberId'], $articleId);
+    jsLocationReplaceExit("./detail?id=$articleId");
+  }
+
+  public function actionDoDeleteLike(){
+    $articleId = getIntValueOr($_REQUEST['articleId'], 0);
+    
+    $this->articleService->deleteLike($_REQUEST['APP__loginedMemberId'], $articleId);
+    jsLocationReplaceExit("./detail?id=$articleId");
   }
 }

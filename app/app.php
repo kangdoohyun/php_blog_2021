@@ -35,7 +35,6 @@ function APP__runAction(string $action) {
   else {
     $actionMethodName .= "Show" . ucfirst($actionFuncName);
   }
-  
   $usrArticleController = new $controllerClassName();
   $usrArticleController->$actionMethodName();
 }

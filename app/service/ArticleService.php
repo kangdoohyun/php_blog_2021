@@ -35,6 +35,18 @@ class APP__ArticleService {
     return $this->articleRepository->updateViews($views, $id);
   }
 
+  public function insertLike(int $memberId, int $articleId){
+    return $this->articleRepository->insertLike($memberId, $articleId);
+  }
+
+  public function deleteLike(int $memberId, int $articleId){
+    return $this->articleRepository->deleteLike($memberId, $articleId);
+  }
+
+  public function getLikeByMemberIdAndArticleId(int $memberId, int $articleId): ?array{
+    return $this->articleRepository->getLikeByMemberIdAndArticleId($memberId, $articleId);
+  }
+
   public function getMemberCanModify(int $loginedMemberId, $article){
     if($loginedMemberId === $article['memberId']){
       return new ResultData("S-1", "작성자 입니다.");
