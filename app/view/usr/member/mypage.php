@@ -2,7 +2,7 @@
 $pageTitle = "마이페이지";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class="con">
+<section class="con lg:container mx-auto">
   <div>
     <p>이름 : <?=$member['name']?></p>
     <p>닉네임 : <?=$member['nickname']?></p>
@@ -20,14 +20,14 @@ $pageTitle = "마이페이지";
       <input type="hidden" name="nickname" value="<?=$member['nickname']?>">
       <input type="hidden" name="cellphoneNo" value="<?=$member['cellphoneNo']?>">
       <input type="hidden" name="email" value="<?=$member['email']?>">
-      <input class="input-btn" type="submit" value="회원정보 수정">
+      <input class="bg-blue-100 text-white w-full p-4" type="submit" value="회원정보 수정">
     </form>
     <form action="./doDelete">
       <input type="hidden" name="id" value="<?=$member['id']?>">
-      <input class="input-btn" onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false" type="submit" value="회원 탈퇴">
+      <input class="bg-blue-100 text-white w-full p-4" onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false" type="submit" value="회원 탈퇴">
     </form>
     <form action="../article/list">
-      <input class="input-btn" type="submit" value="게시물 리스트">
+      <input class="bg-blue-100 text-white w-full p-4" type="submit" value="게시물 리스트">
     </form>
   </div>
 </section>

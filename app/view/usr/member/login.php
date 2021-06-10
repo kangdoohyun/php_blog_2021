@@ -2,17 +2,17 @@
 $pageTitle = "로그인";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class="text-center con">
+<section class="text-center lg:container mx-auto">
   <div class="login-box">
     <form action="./doLogin" method="POST">
       <div class="input-text" >
-        <input type="text" name="loginId" placeholder="아이디를 입력해주세요.">
+        <input class="w-full p-4"type="text" name="loginId" placeholder="아이디를 입력해주세요.">
       </div>
       <div class="input-text" >
-        <input type="password" name="loginPw" placeholder="비밀번호를 입력해주세요.">
+        <input class="w-full p-4"type="password" name="loginPw" placeholder="비밀번호를 입력해주세요.">
       </div>
       <div class="input-btn">
-        <input type="submit" value="LOGIN">
+        <input class="bg-blue-100 text-white w-full p-4" type="submit" value="LOGIN">
       </div>
     </form>
   </div>
