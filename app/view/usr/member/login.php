@@ -3,7 +3,7 @@ $pageTitle = "로그인";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <section class="text-center lg:container mx-auto">
-  <div class="login-box">
+  <div class="login-box w-1/2 mx-auto">
     <form action="./doLogin" method="POST">
       <div class="input-text" >
         <input class="w-full p-4"type="text" name="loginId" placeholder="아이디를 입력해주세요.">

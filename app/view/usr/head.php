@@ -23,13 +23,13 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
 </head>
 
 <body>
-  <div class="site-wrap">
+  <div class="site-wrap min-h-screen flex flex-col">
     <header class="top-bar bg-blue-100 text-white h-20">
       <div class="lg:container mx-auto h-full flex">
-          <a href="/" class="top-bar__logo text-xl block px-4 flex items-center">
-            <span><i class="fas fa-laptop-code"></i></span>
-            <span class="ml-2">NCD BLOG</span>
-          </a>  
+        <a href="/" class="top-bar__logo text-xl block px-4 flex items-center">
+          <span><i class="fas fa-laptop-code"></i></span>
+          <span class="ml-2">NCD BLOG</span>
+        </a>
         <div class="flex-grow"></div>
         <nav class="top-bar__menu">
           <ul class="flex h-full text-xl">
@@ -41,7 +41,8 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
               </a>
             </li>
             <li>
-              <a class="block px-4 h-full flex items-center hover:bg-white hover:text-blue-100" href="../member/doLogout">
+              <a class="block px-4 h-full flex items-center hover:bg-white hover:text-blue-100"
+                href="../member/doLogout">
                 <span><i class="fas fa-sign-out-alt"></i></span>
                 <span class="ml-2">로그아웃</span>
               </a>
@@ -64,9 +65,9 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
         </nav>
       </div>
     </header>
-    <section>
-      <div class="page-name lg:container mx-auto text-center h-40 leading-10">
-        <span><?=$pageTitle?></span>
-      </div>
-    </section>
-  </div>
+    <main class="flex-grow">
+      <section>
+        <div class="page-name lg:container mx-auto text-center h-40 leading-10">
+          <span><?=$pageTitle?></span>
+        </div>
+      </section>
