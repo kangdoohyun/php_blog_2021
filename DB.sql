@@ -9,7 +9,8 @@ CREATE TABLE article(
     boardId INT(10) UNSIGNED NOT NULL,
     memberId INT(10) UNSIGNED NOT NULL,
     title CHAR(100) NOT NULL,
-    `body` TEXT NOT NULL
+    `body` TEXT NOT NULL,
+    views INT(10) UNSIGNED NOT NULL
 );
 CREATE TABLE reply(
     id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
@@ -38,34 +39,44 @@ CREATE TABLE board(
     updateDate DATETIME NOT NULL,
     `name` CHAR(20) UNIQUE NOT NULL
 );
+CREATE TABLE `like`(
+    id INT(10) UNSIGNED NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    regDate DATETIME NOT NULL,
+    memberId INT(10) UNSIGNED NOT NULL,
+    articleId INT(10) UNSIGNED NOT NULL
+);
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 boardId = 1,
 memberId = 1,
 title = '제목1',
-`body` = '내용1';
+`body` = '내용1',
+views = 0;
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 boardId = 1,
 memberId = 1,
 title = '제목2',
-`body` = '내용2';
+`body` = '내용2',
+views = 0;
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 boardId = 2,
 memberId = 2,
 title = '제목3',
-`body` = '내용3';
+`body` = '내용3',
+views = 0;
 INSERT INTO article
 SET regDate = NOW(),
 updateDate = NOW(),
 boardId = 2,
 memberId = 2,
 title = '제목4',
-`body` = '내용4';
+`body` = '내용4',
+views = 0;
 
 INSERT INTO reply
 SET regDate = NOW(),

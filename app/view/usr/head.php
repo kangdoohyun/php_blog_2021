@@ -66,8 +66,8 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
       </div>
     </header>
     <main class="flex-grow">
-      <section>
-        <div class="page-name lg:container mx-auto text-center h-40 leading-10">
+      <section class="lg:container mx-auto h-40">
+        <div class="page-name flex h-full items-center justify-center">
           <span><?=$pageTitle?></span>
         </div>
       </section>

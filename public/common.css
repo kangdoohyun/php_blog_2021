@@ -36,32 +36,3 @@
 html > body {
   font-family: "Roboto Condensed", "LotteMartDream", sans-serif;
 }
-
-.w-calc-3{
-  width: calc(100% / 3);
-}
-.my-inline-grid{
-  font-size: 0;
-}
-.my-inline-grid > *:nth-child(3n - 1) {
-  font-size: 1rem;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: top;
-  padding: 0 5px;
-  
-}
-.my-inline-grid > *:nth-child(3n - 2) {
-  font-size: 1rem;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: top;
-  padding-right: 10px;
-}
-.my-inline-grid > *:nth-child(3n - 3) {
-  font-size: 1rem;
-  display: inline-block;
-  box-sizing: border-box;
-  vertical-align: top;
-  padding-left: 10px;
-}

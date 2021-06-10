@@ -33,22 +33,18 @@ $pageTitle = "게시물 리스트";
   </nav>
 
   <div class="list-content-box mx-auto">
-    <ul class="w-full my-inline-grid">
+    <ul class="w-full">
       <?php foreach( $articles as $article ) { ?>
       <?php $member =$this->memberService->getMemberById($article['memberId'])?>
-      <li class="inline-block w-calc-3">
-        <a href="./detail?id=<?=$article['id']?>">
-          <div class="img-box">
-            <!-- 이미지 --> 
-            <img src="/img/programming-3170991.png" alt="">
-            <!-- 번호 -->
-            <!-- <p><?=$article['id']?></p> -->
-            <!-- 제목 -->
-            <p class="text-center my-4"><?=$article['title']?></p>
-            <!-- 작성자 -->
-            <!-- <p><?=$member['nickname']?></p> -->
-            <!-- 작성 날짜 -->
-            <!-- <p><?=$article['regDate']?></p> -->
+      <li class="border-b-2 border-gray-300">
+        <a class="block w-full" href="./detail?id=<?=$article['id']?>">
+          <div class="flex h-60 py-4">
+            <img class="w-1/4"src="/img/programming-3170991.png" alt="">
+            <div class="w-3/4 flex flex-col">
+              <span class="block w-full px-4 font-semibold text-2xl"><?=$article['title']?></span>
+              <span class="block w-full flex-grow p-4 overflow-ellipsis overflow-hidden whitespace-nowrap"><?=$article['body']?></span>
+              <span class="block w-full px-4"><?=$article['regDate']?></span>
+            </div>
           </div>
         </a>
       </li>
