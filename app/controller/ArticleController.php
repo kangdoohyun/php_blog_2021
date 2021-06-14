@@ -63,7 +63,7 @@ class APP__UsrArticleController {
     $article = $this->articleService->getArticleById($id);
     $replis = $this->replyService->getReplisByRelIdDESC($id);
     $like = $this->articleService->getLikeByMemberIdAndArticleId($_REQUEST['APP__loginedMemberId'], $article["id"]);
-
+    
     $this->articleService->updateViews($article["views"] + 1, $article["id"]);
     
 

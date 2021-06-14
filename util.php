@@ -16,7 +16,7 @@ class DB__SeqSql {
   public function add(string $sqlBit, string $param = null) {
     $this->templateStr .= " " . $sqlBit;
 
-    if ( $param ) {
+    if ( $param !== null ) {
       $this->params[] = $param;
     }
   }

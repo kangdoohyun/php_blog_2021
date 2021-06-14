@@ -92,8 +92,9 @@ class APP__ArticleRepository {
     $sql -> add("SELECT * FROM `like`");
     $sql -> add("WHERE memberId = ? AND", $memberId);
     $sql -> add("articleId = ?", $articleId);
+    
     $like = DB__getRow($sql);
-
+    
     return $like;
   }
 }
