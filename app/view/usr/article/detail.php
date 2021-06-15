@@ -21,7 +21,7 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
 </script>
-<section class="lg:container mx-auto">
+<section class="lg:container mx-auto p-4">
   <div>
     번호 : <?=$article['id']?><br>
     작성 날짜 : <?=$article['regDate']?><br>

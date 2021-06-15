@@ -38,11 +38,11 @@ $pageTitle = "게시물 리스트";
       <?php $member =$this->memberService->getMemberById($article['memberId'])?>
       <li class="border-b-2 border-gray-300">
         <a class="block w-full" href="./detail?id=<?=$article['id']?>">
-          <div class="flex h-60 py-4">
-            <img class="w-1/4"src="/img/programming-3170991.png" alt="">
+          <div class="flex py-4">
+            <img class="w-1/4 object-cover"src="/img/programming-3170991.png" alt="">
             <div class="w-3/4 flex flex-col">
-              <span class="block w-full px-4 font-semibold text-2xl"><?=$article['title']?></span>
-              <span class="block w-full flex-grow p-4 overflow-ellipsis overflow-hidden whitespace-nowrap"><?=$article['body']?></span>
+              <span class="block w-full px-4 font-semibold sm:text-2xl overflow-ellipsis overflow-hidden whitespace-nowrap"><?=$article['title']?></span>
+              <span class="block w-full flex-grow p-4 text-xs sm:text-base overflow-ellipsis overflow-hidden whitespace-nowrap"><?=$article['body']?></span>
               <span class="block w-full px-4"><?=$article['regDate']?></span>
             </div>
           </div>

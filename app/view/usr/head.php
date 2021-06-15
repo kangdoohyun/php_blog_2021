@@ -23,12 +23,12 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
 </head>
 
 <body>
-  <div class="site-wrap min-h-screen flex flex-col">
-    <header class="top-bar bg-blue-100 text-white h-20">
+  <div class="site-wrap min-h-screen flex flex-col pt-20">
+    <header class="top-bar fixed inset-x-0 top-0 bg-blue-100 text-white h-20">
       <div class="lg:container mx-auto h-full flex">
         <a href="/" class="top-bar__logo text-xl block px-4 flex items-center">
           <span><i class="fas fa-laptop-code"></i></span>
-          <span class="ml-2">NCD BLOG</span>
+          <span class="ml-2 hidden sm:inline-block">NCD BLOG</span>
         </a>
         <div class="flex-grow"></div>
         <nav class="top-bar__menu">
@@ -37,27 +37,27 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
             <li>
               <a class="block px-4 h-full flex items-center hover:bg-white hover:text-blue-100" href="../member/mypage">
                 <span><i class="fas fa-user-cog"></i></span>
-                <span class="ml-2">마이페이지</span>
+                <span class="ml-2 hidden sm:inline-block">마이페이지</span>
               </a>
             </li>
             <li>
               <a class="block px-4 h-full flex items-center hover:bg-white hover:text-blue-100"
                 href="../member/doLogout">
                 <span><i class="fas fa-sign-out-alt"></i></span>
-                <span class="ml-2">로그아웃</span>
+                <span class="ml-2 hidden sm:inline-block">로그아웃</span>
               </a>
             </li>
             <?php } else{ ?>
             <li>
               <a class="block px-4 h-full flex items-center hover:bg-white hover:text-blue-100" href="../member/join">
                 <span><i class="fas fa-user-plus"></i></span>
-                <span class="ml-2">회원가입</span>
+                <span class="ml-2 hidden sm:inline-block">회원가입</span>
               </a>
             </li>
             <li>
               <a class="block px-4 h-full flex items-center hover:bg-white hover:text-blue-100" href="../member/login">
                 <span><i class="fas fa-sign-in-alt"></i></span>
-                <span class="ml-2">로그인</span>
+                <span class="ml-2 hidden sm:inline-block">로그인</span>
               </a>
             </li>
             <?php } ?>
@@ -66,7 +66,7 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
       </div>
     </header>
     <main class="flex-grow">
-      <section class="lg:container mx-auto h-40">
+      <section class="lg:container mx-auto h-40 p-4 box-border">
         <div class="page-name flex h-full items-center justify-center">
           <span><?=$pageTitle?></span>
         </div>
