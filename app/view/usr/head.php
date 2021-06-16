@@ -2,6 +2,8 @@
 $isLogined = $_REQUEST['APP__isLogined'];
 $loginedMemberId = $_REQUEST['APP__loginedMemberId'];
 $loginedMember = $_REQUEST['APP__loginedMember'];
+
+$boards = $this->boardService->getBoardsByASC();
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -18,11 +20,30 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
   <!-- 폰트어썸 -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <!-- common.css -->
-  <link rel="stylesheet" href="/common.css">
+  <link rel="stylesheet" href="/common.css?ver=1">
 
 </head>
+<!-- 제이쿼리 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- common.js
+<script type="text/javascript" src="/public/common.js"></script> -->
 
-<body>
+<script>
+  $(document).ready(function () {
+    $('.menu-btn').click(function () {
+      let has = $('.menu-list').hasClass('active');
+      if (has) {
+        $('.menu-list').removeClass('active');
+        $('.bg').removeClass('active');
+      } else {
+        $('.menu-list').addClass('active');
+        $('.bg').addClass('active');
+      }
+    });
+  });
+</script>
+
+<body class="overflow-x-hidden">
   <div class="site-wrap min-h-screen flex flex-col pt-20">
     <header class="top-bar fixed inset-x-0 top-0 bg-blue-100 text-white h-20">
       <div class="lg:container mx-auto h-full flex">
@@ -61,10 +82,29 @@ $loginedMember = $_REQUEST['APP__loginedMember'];
               </a>
             </li>
             <?php } ?>
+            <li
+              class="menu-btn block px-4 h-full w-20 flex items-center hover:bg-white hover:text-blue-100 justify-center">
+              <i class="fas fa-list-ul"></i>
+            </li>
           </ul>
         </nav>
       </div>
     </header>
+    <div class="bg fixed hidden"></div>
+    <div class="menu-list fixed w-1/2 h-screen -right-1/2 transitin-right-1 bg-blue-100">
+      <nav class="bord-list-box bg-blue-100 text-white h-screen px-4 sm:px-16">
+        <ul class="flex flex-col h-2/3 sm:text-2xl">
+          <li class="flex flex-grow items-center">
+            <a class="block w-full px-3 border-b-2 hover:border-black" href="../article/list">전체보기</a>
+          </li>
+          <?php foreach( $boards as $board ) { ?>
+          <li class="flex flex-grow items-center">
+            <a class="block w-full px-3 border-b-2 hover:border-black" href="../article/list?boardId=<?=$board['id']?>"><?=$board['name']?></a>
+          </li>
+          <?php } ?>
+        </ul>
+      </nav>
+    </div>
     <main class="flex-grow">
       <section class="lg:container mx-auto h-40 p-4 box-border">
         <div class="page-name flex h-full items-center justify-center">

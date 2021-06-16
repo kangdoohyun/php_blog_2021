@@ -30,7 +30,7 @@ class APP__UsrArticleController {
     $boardId = isset($_REQUEST['boardId']) ? intval($_REQUEST['boardId']) : 0;
 
     $articles = $this->articleService->getForPrintArticles($boardId);
-    $boards = $this->boardService->getBoardsByASC();
+    // $boards = $this->boardService->getBoardsByASC();
     $totalCount = $this->articleService->getTotalArticlesCount();
 
     require_once APP__getViewPath("usr/article/list");

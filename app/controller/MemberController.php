@@ -4,7 +4,9 @@ class APP__UsrMemberController {
 
   public function __construct() {
     global $APP__memberService;
+    global $APP__boardService;
     $this->memberService = $APP__memberService;
+    $this->boardService = $APP__boardService;
   }
 
   public function actionShowJoin(){

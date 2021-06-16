@@ -1,5 +1,5 @@
 <?php
-$pageTitle = $article['title'].' 상세페이지';
+$pageTitle = $article['title'];
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <script>
@@ -21,30 +21,37 @@ $pageTitle = $article['title'].' 상세페이지';
     }
   }
 </script>
-<section class="lg:container mx-auto p-4">
+<section class="lg:container mx-auto p-16">
   <div>
-    번호 : <?=$article['id']?><br>
-    작성 날짜 : <?=$article['regDate']?><br>
-    수정 날짜 : <?=$article['updateDate']?><br>
-    제목 : <?=$article['title']?><br>
-    내용 : <?=$article['body']?><br>
-    작성자 : <?=$article['memberId']?><br>
-    조회수 : <?=$article['views']?><br>
-    <?php if(empty($like)) {?>
-      <div class="flex h-full text-red-500">
+    <div class="text-right mb-8">
+      <div class="text-left w-1/6 ml-auto">
+        <p>번호 : <?=$article['id']?></p>
+        <p>작성 날짜 : <?=$article['regDate']?></p>
+        <p>수정 날짜 : <?=$article['updateDate']?></p>
+        <p>작성자 : <?=$article['memberId']?></p>
+        <p>조회수 : <?=$article['views']?></p>
+      </div>
+    </div>
+    
+    <!-- 내용 -->
+    <?=$article['body']?><br>
+    <!-- 좋아요 -->
+    <div class="my-2 py-2 w-1/12 rounded-full border-2 border-red-500 text-center ml-auto mr-auto">
+      <div class="flex justify-center h-full text-red-500">
+        <?php if(empty($like)) {?>
         <a href="./doLike?articleId=<?=$article["id"]?>">
           <span><i class="far fa-heart"></i></span>
           <span>좋아요</span>
         </a>
-      </div>
-    <?php } else {?>
-      <div class="flex h-full text-red-500">
+        <?php } else {?>
         <a href="./doDeleteLike?articleId=<?=$article["id"]?>">
           <span><i class="fas fa-heart"></i></span>
           <span>좋아요</span>
         </a>
+        <?php } ?>
       </div>
-    <?php } ?>
+    </div>
+    
     
     <hr>
   </div>
@@ -70,7 +77,7 @@ $pageTitle = $article['title'].' 상세페이지';
       <input type="hidden" name="memberId" value="<?=$loginedMemberId?>">
       <textarea class="w-4/5 p-4" name="body" placeholder="댓글을 작성해 주세요"></textarea>
       <br>
-      <button class="w-1/5 bg-blue-100" type="submit">작성 완료</button>
+      <button class="w-1/5 bg-blue-100 text-white" type="submit">작성 완료</button>
       <hr>
     </form>
   </div>
