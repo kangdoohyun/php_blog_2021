@@ -36,20 +36,33 @@
 html > body {
   font-family: "Roboto Condensed", "LotteMartDream", sans-serif;
 }
+/* 커스텀 */
 .transitin-right-1{
   transition: right 1s;
 }
-.menu-list.active{
-  right: 0;
-}
+
 .bg{
   background: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100vh;
 }
+/* Active */
+.menu-list.active{
+  right: 0;
+}
 .bg.active{
   display: block;
 }
+.non-menu-icon.active{
+  display: block;
+}
+.menu-icon.active{
+  display: none;
+}
+/* Active */
+
+
+
 .article-body{
   overflow: hidden;
   text-overflow: ellipsis;

@@ -35,9 +35,13 @@ $boards = $this->boardService->getBoardsByASC();
       if (has) {
         $('.menu-list').removeClass('active');
         $('.bg').removeClass('active');
+        $('.non-menu-icon').removeClass('active');
+        $('.menu-icon').removeClass('active');
       } else {
         $('.menu-list').addClass('active');
         $('.bg').addClass('active');
+        $('.non-menu-icon').addClass('active');
+        $('.menu-icon').addClass('active');
       }
     });
   });
@@ -84,7 +88,13 @@ $boards = $this->boardService->getBoardsByASC();
             <?php } ?>
             <li
               class="menu-btn block px-4 h-full w-20 flex items-center hover:bg-white hover:text-blue-100 justify-center">
-              <i class="fas fa-list-ul"></i>
+              <div class="menu-icon block">
+                <i class="fas fa-list-ul"></i>
+              </div>
+              <div class="non-menu-icon hidden">
+                <i class="fas fa-times"></i>
+              </div>
+              
             </li>
           </ul>
         </nav>
