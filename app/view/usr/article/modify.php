@@ -2,25 +2,22 @@
 $pageTitle = "게시물 수정";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class="con">
+<section class="lg:container mx-auto">
   <form action="./doModify" method="POST">
     <input type="hidden" name="id" value="<?=$id?>">
     <input type="hidden" name="memberId" value="<?=$memberId?>">
     <div>
-      <span>제목 : </span>
-      <input style="width: 200px;" type="text" name="title" value="<?=$article['title']?>">
+      <!-- 제목 -->
+      <input class="w-full p-4 border mb-4 rounded-md" type="text" name="title" value="<?=$article['title']?>">
     </div>
     <div>
-      <span>내용 : </span>
-      <textarea style="width: 202px;" name="body"><?=$article['body']?></textarea>
-
+      <!-- 내용 -->
+      <textarea class="w-full p-4 border mb-4 rounded-md" name="body"><?=$article['body']?></textarea>
     </div>
-    <button class="input-btn" style="width: 255px;" type="submit">글 수정</button>
-    <hr>
+    <button class="w-full bg-blue-200 p-4 text-white" type="submit">글 수정</button>
   </form>
   <div>
-    <button class="input-btn" onclick="location.href='./list'">글 리스트</button>
-    <button class="input-btn" onclick="location.href='./detail?id=<?=$id?>'">원문</button>
+    <button class="w-full bg-blue-200 p-4 text-white" onclick="location.href='./detail?id=<?=$id?>'">원문</button>
   </div>
 </section>
 <?php require_once __DIR__ . "/../foot.php"; ?>
