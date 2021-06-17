@@ -12,7 +12,7 @@ $pageTitle = "로그인";
         <input class="w-full p-4"type="password" name="loginPw" placeholder="비밀번호를 입력해주세요.">
       </div>
       <div class="input-btn">
-        <input class="bg-blue-100 text-white w-full p-4" type="submit" value="LOGIN">
+        <input class="bg-blue-200 text-white w-full p-4" type="submit" value="LOGIN">
       </div>
     </form>
   </div>

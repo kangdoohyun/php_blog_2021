@@ -60,7 +60,11 @@ html > body {
   display: none;
 }
 /* Active */
-
+.img-box > img{
+  display: block;
+  width: 100%;
+  border-radius: 100%;
+}
 
 
 .article-body{

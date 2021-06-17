@@ -21,7 +21,7 @@ $pageTitle = $article['title'];
     }
   }
 </script>
-<section class="lg:container mx-auto p-16">
+<section class="lg:container mx-auto">
   <div>
     <div class="text-right mb-8">
       <div class="text-left w-1/6 ml-auto">
@@ -56,17 +56,17 @@ $pageTitle = $article['title'];
     <hr>
   </div>
   <div class="flex h-full">
-    <button class="inline-block p-2 bg-blue-100 text-white hover:bg-white hover:text-blue-100" onclick="location.href='./list'">글 리스트</button>
+    <button class="inline-block p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" onclick="location.href='./list'">글 리스트</button>
     <form class="" action="./modify" method="POST">
       <input type="hidden" name="id" value="<?=$article['id']?>">
       <input type="hidden" name="title" value="<?=$article['title']?>">
       <input type="hidden" name="body" value="<?=$article['body']?>">
-      <input class="p-2 bg-blue-100 text-white hover:bg-white hover:text-blue-100" type="submit" value="수정">
+      <input class="p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" type="submit" value="수정">
     </form>
     <form class="" action="./doDelete" method="POST">
       <input type="hidden" name="id" value="<?=$article['id']?>">
       <input type="hidden" name="memberId" id="<?=$article['memberId']?>">
-      <input class="p-2 bg-blue-100 text-white hover:bg-white hover:text-blue-100" type="submit" value="삭제">
+      <input class="p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" type="submit" value="삭제">
     </form>
   </div>
   <hr>
@@ -77,7 +77,7 @@ $pageTitle = $article['title'];
       <input type="hidden" name="memberId" value="<?=$loginedMemberId?>">
       <textarea class="w-4/5 p-4" name="body" placeholder="댓글을 작성해 주세요"></textarea>
       <br>
-      <button class="w-1/5 bg-blue-100 text-white" type="submit">작성 완료</button>
+      <button class="w-1/5 bg-blue-200 text-white" type="submit">작성 완료</button>
       <hr>
     </form>
   </div>
@@ -90,13 +90,13 @@ $pageTitle = $article['title'];
     내용 : <?=$reply['body']?><br>
     <div class="flex h-full">
       <form action="../reply/doModify" method="POST">
-        <input class="p-2 bg-blue-100 text-white hover:bg-white hover:text-blue-100" type="button" value="수정" onclick="toggleText(<?=$i?>, <?=$reply['memberId']?>)">
+        <input class="p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" type="button" value="수정" onclick="toggleText(<?=$i?>, <?=$reply['memberId']?>)">
       </form>
       <form action="../reply/doDelete">
         <input type="hidden" name="id" value="<?=$reply['id']?>">
         <input type="hidden" name="relId" value="<?=$reply['relId']?>">
         <input type="hidden" name="memberId" value="<?=$reply['memberId']?>">
-        <input class="p-2 bg-blue-100 text-white hover:bg-white hover:text-blue-100" type="submit" value="삭제" onclick="if(confirm('정말 삭제 하시겠습니까?') == false) return false;">
+        <input class="p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" type="submit" value="삭제" onclick="if(confirm('정말 삭제 하시겠습니까?') == false) return false;">
       </form>
     </div>
     <br>
@@ -105,7 +105,7 @@ $pageTitle = $article['title'];
       <input type="hidden" name="memberId" value="<?=$reply['memberId']?>">
       <input type="hidden" name="relId" value="<?=$reply['relId']?>">
       <textarea class="w-4/5 p-4" style="display:none" id="modifyReply<?=$i?>" name="body"><?=$reply['body']?></textarea>
-      <input class="w-1/5 bg-blue-100" type="submit" value="수정 하기" id="modifyBTN<?=$i?>" style="display:none">
+      <input class="w-1/5 bg-blue-200" type="submit" value="수정 하기" id="modifyBTN<?=$i?>" style="display:none">
     </form>
     <hr>
     <?php } ?>

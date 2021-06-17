@@ -24,12 +24,12 @@ $boards = $this->boardService->getBoardsByASC();
   <!-- 제이쿼리 -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
   <!-- common.js -->
-  <script type="text/javascript" src="/public/common.js"></script>
+  <script type="text/javascript" src="/common.js"></script>
 </head>
 
 <body class="overflow-x-hidden">
   <div class="site-wrap min-h-screen flex flex-col pt-20">
-    <header class="top-bar fixed inset-x-0 top-0 bg-blue-100 text-white h-20">
+    <header class="top-bar fixed inset-x-0 top-0 bg-blue-200 text-white h-20">
       <div class="lg:container mx-auto h-full flex">
         <a href="/" class="top-bar__logo text-xl block px-4 flex items-center">
           <span><i class="fas fa-laptop-code"></i></span>
@@ -81,8 +81,8 @@ $boards = $this->boardService->getBoardsByASC();
       </div>
     </header>
     <div class="bg fixed hidden"></div>
-    <div class="menu-list fixed w-1/2 h-screen -right-1/2 transitin-right-1 bg-blue-100">
-      <nav class="bord-list-box bg-blue-100 text-white h-screen px-4 sm:px-16">
+    <div class="menu-list fixed w-1/2 h-screen -right-1/2 transitin-right-1 bg-blue-200">
+      <nav class="bord-list-box bg-blue-200 text-white h-screen px-4 sm:px-16">
         <ul class="flex flex-col h-2/3 sm:text-2xl">
           <li class="flex flex-grow items-center">
             <a class="block w-full px-3 border-b-2 hover:border-black" href="../article/list">전체보기</a>

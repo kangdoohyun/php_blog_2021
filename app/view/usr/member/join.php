@@ -24,11 +24,11 @@ $pageTitle = "회원가입";
         <input class="w-full p-4" type="text" name="email" placeholder="이메일을 입력해 주세요">
       </div>
       <div class="input-btn">
-        <input class="bg-blue-100 text-white w-full p-4" type="submit" value="DO JOIN">
+        <input class="bg-blue-200 text-white w-full p-4" type="submit" value="DO JOIN">
       </div>
     </form>
     <div>
-      <button class="bg-blue-100 text-white w-full p-4" onclick="location.href='./login'">로그인 화면으로</button>
+      <button class="bg-blue-200 text-white w-full p-4" onclick="location.href='./login'">로그인 화면으로</button>
     </div>
   </div>
 </section>
