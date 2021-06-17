@@ -21,31 +21,11 @@ $boards = $this->boardService->getBoardsByASC();
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
   <!-- common.css -->
   <link rel="stylesheet" href="/common.css?ver=1">
-
+  <!-- 제이쿼리 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+  <!-- common.js -->
+  <script type="text/javascript" src="/public/common.js"></script>
 </head>
-<!-- 제이쿼리 -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!-- common.js
-<script type="text/javascript" src="/public/common.js"></script> -->
-
-<script>
-  $(document).ready(function () {
-    $('.menu-btn').click(function () {
-      let has = $('.menu-list').hasClass('active');
-      if (has) {
-        $('.menu-list').removeClass('active');
-        $('.bg').removeClass('active');
-        $('.non-menu-icon').removeClass('active');
-        $('.menu-icon').removeClass('active');
-      } else {
-        $('.menu-list').addClass('active');
-        $('.bg').addClass('active');
-        $('.non-menu-icon').addClass('active');
-        $('.menu-icon').addClass('active');
-      }
-    });
-  });
-</script>
 
 <body class="overflow-x-hidden">
   <div class="site-wrap min-h-screen flex flex-col pt-20">
