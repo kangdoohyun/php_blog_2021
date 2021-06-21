@@ -1,0 +1,20 @@
+{
+    "name": "kangdoohyun/php_blog_2021",
+    "type": "project",
+    "license": "MIT",
+    "autoload": {
+        "files": [
+            "src/util.php"
+        ],
+        "psr-4": {
+            "App\\": "src/app"
+        }
+    },
+    "authors": [
+        {
+            "name": "kangdoohyun",
+            "email": "rkdengus1208@gmail.com"
+        }
+    ],
+    "require": {}
+}
