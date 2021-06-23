@@ -60,8 +60,8 @@ function DB__seqSql()
 
 function DB__getStmtFromSeqSql(DB__SeqSql $sql): mysqli_stmt
 {
-    global $dbConnect;
-    $stmt = $dbConnect->prepare($sql->getTemplate());
+    global $dbConn;
+    $stmt = $dbConn->prepare($sql->getTemplate());
     if ($sql->getParamsCount()) {
         $stmt->bind_param($sql->getForBindParam1stArg(), ...$sql->getParams());
     }
@@ -102,10 +102,10 @@ function DB__execute(DB__SeqSql $sql)
 
 function DB__insert(DB__SeqSql $sql): int
 {
-    global $dbConnect;
+    global $dbConn;
     DB__execute($sql);
 
-    return mysqli_insert_id($dbConnect);
+    return mysqli_insert_id($dbConn);
 }
 
 function DB__modify(DB__SeqSql $sql)

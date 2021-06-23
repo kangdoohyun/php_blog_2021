@@ -4,15 +4,19 @@ namespace App\Controller;
 
 use App\Controller\Controller;
 use App\Service\MemberService;
+use App\Service\BoardService;
 
 class UsrMemberController extends Controller
 {
     private MemberService $memberService;
+    private BoardService $boardService;
 
     public function __construct()
     {
         parent::__construct();
         $this->memberService = MemberService::getInstance();
+        parent::__construct();
+        $this->boardService = BoardService::getInstance();
     }
 
     public function actionShowJoin()
@@ -37,7 +41,7 @@ class UsrMemberController extends Controller
 
     public function actionShowMypage()
     {
-        $member = $this->memberService->getMemberById($_REQUEST['APP__loginedMemberId']);
+        $member = $this->memberService->getMemberById($_REQUEST['App__loginedMemberId']);
         require_once $this->getViewPath("usr/member/mypage");
     }
 

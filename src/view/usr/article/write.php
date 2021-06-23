@@ -3,7 +3,7 @@ $pageTitle = "게시물 작성";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
 <section class="lg:container mx-auto">
-    <form action="./doWrite" method="POST">
+    <form action="./doWrite" method="GET">
         <div>
             <select class="border rounded-md mb-4 p-2" name="boardId" required>
                 <option class="bluck" value="0">게시판 선택</option>
@@ -12,7 +12,6 @@ $pageTitle = "게시물 작성";
                 <?php } ?>
             </select>
         </div>
-        <input type="hidden" name="memberId" value="<?= $memberId ?>">
         <!-- 제목 -->
         <div>
             <input class="w-full p-4 border mb-4 rounded-md" type="text" name="title" placeholder="제목을 입력해 주세요">

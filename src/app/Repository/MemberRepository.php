@@ -54,6 +54,7 @@ class MemberRepository
         $sql = DB__seqSql();
         $sql->add("SELECT * FROM member");
         $sql->add("WHERE id = ?", $memberId);
+        $sql->add("AND delStatus = 0");
         $member = DB__getRow($sql);
 
         return $member;

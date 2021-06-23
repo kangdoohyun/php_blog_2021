@@ -1,7 +1,14 @@
 <?php
-$isLogined = $_REQUEST['APP__isLogined'];
-$loginedMemberId = $_REQUEST['APP__loginedMemberId'];
-$loginedMember = $_REQUEST['APP__loginedMember'];
+if (isset($pageTitle) == false) {
+    $pageTitle = "";
+}
+
+$application = $this->getApplication();
+$envCode = $application->getEnvCode();
+$prodSiteDomain = $application->getProdSiteDomain();
+$isLogined = $_REQUEST['App__isLogined'];
+$loginedMemberId = $_REQUEST['App__loginedMemberId'];
+$loginedMember = $_REQUEST['App__loginedMember'];
 
 $boards = $this->boardService->getBoardsByASC();
 ?>
@@ -20,11 +27,11 @@ $boards = $this->boardService->getBoardsByASC();
     <!-- 폰트어썸 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
     <!-- common.css -->
-    <link rel="stylesheet" href="/common.css?ver=1">
+    <link rel="stylesheet" href="/resource/common.css">
     <!-- 제이쿼리 -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- common.js -->
-    <script type="text/javascript" src="/common.js"></script>
+    <script type="text/javascript" src="/resource/common.js"></script>
 </head>
 
 <body class="overflow-x-hidden">

@@ -22,7 +22,7 @@ class BeforeActionInterceptor extends Interceptor
         if (isset($_SESSION['loginedMemberId'])) {
             $_REQUEST['App__isLogined'] = true;
             $_REQUEST['App__loginedMemberId'] = intval($_SESSION['loginedMemberId']);
-            $_REQUEST['App__loginedMember'] = $this->memberService->getForPrintMemberById($_REQUEST['App__loginedMemberId']);
+            $_REQUEST['App__loginedMember'] = $this->memberService->getMemberById($_REQUEST['App__loginedMemberId']);
         }
     }
 }

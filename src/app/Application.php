@@ -96,7 +96,7 @@ class Application
 
     private function runInterceptors(string $action)
     {
-        $run = function (Interceptor ...$interceptors) use ($action) {
+        $run = function (Interceptor...$interceptors) use ($action) {
             foreach ($interceptors as $interceptor) {
                 $interceptor->run($action);
             }

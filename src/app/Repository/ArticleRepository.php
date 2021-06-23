@@ -46,7 +46,7 @@ class ArticleRepository
         $sql->add("title = ?,", $title);
         $sql->add("body = ?", $body);
         $id = DB__insert($sql);
-
+        
         return $id;
     }
 
@@ -120,7 +120,7 @@ class ArticleRepository
         $sql->add("SELECT * FROM `like`");
         $sql->add("WHERE memberId = ? AND", $memberId);
         $sql->add("articleId = ?", $articleId);
-
+        
         $like = DB__getRow($sql);
 
         return $like;

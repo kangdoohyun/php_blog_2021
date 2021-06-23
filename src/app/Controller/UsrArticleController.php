@@ -29,10 +29,6 @@ class UsrArticleController extends Controller
 
     public function actionShowWrite()
     {
-        $memberId = getIntValueOr($_REQUEST['memberId'], 0);
-        if (!$memberId) {
-            jsHistoryBackExit('회원번호를 입력해 주세요.');
-        }
         $boards = $this->boardService->getBoardsByASC();
 
         require_once  $this->getViewPath("usr/article/write");
@@ -59,7 +55,7 @@ class UsrArticleController extends Controller
         }
 
         $article = $this->articleService->getArticleById($id);
-        $memberCanModifyRs = $this->articleService->getMemberCanModify($_REQUEST['APP__loginedMemberId'], $article);
+        $memberCanModifyRs = $this->articleService->getMemberCanModify($_REQUEST['App__loginedMemberId'], $article);
 
         if ($memberCanModifyRs->isFail()) {
             jsHistoryBackExit($memberCanModifyRs->getMsg());
@@ -77,7 +73,7 @@ class UsrArticleController extends Controller
 
         $article = $this->articleService->getArticleById($id);
         $replis = $this->replyService->getReplisByRelIdDESC($id);
-        $like = $this->articleService->getLikeByMemberIdAndArticleId($_REQUEST['APP__loginedMemberId'], $article["id"]);
+        $like = $this->articleService->getLikeByMemberIdAndArticleId($_REQUEST['App__loginedMemberId'], $article["id"]);
 
         $this->articleService->updateViews($article["views"] + 1, $article["id"]);
 
@@ -90,7 +86,6 @@ class UsrArticleController extends Controller
         $title = getStrValueOr($_REQUEST['title'], "");
         $body = getStrValueOr($_REQUEST['body'], "");
         $boardId = getIntValueOr($_REQUEST['boardId'], 0);
-        $memberId = getIntValueOr($_REQUEST['memberId'], 0);
 
         if (!$title) {
             jsHistoryBackExit('제목을 입력해주세요.');
@@ -101,14 +96,11 @@ class UsrArticleController extends Controller
         if (!$boardId) {
             jsHistoryBackExit('게시판을 선택해주세요.');
         }
-        if (!$memberId) {
-            jsHistoryBackExit('회원번호를 입력해주세요.');
-        }
         if (!is_numeric($boardId)) {
             jsHistoryBackExit('게시판을 선택해주세요.');
         }
 
-        $id = $this->articleService->writeArticle($boardId, $memberId, $title, $body);
+        $id = $this->articleService->writeArticle($boardId, $_REQUEST['App__loginedMemberId'], $title, $body);
 
         jsAlert("${id}번 글이 작성되었습니다.");
         jsLocationReplaceExit("./list");
@@ -150,7 +142,7 @@ class UsrArticleController extends Controller
         }
 
         $article = $this->articleService->getArticleById($id);
-        $memberCanDeleteRs = $this->articleService->getMemberCanDelete($_REQUEST['APP__loginedMemberId'], $article);
+        $memberCanDeleteRs = $this->articleService->getMemberCanDelete($_REQUEST['App__loginedMemberId'], $article);
         if ($memberCanDeleteRs->isFail()) {
             jsHistoryBackExit($memberCanDeleteRs->getMsg());
         }
@@ -165,7 +157,7 @@ class UsrArticleController extends Controller
     {
         $articleId = getIntValueOr($_REQUEST['articleId'], 0);
 
-        $this->articleService->insertLike($_REQUEST['APP__loginedMemberId'], $articleId);
+        $this->articleService->insertLike($_REQUEST['App__loginedMemberId'], $articleId);
         jsLocationReplaceExit("./detail?id=$articleId");
     }
 
@@ -173,7 +165,7 @@ class UsrArticleController extends Controller
     {
         $articleId = getIntValueOr($_REQUEST['articleId'], 0);
 
-        $this->articleService->deleteLike($_REQUEST['APP__loginedMemberId'], $articleId);
+        $this->articleService->deleteLike($_REQUEST['App__loginedMemberId'], $articleId);
         jsLocationReplaceExit("./detail?id=$articleId");
     }
 }
