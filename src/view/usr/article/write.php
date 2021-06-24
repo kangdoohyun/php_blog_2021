@@ -2,8 +2,48 @@
 $pageTitle = "게시물 작성";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
+<?php require_once __DIR__ . "/../../part/toastUiSetup.php"; ?>
 <section class="lg:container mx-auto px-4">
+    <script>
+        let ArticleDoWrite__submitFormDone = false;
+
+        function ArticleDoWrite__submitForm(form) {
+            if (ArticleDoWrite__submitFormDone) {
+                return;
+            }
+
+            if (select.boardId.value == 0) {
+                alert('게시판을 선택해주세요.');
+                select.boardId.focus();
+
+                return;
+            }
+
+            form.title.value = form.title.value.trim();
+
+            if (form.title.value.length == 0) {
+                alert('제목을 입력해주세요.');
+                form.title.focus();
+
+                return;
+            }
+
+            const bodyEditor = $(form).find('.input-body').data('data-toast-editor');
+            const body = bodyEditor.getMarkdown().trim();
+            if (body.length == 0) {
+                bodyEditor.focus();
+                alert('내용을 입력해주세요.');
+                return;
+            }
+
+            form.body.value = body;
+
+            form.submit();
+            ArticleDoWrite__submitFormDone = true;
+        }
+    </script>
     <form action="./doWrite" method="GET">
+        <input type="hidden" name="body">
         <div>
             <select class="select select-bordered w-full max-w-xs mb-4" name="boardId" required>
                 <option disabled="disabled" selected="selected" value="0">게시판 선택</option>
@@ -17,10 +57,13 @@ $pageTitle = "게시물 작성";
             <input type="text" name="title" placeholder="제목을 입력해 주세요" class="input input-bordered">
         </div>
         <!-- 내용 -->
-        <div class="form-control mb-4">
-            <textarea name="body" class="textarea h-24 textarea-bordered" placeholder="내용을 입력해 주세요"></textarea>
+        <div>
+            <script type="text/x-template"></script>
+            <div class="toast-ui-editor input-body"></div>
         </div>
-        <button class="w-full bg-blue-900 p-4 text-white rounded-lg" type="submit">글 작성</button>
+        <div>
+            <input type="submit" class="w-full bg-blue-900 p-4 text-white rounded-lg mb-4" value="글 작성">
+        </div>
     </form>
 </section>
 

@@ -251,6 +251,8 @@
                 height: 600,
                 plugins: [toastui.Editor.plugin.codeSyntaxHighlight, youtubePlugin, replPlugin, codepenPlugin]
             });
+
+            $(node).data('data-toast-editor', editor);
         });
     }
 
@@ -263,6 +265,8 @@
                 viewer: true,
                 plugins: [toastui.Editor.plugin.codeSyntaxHighlight, youtubePlugin, replPlugin, codepenPlugin]
             });
+            
+            $(node).data('data-toast-editor', viewer);
         });
     }
 

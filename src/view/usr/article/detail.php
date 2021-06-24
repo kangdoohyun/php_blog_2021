@@ -2,6 +2,7 @@
 $pageTitle = $article['title'];
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
+<?php require_once __DIR__ . "/../../part/toastUiSetup.php"; ?>
 <script>
     function toggleText(i, replyMemberId) {
         var text = document.getElementById("modifyReply" + i);
@@ -32,7 +33,10 @@ $pageTitle = $article['title'];
         </div>
 
         <!-- 내용 -->
-        <?= $article['body'] ?><br>
+        <div class="border-2 p-4 rounded-lg border-gray-300">
+            <script type="text/x-template"><?= $article['body'] ?></script>
+            <div class="toast-ui-viewer"></div>
+        </div>
         <!-- 좋아요 -->
         <div class="my-2 py-2 w-1/12 rounded-full border-2 border-red-500 text-center ml-auto mr-auto">
             <div class="flex justify-center h-full text-red-500">
