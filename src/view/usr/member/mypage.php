@@ -34,11 +34,11 @@ $pageTitle = "마이페이지";
             <input type="hidden" name="nickname" value="<?= $member['nickname'] ?>">
             <input type="hidden" name="cellphoneNo" value="<?= $member['cellphoneNo'] ?>">
             <input type="hidden" name="email" value="<?= $member['email'] ?>">
-            <input class="bg-blue-200 text-white w-full p-4" type="submit" value="회원정보 수정">
+            <input class="bg-blue-900 text-white w-full p-4" type="submit" value="회원정보 수정">
         </form>
         <form class="w-full" action="./doDelete">
             <input type="hidden" name="id" value="<?= $member['id'] ?>">
-            <input class="bg-blue-200 text-white w-full p-4" onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false" type="submit" value="회원 탈퇴">
+            <input class="bg-blue-900 text-white w-full p-4" onclick="if(confirm('회원을 탈퇴 하시겠습니까?') == false) return false" type="submit" value="회원 탈퇴">
         </form>
     </div>
 </section>

@@ -14,10 +14,10 @@ $pageTitle = "게시물 수정";
             <!-- 내용 -->
             <textarea class="w-full p-4 border mb-4 rounded-md" name="body"><?= $article['body'] ?></textarea>
         </div>
-        <button class="w-full bg-blue-200 p-4 text-white" type="submit">글 수정</button>
+        <button class="w-full bg-blue-900 p-4 text-white" type="submit">글 수정</button>
     </form>
     <div>
-        <button class="w-full bg-blue-200 p-4 text-white" onclick="location.href='./detail?id=<?= $id ?>'">원문</button>
+        <button class="w-full bg-blue-900 p-4 text-white" onclick="location.href='./detail?id=<?= $id ?>'">원문</button>
     </div>
 </section>
 <?php require_once __DIR__ . "/../foot.php"; ?>

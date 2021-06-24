@@ -2,13 +2,13 @@
 $pageTitle = "게시물 리스트";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<nav class="list-menu-box lg:container mx-auto flex h-full bg-blue-200">
+<nav class="list-menu-box lg:container mx-auto flex h-full bg-blue-900">
     <div class="flex-grow"></div>
     <form action="../board/make" method="POST">
-        <input class="p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" class="input-btn" type="submit" value="게시판 생성">
+        <input class="p-2 bg-blue-900 text-white hover:bg-white hover:text-blue-900" class="input-btn" type="submit" value="게시판 생성">
     </form>
     <form action="./write" method="POST">
-        <input class="p-2 bg-blue-200 text-white hover:bg-white hover:text-blue-100" class="input-btn" type="submit" value="글 작성">
+        <input class="p-2 bg-blue-900 text-white hover:bg-white hover:text-blue-900" class="input-btn" type="submit" value="글 작성">
     </form>
 </nav>
 

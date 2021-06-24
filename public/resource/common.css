@@ -26,11 +26,19 @@
     src: url("https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff2") format("woff2"),
         url("https://cdn.jsdelivr.net/korean-webfonts/1/corps/lottemart/LotteMartDream/LotteMartDreamLight.woff") format("woff");
 }
-
+/* 원스토어 모바일 팝 폰트 */
+@font-face {
+    font-family: 'ONE-Mobile-POP';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2105_2@1.0/ONE-Mobile-POP.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
 html>body {
     font-family: "Roboto Condensed", "LotteMartDream", sans-serif;
 }
-
+header, footer, nav {
+    font-family: "ONE-Mobile-POP", sans-serif;
+}
 /* 커스텀 */
 .transitin-right-1 {
     transition: right 1s;
