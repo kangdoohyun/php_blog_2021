@@ -2,8 +2,8 @@
 $pageTitle = "회원가입";
 ?>
 <?php require_once __DIR__ . "/../head.php"; ?>
-<section class="text-center lg:container mx-auto">
-    <div class="w-1/2 mx-auto">
+<section class="text-center lg:container mx-auto px-4">
+    <div class="mx-auto sm:w-1/2">
         <form action="./doJoin" method="POST">
             <div class="form-control">
                 <label class="label">

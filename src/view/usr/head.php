@@ -36,7 +36,7 @@ $boards = $this->boardService->getBoardsByASC();
 
 <body class="overflow-x-hidden">
     <div class="site-wrap min-h-screen flex flex-col pt-10">
-        <header class="top-bar fixed inset-x-0 top-0 bg-blue-900 text-white h-10">
+        <header class="top-bar fixed inset-x-0 top-0 bg-blue-900 text-white h-10 z-50">
             <div class="lg:container mx-auto h-full flex">
                 <a href="/" class="top-bar__logo text-xl block px-4 flex items-center">
                     <span><i class="fas fa-laptop-code"></i></span>

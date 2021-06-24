@@ -12,9 +12,11 @@ $pageTitle = "게시물 작성";
                 return;
             }
 
-            if (select.boardId.value == 0) {
+            form.boardId.value = form.boardId.value.trim();
+
+            if (form.boardId.value == 0) {
                 alert('게시판을 선택해주세요.');
-                select.boardId.focus();
+                form.boardId.focus();
 
                 return;
             }
@@ -42,10 +44,10 @@ $pageTitle = "게시물 작성";
             ArticleDoWrite__submitFormDone = true;
         }
     </script>
-    <form action="./doWrite" method="GET">
+    <form action="./doWrite" method="POST" onsubmit="ArticleDoWrite__submitForm(this); return false;">
         <input type="hidden" name="body">
         <div>
-            <select class="select select-bordered w-full max-w-xs mb-4" name="boardId" required>
+            <select class="select select-bordered w-full max-w-xs mb-4" name="boardId">
                 <option disabled="disabled" selected="selected" value="0">게시판 선택</option>
                 <?php foreach ($boards as $board) { ?>
                 <option class="bluck p-2" value="<?= $board['id'] ?>"><?= $board['name'] ?></option>
@@ -57,7 +59,7 @@ $pageTitle = "게시물 작성";
             <input type="text" name="title" placeholder="제목을 입력해 주세요" class="input input-bordered">
         </div>
         <!-- 내용 -->
-        <div>
+        <div class="mb-4">
             <script type="text/x-template"></script>
             <div class="toast-ui-editor input-body"></div>
         </div>
