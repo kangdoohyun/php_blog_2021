@@ -33,10 +33,10 @@
     font-weight: normal;
     font-style: normal;
 }
-html>body {
+html > body .tui-editor-contents, input{
     font-family: "Roboto Condensed", "LotteMartDream", sans-serif;
 }
-header, footer, nav {
+html > body{
     font-family: "ONE-Mobile-POP", sans-serif;
 }
 /* 커스텀 */
