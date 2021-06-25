@@ -12,7 +12,7 @@ $pageTitle = "게시물 리스트";
     </form>
 </nav>
 
-<section class="section-1 lg:container mx-auto">
+<section class="section-1 lg:container mx-auto px-4">
     <div class="list-content-box mx-auto">
         <ul class="w-full">
             <?php foreach ($articles as $article) { ?>
